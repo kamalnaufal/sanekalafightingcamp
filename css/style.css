@@ -513,3 +513,230 @@ tbody tr:nth-child(odd) {
         margin-bottom: 1rem;
     }
 }
+/* --- Contact Form Styling --- */
+.contact-form-container {
+    max-width: 600px;
+    margin: 4rem auto 2rem; /* Jarak atas bawah */
+    padding: 2rem;
+    background-color: var(--dark-grey);
+    border: 1px solid var(--gold);
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+}
+
+.form-title {
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+    font-size: 1.5rem;
+}
+
+.contact-form-container p {
+    font-size: 0.9rem;
+    margin-bottom: 2rem;
+    color: #ccc;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 1rem;
+    background-color: var(--black);
+    border: 1px solid #444;
+    color: var(--white);
+    border-radius: 5px;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    transition: border 0.3s ease;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    outline: none;
+    border-color: var(--gold);
+}
+
+.btn-submit {
+    width: 100%;
+    cursor: pointer;
+}
+
+/* Alert & Loading states */
+.d-none {
+    display: none;
+}
+
+.my-alert {
+    margin-top: 1rem;
+    padding: 1rem;
+    background-color: #155724; /* Hijau gelap */
+    color: #d4edda;
+    border: 1px solid #c3e6cb;
+    border-radius: 5px;
+}
+
+.btn-loading button {
+    width: 100%;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+/* --- MODERN ABOUT SECTION --- */
+.about-modern-section {
+    padding: 6rem 0;
+    background: linear-gradient(to bottom, var(--black), var(--dark-grey)); /* Gradasi halus */
+    overflow: hidden; /* Mencegah elemen dekorasi keluar container */
+}
+
+.about-modern-wrapper {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr; /* Gambar sedikit lebih lebar dari teks */
+    align-items: center;
+    position: relative;
+    gap: 2rem;
+}
+
+/* Area Gambar */
+.about-image-container {
+    position: relative;
+    z-index: 1; /* Di bawah teks */
+    padding-right: 2rem; /* Memberi ruang agar tidak terlalu mepet kanan */
+}
+
+.about-image-container img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    /* Efek glow emas halus di sekitar gambar */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 30px rgba(212, 175, 55, 0.15);
+    object-fit: cover;
+    min-height: 450px; /* Menjaga tinggi agar terlihat gagah */
+}
+
+/* Kotak Aksen Emas di belakang gambar */
+.gold-accent-box {
+    position: absolute;
+    top: -30px;
+    left: -30px;
+    width: 50%;
+    height: 50%;
+    border: 3px solid var(--gold);
+    z-index: -1; /* Paling belakang */
+    opacity: 0.3;
+    border-radius: 8px;
+}
+
+/* Area Konten Teks (Card) */
+.about-content-card {
+    background-color: rgba(26, 26, 26, 0.95); /* Dark grey agak transparan */
+    padding: 3.5rem;
+    border-radius: 12px;
+    /* KUNCI DESAIN: Margin negatif ke kiri agar menumpuk gambar */
+    margin-left: -120px; 
+    z-index: 2; /* Di atas gambar */
+    border-left: 4px solid var(--gold); /* Garis aksen di kiri */
+    box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+    backdrop-filter: blur(5px); /* Efek blur di belakang card (opsional, modern browser) */
+}
+
+/* Tipografi Modern */
+.subtitle-accent {
+    font-size: 0.9rem;
+    letter-spacing: 3px;
+    color: var(--gold);
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.modern-title {
+    font-size: 2.2rem;
+    line-height: 1.3;
+    margin-bottom: 1.5rem;
+    color: var(--white);
+}
+
+.about-content-card p {
+    color: #ccc; /* Warna teks agak abu agar tidak terlalu kontras */
+    margin-bottom: 1.5rem;
+}
+
+/* Fitur Kecil (Icon + Teks) */
+.about-features {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+    flex-wrap: wrap;
+}
+
+.feature-item {
+    display: flex;
+    align-items: center;
+    font-size: 0.9rem;
+    font-weight: 700;
+}
+
+.feature-item i {
+    margin-right: 0.8rem;
+    font-size: 1.2rem;
+}
+
+/* Tombol Link */
+.btn-link-gold {
+    color: var(--gold);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+}
+
+.btn-link-gold i {
+    margin-left: 10px;
+    transition: transform 0.3s ease;
+}
+
+.btn-link-gold:hover {
+    color: var(--light-gold);
+}
+
+.btn-link-gold:hover i {
+    transform: translateX(5px); /* Panah bergerak saat di-hover */
+}
+
+/* --- RESPONSIVE UNTUK MOBILE (PENTING) --- */
+@media (max-width: 992px) {
+    .about-modern-wrapper {
+        grid-template-columns: 1fr; /* Stack ke bawah di tablet/mobile */
+        gap: 0;
+    }
+
+    .about-image-container {
+        padding-right: 0;
+        margin-bottom: -50px; /* Gambar sedikit masuk ke bawah teks di mobile */
+    }
+    
+    .about-image-container img {
+        min-height: 300px;
+        border-radius: 12px 12px 0 0; /* Sudut atas saja yang bulat */
+    }
+
+    .about-content-card {
+        margin-left: 0; /* Hapus margin negatif */
+        padding: 2.5rem 2rem;
+        border-radius: 0 0 12px 12px; /* Sudut bawah saja yang bulat */
+        border-left: none; /* Hapus border kiri */
+        border-top: 4px solid var(--gold); /* Pindah border ke atas */
+    }
+
+    .gold-accent-box {
+        display: none; /* Sembunyikan aksen di mobile agar bersih */
+    }
+    
+    .modern-title {
+        font-size: 1.8rem;
+    }
+}
