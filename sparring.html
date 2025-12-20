@@ -37,8 +37,7 @@
 
         /* Background Handling */
         .hero-bg {
-            /* Ganti URL di bawah ini dengan path gambar poster Anda, misal: 'poster ig 1.jpg' */
-            background-image: linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(15,15,15,1)), url('hero1.png'); 
+            background-image: linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(15,15,15,1)), url('https://images.unsplash.com/photo-1599058917232-d750c185967c?q=80&w=2070&auto=format&fit=crop'); 
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -50,9 +49,6 @@
         }
         .neon-text-blue {
             text-shadow: 0 0 10px rgba(59, 130, 246, 0.7);
-        }
-        .neon-border {
-            box-shadow: 0 0 15px rgba(251, 191, 36, 0.3);
         }
 
         /* Card Styling */
@@ -81,18 +77,6 @@
             0% { box-shadow: 0 0 0 0 rgba(251, 191, 36, 0.4); }
             70% { box-shadow: 0 0 0 10px rgba(251, 191, 36, 0); }
             100% { box-shadow: 0 0 0 0 rgba(251, 191, 36, 0); }
-        }
-
-        /* Corner Indicators */
-        .corner-strip-red {
-            background: linear-gradient(90deg, transparent, var(--red-corner));
-            height: 4px;
-            width: 100%;
-        }
-        .corner-strip-blue {
-            background: linear-gradient(90deg, var(--blue-corner), transparent);
-            height: 4px;
-            width: 100%;
         }
 
         /* Glitch Effect for Title */
@@ -130,18 +114,19 @@
         }
 
         /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #111; }
+        ::-webkit-scrollbar-thumb { background: #444; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--neon-gold); }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
-        ::-webkit-scrollbar-track {
-            background: #111;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #444;
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: var(--neon-gold);
+        .animate-fade-in-up {
+            animation: fadeInUp 0.5s ease-out forwards;
+            opacity: 0;
         }
     </style>
 </head>
@@ -153,7 +138,7 @@
             <div class="text-2xl font-bold tracking-tighter text-yellow-500 font-oswald">
                 SANEKALA <span class="text-white">VOL.2</span>
             </div>
-            <a href="#fight-card" class="bg-red-600 hover:bg-red-700 text-white px-4 py-1 rounded text-sm font-bold uppercase transition">
+            <a href="#" class="bg-red-600 hover:bg-red-700 text-white px-4 py-1 rounded text-sm font-bold uppercase transition">
                 Free Ticket
             </a>
         </div>
@@ -204,7 +189,7 @@
 
         <!-- Filter Buttons -->
         <div class="flex justify-center gap-4 mb-10 flex-wrap">
-            <button onclick="filterFights('all')" class="filter-btn active bg-gray-800 hover:bg-gray-700 text-white px-6 py-2 rounded-full border border-gray-600 transition focus:ring-2 ring-yellow-500">
+            <button onclick="filterFights('all')" class="filter-btn active bg-gray-700 ring-2 ring-yellow-500 text-white px-6 py-2 rounded-full border border-gray-600 transition">
                 ALL FIGHTS
             </button>
             <button onclick="filterFights('street')" class="filter-btn bg-black hover:bg-gray-900 text-red-500 px-6 py-2 rounded-full border border-red-900 transition">
@@ -217,7 +202,7 @@
 
         <!-- Fights Grid -->
         <div id="fights-container" class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-            <!-- Fight cards will be injected here by JavaScript -->
+            <!-- Fight cards will be injected here -->
         </div>
 
     </main>
@@ -236,79 +221,77 @@
         </div>
     </footer>
 
-    <!-- JavaScript Logic -->
     <script>
-        // DATA PETARUNG (EDIT DISINI SESUAI POSTER)
-        // types: 'street' atau 'freestyle'
+        // DATA PETARUNG LENGKAP (24 FIGHTS)
         const fights = [
             {
                 id: 1,
                 type: 'street',
                 category: 'AMATEUR - 57KG',
                 red: { name: 'Yoenas Febriyantino', camp: 'Sanekala Fighting Camp', record: '1-1-0', image: 'yunas.jpg' },
-                blue: { name: '?', camp: '?', record: '-', image: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Rizky&backgroundColor=c0aede' }
+                blue: { name: '?', camp: '?', record: '-', image: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Rizky' }
             },
             {
                 id: 2,
                 type: 'freestyle',
                 category: 'AMATEUR - 54KG',
                 red: { name: 'Rohendi', camp: 'Sanekala Fighting Camp', record: '1-0-0', image: 'godeg.jpg' },
-                blue: { name: '?', camp: '?', record: '-', image: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Bimo&backgroundColor=ffdfbf' }
+                blue: { name: '?', camp: '?', record: '-', image: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Bimo' }
             },
             {
                 id: 3,
                 type: 'street',
                 category: 'AMATEUR - 57KG',
                 red: { name: 'Ali Maulana Rizqi', camp: 'Sanekala Fighting Camp', record: 'Debut', image: 'ali.jpg' },
-                blue: { name: '?', camp: '?', record: '-', image: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Kevin&backgroundColor=c0aede' }
+                blue: { name: '?', camp: '?', record: '-', image: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Kevin' }
             },
             {
                 id: 4,
                 type: 'freestyle',
                 category: 'AMATEUR - 70KG',
                 red: { name: 'DOYANG', camp: 'Sanekala Fighting Camp', record: 'Debut', image: 'doyang.jpg' },
-                blue: { name: '?', camp: '?', record: '-', image: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Anton&backgroundColor=ffdfbf' }
+                blue: { name: '?', camp: '?', record: '-', image: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Anton' }
             },
-             {
+            {
                 id: 5,
                 type: 'freestyle',
                 category: 'AMATEUR - 48KG',
-                red: { name: '?', camp: '?', record: '-', image: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Anton&backgroundColor=ffdfbf' },
+                red: { name: '?', camp: '?', record: '-', image: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Uknown1' },
                 blue: { name: 'Raka Aditia Fratama', camp: 'Sanekala Fighting Camp', record: 'Debut', image: 'raka.jpg' }
             },
             {
                 id: 6,
                 type: 'street',
                 category: 'AMATEUR - 48KG',
-                red: { name: '?', camp: '?', record: '-', image: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Anton&backgroundColor=ffdfbf' },
+                red: { name: '?', camp: '?', record: '-', image: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Uknown2' },
                 blue: { name: 'Aditya Fratama', camp: 'Sanekala Fighting Camp', record: 'Debut', image: 'aditya.jpg' }
             },
-             {
+            {
                 id: 7,
                 type: 'freestyle',
                 category: 'AMATEUR - 54KG',
-                red: { name: '?', camp: '?', record: '-', image: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Anton&backgroundColor=ffdfbf' },
-                blue: { name: 'PIKRI PITRIYANI ', camp: 'MAJALAYA FIGHTER CLUB', record: 'Debut', image: 'pikri.jpg' }
+                red: { name: '?', camp: '?', record: '-', image: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Uknown3' },
+                blue: { name: 'PIKRI PITRIYANI', camp: 'MAJALAYA FIGHTER CLUB', record: 'Debut', image: 'pikri.jpg' }
             },
             {
                 id: 8,
                 type: 'street',
                 category: 'AMATEUR - 57KG',
                 red: { name: 'dede rahmat aditia', camp: 'No Camp', record: 'Debut', image: 'dede.jpg' },
-                blue: { name: 'Egin saeful achmad ', camp: 'Sanekala Fighting Camp', record: 'Debut', image: 'egin.jpg' }
+                blue: { name: 'Egin saeful achmad', camp: 'Sanekala Fighting Camp', record: 'Debut', image: 'egin.jpg' }
             },
             {
                 id: 9,
                 type: 'freestyle',
                 category: 'AMATEUR - 60KG',
-                red: { name: '?', camp: '?', record: '-', image: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Anton&backgroundColor=ffdfbf' },
+                red: { name: '?', camp: '?', record: '-', image: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Uknown4' },
                 blue: { name: 'Firdaus Yuan darussalam', camp: 'Sanekala Fighting Camp', record: 'Debut', image: 'daus.jpg' }
             },
-              {
+            {
                 id: 10,
                 type: 'freestyle',
                 category: 'AMATEUR - 51KG',
-                red: { name: '?', camp: '?', record: '-', image: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Anton&backgroundColor=ffdfbf' },
+                red: { name: '?', camp: '?', record: '-', image: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Uknown5' },
                 blue: { name: 'Neng Nurul Fatmah', camp: 'Sanekala Fighting Camp', record: 'Debut', image: 'nurul.jpg' }
             },
             {
@@ -316,23 +299,24 @@
                 type: 'street',
                 category: 'AMATEUR - 60KG',
                 red: { name: 'Rizal Ridhwannullah', camp: 'Sanekala Fighting Camp', record: 'Debut', image: 'rizal.jpg' },
-                blue: { name: '?', camp: '?', record: '-', image: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Kevin&backgroundColor=c0aede' }
+                blue: { name: '?', camp: '?', record: '-', image: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Uknown6' }
             },
             {
                 id: 12,
                 type: 'freestyle',
                 category: 'AMATEUR - 45KG',
                 red: { name: 'Dicky candra', camp: 'Saga training camp', record: 'Debut', image: 'diki.jpg' },
-                blue: { name: '?', camp: '?', record: '-', image: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Anton&backgroundColor=ffdfbf' }
+                blue: { name: '?', camp: '?', record: '-', image: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Uknown7' }
             },
             {
                 id: 13,
                 type: 'street',
                 category: 'AMATEUR - 57KG',
-                red: { name: '?', camp: '?', record: '-', image: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Anton&backgroundColor=ffdfbf' },
+                red: { name: '?', camp: '?', record: '-', image: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Uknown8' },
                 blue: { name: 'Kiki rizgi nawan', camp: 'Sanekala Fighting Camp', record: 'Debut', image: 'kiki.jpg' }
             },
-             id: 14,
+            {
+                id: 14,
                 type: 'freestyle',
                 category: 'Junior - 30KG',
                 red: { name: 'Daffa Dienul - Haq Nurfadillah', camp: 'Wushu Alimin Ibun', record: 'Debut', image: 'daffared.jpg' },
@@ -345,78 +329,76 @@
                 red: { name: 'Jehan aceng', camp: 'Sanekala Fighting Camp', record: 'Debut', image: 'aceng.jpg' },
                 blue: { name: 'ELSA SAPUTRA', camp: 'Sanekala Fighting Camp', record: 'Debut', image: 'elsa.jpg' }
             },
-              {
+            {
                 id: 16,
                 type: 'freestyle',
                 category: 'AMATEUR - 48KG',
-                red: { name: '?', camp: '?', record: '-', image: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Anton&backgroundColor=ffdfbf' },
+                red: { name: '?', camp: '?', record: '-', image: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Uknown9' },
                 blue: { name: 'DINDA PUTRI ALFIYANI', camp: 'Majalaya Fighter Club', record: 'Debut', image: 'dinda.jpg' }
             },
-          {
+            {
                 id: 17,
                 type: 'street',
                 category: 'AMATEUR - 63KG',
-                red: { name: '?', camp: '?', record: '-', image: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Anton&backgroundColor=ffdfbf' },
+                red: { name: '?', camp: '?', record: '-', image: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Uknown10' },
                 blue: { name: 'Cecep suhendra', camp: 'Sanekala Fighting Camp', record: 'Debut', image: 'hendra.jpg' }
             },
-             {
+            {
                 id: 18,
                 type: 'freestyle',
                 category: 'Junior - 35KG',
-                red: { name: '?', camp: '?', record: '-', image: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Anton&backgroundColor=ffdfbf' },
+                red: { name: '?', camp: '?', record: '-', image: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Uknown11' },
                 blue: { name: 'Keyla Rizkia Putri', camp: 'Wushu Alimin Ibun', record: 'Debut', image: 'keyla.jpg' }
             },
             {
                 id: 19,
                 type: 'freestyle',
                 category: 'Junior - 31KG',
-                red: { name: '?', camp: '?', record: '-', image: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Anton&backgroundColor=ffdfbf' },
+                red: { name: '?', camp: '?', record: '-', image: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Uknown12' },
                 blue: { name: 'Nazwa Cahaya Ramadan', camp: 'Wushu Alimin Ibun', record: 'Debut', image: 'nazwa.jpg' }
             },
             {
                 id: 20,
                 type: 'freestyle',
                 category: 'Junior - 38KG',
-                red: { name: '?', camp: '?', record: '-', image: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Anton&backgroundColor=ffdfbf' },
+                red: { name: '?', camp: '?', record: '-', image: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Uknown13' },
                 blue: { name: 'Talita Jablilah', camp: 'Wushu Alimin Ibun', record: 'Debut', image: 'talita.jpg' }
             },
             {
                 id: 21,
                 type: 'freestyle',
                 category: 'Junior - 48KG',
-                red: { name: '?', camp: '?', record: '-', image: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Anton&backgroundColor=ffdfbf' },
+                red: { name: '?', camp: '?', record: '-', image: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Uknown14' },
                 blue: { name: 'Nur Halimahtusadiah', camp: 'Wushu Alimin Ibun', record: 'Debut', image: 'nur.jpg' }
             },
             {
                 id: 22,
                 type: 'freestyle',
                 category: 'Junior - 46KG',
-                red: { name: '?', camp: '?', record: '-', image: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Anton&backgroundColor=ffdfbf' },
+                red: { name: '?', camp: '?', record: '-', image: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Uknown15' },
                 blue: { name: 'Myana Lutfi Aidhila', camp: 'Wushu Alimin Ibun', record: 'Debut', image: 'myana.jpg' }
             },
             {
                 id: 23,
                 type: 'freestyle',
                 category: 'Junior - 29KG',
-                red: { name: '?', camp: '?', record: '-', image: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Anton&backgroundColor=ffdfbf' },
+                red: { name: '?', camp: '?', record: '-', image: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Uknown16' },
                 blue: { name: 'Surya Muhamad Sean', camp: 'Wushu Alimin Ibun', record: 'Debut', image: 'surya.jpg' }
             },
             {
                 id: 24,
                 type: 'freestyle',
                 category: 'Junior - 36KG',
-                red: { name: '?', camp: '?', record: '-', image: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Anton&backgroundColor=ffdfbf' },
+                red: { name: '?', camp: '?', record: '-', image: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Uknown17' },
                 blue: { name: 'Abidzar Al Ghifari', camp: 'Wushu Alimin Ibun', record: 'Debut', image: 'abidzar.jpg' }
-            },
+            }
         ];
 
         const container = document.getElementById('fights-container');
-        const buttons = document.querySelectorAll('.filter-btn');
+        const filterBtns = document.querySelectorAll('.filter-btn');
 
-        // Function to render HTML
         function renderFights(filterType) {
-            container.innerHTML = ''; // Clear existing content
-            
+            container.innerHTML = ''; 
             let delay = 0;
 
             const filteredFights = filterType === 'all' 
@@ -433,124 +415,69 @@
                 card.className = `fight-card rounded-xl w-full mx-auto animate-fade-in-up`;
                 card.style.animationDelay = `${delay}ms`;
                 
-                // Set badge styling based on type
                 const typeBadgeColor = fight.type === 'street' ? 'bg-red-900/50 text-red-400 border-red-800' : 'bg-blue-900/50 text-blue-400 border-blue-800';
                 const typeLabel = fight.type === 'street' ? 'STREET BOXING' : 'FREESTYLE STRIKING';
 
                 card.innerHTML = `
                     <div class="flex flex-col h-full">
-                        <!-- Header: Category & Type -->
                         <div class="flex justify-between items-center p-3 bg-black/50 border-b border-gray-800">
                             <span class="text-xs font-bold text-gray-400 tracking-wider">${fight.category}</span>
                             <span class="text-xs font-bold px-2 py-1 rounded border ${typeBadgeColor}">${typeLabel}</span>
                         </div>
-
-                        <!-- Matchup Area -->
                         <div class="flex flex-row items-center justify-between p-4 md:p-6 relative bg-gradient-to-b from-transparent to-black/80 flex-grow">
-                            
-                            <!-- Red Corner -->
                             <div class="flex-1 flex flex-col items-center text-center z-10">
-                                <div class="w-20 h-20 md:w-24 md:h-24 rounded-full border-4 border-red-600 overflow-hidden mb-3 bg-gray-800 relative shadow-[0_0_15px_rgba(220,38,38,0.5)]">
-                                    <img src="${fight.red.image}" alt="${fight.red.name}" class="w-full h-full object-cover">
+                                <div class="w-16 h-16 md:w-20 md:h-20 rounded-full border-2 border-red-600 overflow-hidden mb-3 bg-gray-800">
+                                    <img src="${fight.red.image}" onerror="this.src='https://api.dicebear.com/7.x/avataaars/svg?seed=red_${fight.id}'" class="w-full h-full object-cover">
                                 </div>
-                                <h3 class="text-lg md:text-xl font-bold text-white leading-tight neon-text-red">${fight.red.name}</h3>
-                                <p class="text-xs text-gray-400 mt-1 uppercase">${fight.red.camp}</p>
-                                <p class="text-xs text-red-500 font-mono mt-1">${fight.red.record}</p>
+                                <h3 class="text-sm md:text-lg font-bold text-white leading-tight neon-text-red">${fight.red.name}</h3>
+                                <p class="text-[10px] text-gray-400 uppercase">${fight.red.camp}</p>
                             </div>
-
-                            <!-- VS Badge -->
-                            <div class="relative z-20 mx-2 md:mx-4">
-                                <div class="vs-badge w-12 h-12 md:w-16 md:h-16 rounded-full flex items-center justify-center transform rotate-45">
-                                    <span class="transform -rotate-45 font-oswald text-xl md:text-2xl font-bold text-yellow-500 italic">VS</span>
+                            <div class="relative z-20 mx-2">
+                                <div class="vs-badge w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center transform rotate-45">
+                                    <span class="transform -rotate-45 font-oswald text-lg font-bold text-yellow-500">VS</span>
                                 </div>
                             </div>
-
-                            <!-- Blue Corner -->
                             <div class="flex-1 flex flex-col items-center text-center z-10">
-                                <div class="w-20 h-20 md:w-24 md:h-24 rounded-full border-4 border-blue-600 overflow-hidden mb-3 bg-gray-800 relative shadow-[0_0_15px_rgba(37,99,235,0.5)]">
-                                    <img src="${fight.blue.image}" alt="${fight.blue.name}" class="w-full h-full object-cover">
+                                <div class="w-16 h-16 md:w-20 md:h-20 rounded-full border-2 border-blue-600 overflow-hidden mb-3 bg-gray-800">
+                                    <img src="${fight.blue.image}" onerror="this.src='https://api.dicebear.com/7.x/avataaars/svg?seed=blue_${fight.id}'" class="w-full h-full object-cover">
                                 </div>
-                                <h3 class="text-lg md:text-xl font-bold text-white leading-tight neon-text-blue">${fight.blue.name}</h3>
-                                <p class="text-xs text-gray-400 mt-1 uppercase">${fight.blue.camp}</p>
-                                <p class="text-xs text-blue-500 font-mono mt-1">${fight.blue.record}</p>
+                                <h3 class="text-sm md:text-lg font-bold text-white leading-tight neon-text-blue">${fight.blue.name}</h3>
+                                <p class="text-[10px] text-gray-400 uppercase">${fight.blue.camp}</p>
                             </div>
                         </div>
-
-                        <!-- Footer Actions -->
-                        <div class="p-4 border-t border-gray-800 flex justify-between items-center bg-black/40">
-                             <div class="w-full flex">
-                                <button class="flex-1 py-2 text-xs font-bold text-red-500 hover:bg-red-900/20 rounded transition uppercase border border-red-900/30 mr-2">
-                                    Dukung Red
-                                </button>
-                                <button class="flex-1 py-2 text-xs font-bold text-blue-500 hover:bg-blue-900/20 rounded transition uppercase border border-blue-900/30">
-                                    Dukung Blue
-                                </button>
-                             </div>
-                        </div>
-                        
-                        <!-- Color Strips -->
-                        <div class="absolute bottom-0 left-0 w-1/2 h-1 bg-red-600 shadow-[0_0_10px_rgba(220,38,38,0.8)]"></div>
-                        <div class="absolute bottom-0 right-0 w-1/2 h-1 bg-blue-600 shadow-[0_0_10px_rgba(37,99,235,0.8)]"></div>
+                        <div class="absolute bottom-0 left-0 w-1/2 h-1 bg-red-600"></div>
+                        <div class="absolute bottom-0 right-0 w-1/2 h-1 bg-blue-600"></div>
                     </div>
                 `;
-                
                 container.appendChild(card);
-                delay += 100; // Stagger animation
+                delay += 50; // Lebih cepat agar 24 card tidak terlalu lama loadingnya
             });
         }
 
-        // Filter Logic
         function filterFights(type) {
-            // Update active button state
-            buttons.forEach(btn => {
+            filterBtns.forEach(btn => {
                 btn.classList.remove('bg-gray-700', 'ring-2', 'ring-yellow-500');
-                if(type === 'all' && btn.innerText.includes('ALL')) {
-                    btn.classList.add('bg-gray-700', 'ring-2', 'ring-yellow-500');
-                } else if (type === 'street' && btn.innerText.includes('STREET')) {
-                    btn.classList.add('bg-gray-700', 'ring-2', 'ring-yellow-500');
-                } else if (type === 'freestyle' && btn.innerText.includes('FREESTYLE')) {
-                    btn.classList.add('bg-gray-700', 'ring-2', 'ring-yellow-500');
-                }
+                btn.classList.add('bg-black');
             });
+            
+            // Mencari button yang aktif berdasarkan parameter type
+            const activeBtn = Array.from(filterBtns).find(btn => 
+                (type === 'all' && btn.innerText.includes('ALL')) ||
+                (type === 'street' && btn.innerText.includes('STREET')) ||
+                (type === 'freestyle' && btn.innerText.includes('FREESTYLE'))
+            );
+            
+            if (activeBtn) {
+                activeBtn.classList.remove('bg-black');
+                activeBtn.classList.add('bg-gray-700', 'ring-2', 'ring-yellow-500');
+            }
 
             renderFights(type);
         }
 
-        // Initialize
         document.addEventListener('DOMContentLoaded', () => {
             renderFights('all');
-            
-            // Add custom animation styles via JS to avoid cluttering CSS
-            const style = document.createElement('style');
-            style.innerHTML = `
-                @keyframes fadeInUp {
-                    from { opacity: 0; transform: translateY(20px); }
-                    to { opacity: 1; transform: translateY(0); }
-                }
-                .animate-fade-in-up {
-                    animation: fadeInUp 0.5s ease-out forwards;
-                    opacity: 0; /* Initial state */
-                }
-            `;
-            document.head.appendChild(style);
         });
-
     </script>
 </body>
-
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
