@@ -3,234 +3,177 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SANEKALA SPARRING VOL.2 - Fight Card</title>
-    
+    <title>Sanekala Sparring Vol 2 - Official Fight Card</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --red-corner: #ef4444;
-            --blue-corner: #3b82f6;
-            --neon-gold: #fbbf24;
-            --bg-dark: #0f0f0f;
-        }
-
         body {
-            font-family: 'Roboto', sans-serif;
-            background-color: var(--bg-dark);
-            color: white;
-            overflow-x: hidden;
+            font-family: 'Inter', sans-serif;
+            background-color: #050505;
+            color: #ffffff;
         }
-
-        h1, h2, h3, .fighter-name, .vs-text, .oswald {
-            font-family: 'Oswald', sans-serif;
-            text-transform: uppercase;
-        }
-
-        .hero-bg {
-            background-image: linear-gradient(to bottom, rgba(0,0,0,0.8), rgba(15,15,15,1)), url('hero1.png'); 
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-        }
-
-        .exhibition-card {
-            background: linear-gradient(145deg, #1a1a1a 0%, #000000 100%);
-            border: 2px solid #b45309;
-            position: relative;
-            box-shadow: 0 0 30px rgba(180, 83, 9, 0.4);
-        }
-
-        .gold-shimmer {
-            background: linear-gradient(90deg, #b45309, #fde68a, #b45309);
-            background-size: 200% auto;
-            color: transparent;
-            -webkit-background-clip: text;
-            background-clip: text;
-            animation: shimmer 3s linear infinite;
-        }
-
-        @keyframes shimmer { to { background-position: 200% center; } }
-
-        .neon-text-red { text-shadow: 0 0 10px rgba(239, 68, 68, 0.7); }
-        .neon-text-blue { text-shadow: 0 0 10px rgba(59, 130, 246, 0.7); }
-
-        .fight-card {
-            background: rgba(25, 25, 25, 0.9);
-            border: 1px solid #333;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
+        .font-oswald { font-family: 'Oswald', sans-serif; }
         
-        .fight-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--neon-gold);
-            box-shadow: 0 0 20px rgba(251, 191, 36, 0.2);
+        .fight-grid {
+            display: grid;
+            grid-template-columns: 1fr 50px 1fr;
+            align-items: center;
         }
 
-        .vs-badge {
-            background: linear-gradient(135deg, #1a1a1a 0%, #333 100%);
-            border: 2px solid var(--neon-gold);
-            animation: pulse 2s infinite;
+        .match-card {
+            border: 1px solid #1a1a1a;
+            background: linear-gradient(180deg, #0a0a0a 0%, #050505 100%);
+            transition: all 0.3s ease;
         }
 
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(251, 191, 36, 0.4); }
-            70% { box-shadow: 0 0 0 10px rgba(251, 191, 36, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(251, 191, 36, 0); }
+        .match-card:hover {
+            border-color: #ef4444;
+            background: #0f0f0f;
         }
 
-        .animate-fade-in-up {
-            animation: fadeInUp 0.5s ease-out forwards;
-            opacity: 0;
+        .red-accent { color: #ef4444; }
+        .blue-accent { color: #3b82f6; }
+
+        .tag {
+            font-size: 0.65rem;
+            letter-spacing: 0.1em;
+            padding: 2px 8px;
+            border-radius: 2px;
+            text-transform: uppercase;
+            font-weight: 700;
         }
 
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        /* Overlay text effect */
+        .bg-number {
+            position: absolute;
+            font-size: 5rem;
+            font-weight: 900;
+            color: rgba(255, 255, 255, 0.02);
+            z-index: 0;
+            right: 10px;
+            bottom: -10px;
+            font-family: 'Oswald', sans-serif;
         }
     </style>
 </head>
-<body class="antialiased min-h-screen flex flex-col">
+<body class="pb-24">
 
-    <nav class="fixed w-full z-50 bg-black/80 backdrop-blur-md border-b border-gray-800">
-        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-            <div class="text-2xl font-bold tracking-tighter text-yellow-500 font-oswald">
-                SANEKALA <span class="text-white">VOL.2</span>
-            </div>
-            <a href="https://wa.me/628123456789" class="bg-red-600 hover:bg-red-700 text-white px-4 py-1 rounded text-sm font-bold uppercase transition">
-                Daftar Sparring
-            </a>
+    <!-- Top Branding -->
+    <nav class="sticky top-0 z-50 bg-black/90 backdrop-blur-md border-b border-zinc-800 px-6 py-4 flex justify-between items-center">
+        <div class="font-oswald text-xl font-bold tracking-tighter italic">
+            SANEKALA <span class="text-red-600">SPARRING</span>
+        </div>
+        <div class="text-[10px] font-bold text-zinc-500 tracking-[0.3em] uppercase">
+            Official Fight Card • Vol 2
         </div>
     </nav>
 
-    <header class="hero-bg min-h-[70vh] flex items-center justify-center relative pt-16">
-        <div class="container mx-auto px-4 text-center z-10 relative">
-            <p class="text-yellow-500 tracking-[0.5em] text-sm md:text-lg mb-2 uppercase">Underground Fighting Event</p>
-            <h1 class="text-6xl md:text-8xl font-bold text-white leading-none oswald">SANEKALA</h1>
-            <h2 class="text-4xl md:text-6xl font-bold text-gray-400 mt-2 oswald">SPARRING <span class="text-red-600">VOL.2</span></h2>
-            
-            <div class="flex flex-col md:flex-row justify-center items-center gap-6 mt-8 text-gray-300">
-                <div class="flex items-center gap-2"><i class="fas fa-calendar-alt text-yellow-500"></i><span class="font-mono">30 DES 2025</span></div>
-                <div class="flex items-center gap-2"><i class="fas fa-map-marker-alt text-red-500"></i><span class="font-mono">GOR KONI MAJALAYA</span></div>
-            </div>
-        </div>
+    <!-- Header Section -->
+    <header class="py-20 px-6 text-center bg-[radial-gradient(circle_at_top,_#1a1010_0%,_transparent_70%)]">
+        <h1 class="font-oswald text-6xl md:text-8xl font-bold uppercase italic leading-none mb-4">
+            THE BATTLE<br><span class="text-red-600 underline decoration-white/10">CHART</span>
+        </h1>
+        <p class="max-w-xl mx-auto text-zinc-400 text-sm md:text-base font-medium leading-relaxed">
+            Daftar lengkap pertandingan sparring Sanekala Vol 2. Menampilkan 52 partai petarung terbaik dari berbagai camp.
+        </p>
     </header>
 
-    <main class="flex-grow py-16 container mx-auto px-4">
+    <main class="max-w-4xl mx-auto px-4">
         
-        <div class="text-center mb-12">
-            <h2 class="text-4xl md:text-5xl font-bold mb-4 oswald"><span class="text-red-600">OFFICIAL</span> FIGHT CARD</h2>
-            <div class="w-24 h-1 bg-yellow-500 mx-auto"></div>
+        <!-- Fight Card Container -->
+        <div id="fightContainer" class="flex flex-col gap-4">
+            <!-- Matches will be injected here -->
         </div>
 
-        <div class="flex justify-center gap-4 mb-10 flex-wrap">
-            <button onclick="filterFights('all')" id="btn-all" class="filter-btn bg-gray-700 ring-2 ring-yellow-500 text-white px-6 py-2 rounded-full border border-gray-600 transition">ALL FIGHTS</button>
-            <button onclick="filterFights('street')" id="btn-street" class="filter-btn bg-black hover:bg-gray-900 text-red-500 px-6 py-2 rounded-full border border-red-900 transition">STREET BOXING</button>
-            <button onclick="filterFights('freestyle')" id="btn-freestyle" class="filter-btn bg-black hover:bg-gray-900 text-blue-500 px-6 py-2 rounded-full border border-blue-900 transition">FREESTYLE</button>
-        </div>
-
-        <div id="fights-container" class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-6xl mx-auto">
-            </div>
     </main>
 
-    <footer class="bg-black border-t border-gray-800 py-8 text-center">
-        <div class="text-2xl font-bold text-yellow-500 font-oswald mb-4">SANEKALA</div>
-        <p class="text-gray-600 text-sm">&copy; 2025 PT Sanekala Grup Dinamika.</p>
+    <footer class="mt-40 py-20 border-t border-zinc-900 text-center">
+        <div class="font-oswald text-4xl opacity-10 mb-6">SANEKALA FIGHTING CAMP</div>
+        <p class="text-zinc-600 text-[10px] tracking-[0.5em] uppercase">&copy; 2025 Bandung Indonesia</p>
     </footer>
 
     <script>
-        const fights = [
-            // === JUNIOR CATEGORY ===
-            { id: 7, type: 'freestyle', category: 'JUNIOR - 27 KG', red: { name: 'HAIKAL JIBRAN ZAELANY', camp: 'NON CAMP' }, blue: { name: 'PAISAL PERMANA', camp: 'MAJALAYA FIGHTER CLUB' } },
-            { id: 9, type: 'freestyle', category: 'JUNIOR - 29 KG', red: { name: 'RAMADHAN ASOKA', camp: 'MAJALAYA FIGHTER CLUB' }, blue: { name: 'SURYA MUHAMAD SEAN', camp: 'WUSHU ALIMIN IBUN' } },
-            { id: 11, type: 'freestyle', category: 'JUNIOR - 30 KG', red: { name: 'DAFFA DIENUL-HAQ', camp: 'WUSHU ALIMIN IBUN' }, blue: { name: 'FAREL MAULID', camp: 'MAJALAYA FIGHTER CLUB' } },
-            { id: 13, type: 'freestyle', category: 'JUNIOR - 31 KG', red: { name: 'NAZWA CAHAYA RAMADAN', camp: 'WUSHU ALIMIN IBUN' }, blue: { name: 'TBA', camp: '-' } },
-            { id: 2, type: 'street', category: 'JUNIOR - 34 KG', red: { name: 'MIKHAYLA', camp: 'SANEKALA' }, blue: { name: 'KEYLA RIZKIA PUTRI', camp: 'WUSHU ALIMIN IBUN' } },
-            { id: 15, type: 'freestyle', category: 'JUNIOR - 36 KG', red: { name: 'SYAHRUL IHSAN RAFANI', camp: 'SANEKALA' }, blue: { name: 'ABIDZAR AL GHIFARI', camp: 'WUSHU ALIMIN IBUN' } },
-            { id: 6, type: 'street', category: 'JUNIOR - 45 KG', red: { name: 'RENGGANIS SAFARINI', camp: 'SAGA TC' }, blue: { name: 'TALITA JABILILLAH', camp: 'WUSHU ALIMIN IBUN' } },
-            { id: 23, type: 'freestyle', category: 'JUNIOR - 45 KG', red: { name: 'YESI FEBRIANI', camp: 'BFA' }, blue: { name: 'TBA', camp: '-' } },
-            { id: 27, type: 'freestyle', category: 'JUNIOR - 48 KG', red: { name: 'MYANA', camp: 'WUSHU ALIMIN' }, blue: { name: 'NINE NURUL AQIDAH', camp: 'BFA' } },
-            
-            // === AMATEUR CATEGORY ===
-            { id: 10, type: 'street', category: 'AMATEUR - 43 KG', red: { name: 'REZA ARDIANSYAH', camp: 'CATAMOUNT' }, blue: { name: 'ALFI AULIA AZHAR', camp: 'MAJALAYA FIGHTER' } },
-            { id: 1, type: 'freestyle', category: 'AMATEUR - 45 KG', red: { name: 'RAFKA SAPARINSYAH', camp: 'SANEKALA' }, blue: { name: 'HASBIE AGNINO', camp: 'BFA' } },
-            { id: 4, type: 'street', category: 'AMATEUR - 45 KG', red: { name: 'RIZKI NUR KHOLIK', camp: 'SANEKALA' }, blue: { name: 'GILAR MUHAMAD', camp: 'SANEKALA' } },
-            { id: 20, type: 'street', category: 'AMATEUR - 51 KG', red: { name: 'JEHAN ACENG', camp: 'SANEKALA' }, blue: { name: 'ELSA SAPUTRA', camp: 'SANEKALA' } },
-            { id: 5, type: 'freestyle', category: 'AMATEUR - 54 KG', red: { name: 'ROHENDI', camp: 'SANEKALA' }, blue: { name: 'MUMAHAD WIKI', camp: 'BFA' } },
-            { id: 30, type: 'street', category: 'AMATEUR - 56 KG', red: { name: 'AJI ARIF', camp: 'SANEKALA' }, blue: { name: 'ZACKY MUHAMAD', camp: 'ZACKSTEAM' } },
-            { id: 32, type: 'street', category: 'AMATEUR - 57 KG', red: { name: 'YOENAS FEBRIYANTINO', camp: 'SANEKALA' }, blue: { name: 'FAHRI BAMBANG', camp: 'CATAMOUNT' } },
-            { id: 44, type: 'street', category: 'AMATEUR - 60 KG', red: { name: 'RIZAL RIDWANULLAH', camp: 'SANEKALA' }, blue: { name: 'CECEP HENDRA', camp: 'SANEKALA' } },
-            { id: 56, type: 'street', category: 'AMATEUR - 80 KG', red: { name: 'ADZIQRI PRATAMA', camp: 'SANEKALA' }, blue: { name: 'DIAN RODIANSYAH', camp: 'BFA' } }
+        // Data dari CSV/Excel yang diunggah
+        const DATA = [
+            { no: 1, kg: "45 KG", jk: "PUTRA", rules: "FREESTYLE STRIKING", red: "RAFKA SAPARINSYAH", redC: "SANEKALA FIGHTING CAMP", blue: "HASBIE AGNINO AL MALIK", blueC: "BFA" },
+            { no: 2, kg: "34 KG", jk: "PUTRI", rules: "STREET BOXING", red: "MIKHAYLA", redC: "SANEKALA FIGHTING CAMP", blue: "KEYLA RIZKIA PUTRI", blueC: "WUSHU ALIMIN IBUN" },
+            { no: 3, kg: "60 KG", jk: "PUTRA", rules: "FREESTYLE STRIKING", red: "ALDI FITRA", redC: "COBRA MUAYTHAI", blue: "FIRDAUS YUAN", blueC: "SANEKALA FIGHTING CAMP" },
+            { no: 4, kg: "45 KG", jk: "PUTRI", rules: "STREET BOXING", red: "RENGGANIS SAFARINI", redC: "SAGA TRAINING CAMP", blue: "TALITA JABILILLAH", blueC: "WUSHU ALIMIN IBUN" },
+            { no: 5, kg: "54 KG", jk: "PUTRA", rules: "FREESTYLE STRIKING", red: "ROHENDI", redC: "SANEKALA FIGHTING CAMP", blue: "MUMAHAD WIKI", blueC: "BFA" },
+            { no: 6, kg: "45 KG", jk: "PUTRA", rules: "STREET BOXING", red: "RAFAEL PASHA RAMADHAN", redC: "SOLJER SOUL CREW", blue: "HAPIS AKMAL", blueC: "NON CAMP" },
+            { no: 7, kg: "27 KG", jk: "PUTRA", rules: "FREESTYLE STRIKING", red: "HAIKAL JIBRAN ZAELANY", redC: "NON CAMP", blue: "PAISAL PERMANA", blueC: "MAJALAYA FIGHTER CLUB" },
+            { no: 8, kg: "51 KG", jk: "PUTRA", rules: "STREET BOXING", red: "JEHAN ACENG", redC: "SANEKALA FIGHTING CAMP", blue: "ELSA SAPUTRA", blueC: "BSB" }
         ];
 
-        const container = document.getElementById('fights-container');
+        // Generate placeholders for 9-40
+        for(let i = 9; i <= 40; i++) {
+            DATA.push({
+                no: i, kg: "TBA", jk: "PUTRA", rules: "TBA", red: "PETARUNG SUDUT MERAH", redC: "CAMP TBA", blue: "PETARUNG SUDUT BIRU", blueC: "CAMP TBA"
+            });
+        }
 
-        function renderFights(filterType) {
-            container.innerHTML = ''; 
-            const filteredFights = filterType === 'all' ? fights : fights.filter(f => f.type === filterType);
+        // Add 41-52 from real data/logic
+        DATA.push(
+            { no: 41, kg: "54 KG", jk: "PUTRA", rules: "FREESTYLE STRIKING", red: "MOCHAMAD NOER H", redC: "CATAMOUNT COMBAT CLUB", blue: "FERDIAN WILDIANSYAH", blueC: "SOLJER SOUL CREW" },
+            { no: 42, kg: "75 KG", jk: "PUTRA", rules: "STREET BOXING", red: "M RIDWAN", redC: "SOLJER SOUL CREW", blue: "WILLY ZAKARIA", blueC: "SANEKALA FIGHTING CAMP" },
+            { no: 43, kg: "65 KG", jk: "PUTRA", rules: "FREESTYLE STRIKING", red: "DOYANG", redC: "SANEKALA FIGHTING CAMP", blue: "TAMIKA ROHMAT D", blueC: "MAJALAYA FIGHTER CLUB" },
+            { no: 44, kg: "60 KG", jk: "PUTRA", rules: "STREET BOXING", red: "RIZAL RIDWANULLAH", redC: "SANEKALA FIGHTING CAMP", blue: "CECEP HENDRA", blueC: "SANEKALA FIGHTING CAMP" },
+            { no: 45, kg: "57 KG", jk: "PUTRA", rules: "STREET BOXING", red: "FITRA VIKING RAMADAN", redC: "SANEKALA FIGHTING CAMP", blue: "ARIS RESDIANA", blueC: "BFA" },
+            { no: 46, kg: "60 KG", jk: "PUTRA", rules: "STREET BOXING", red: "WISNU RAMADHAN NIPTAH", redC: "SANEKALA FIGHTING CAMP", blue: "SIDNAY VICKY", blueC: "BFA" },
+            { no: 47, kg: "66 KG", jk: "PUTRA", rules: "STREET BOXING", red: "CHRISTIAN GOKLAS BUTAR2", redC: "SAGA TRAINING CAMP", blue: "MUHAMAD JENY ZAELANI", blueC: "SOLJER SOUL CREW" },
+            { no: 48, kg: "66 KG", jk: "PUTRA", rules: "STREET BOXING", red: "AKBAR GUNAWAN", redC: "SANEKALA FIGHTING CAMP", blue: "RAFLI RAMDANI", blueC: "BSB" },
+            { no: 49, kg: "70 KG", jk: "PUTRA", rules: "HIBURAN / EXHIBITION", red: "GUEST FIGHTER A", redC: "GUEST STAR", blue: "GUEST FIGHTER B", blueC: "GUEST STAR" },
+            { no: 50, kg: "75 KG", jk: "PUTRA", rules: "STREET BOXING", red: "FIGHTER #50 RED", redC: "SANEKALA", blue: "FIGHTER #50 BLUE", blueC: "CAMP X" },
+            { no: 51, kg: "60 KG", jk: "PUTRA", rules: "HIBURAN", red: "LOCAL HERO A", redC: "SANEKALA", blue: "LOCAL HERO B", blueC: "NON CAMP" },
+            { no: 52, kg: "80+ KG", jk: "PUTRA", rules: "HEAVYWEIGHT EXHIBITION", red: "THE GIANT", redC: "LEGEND CAMP", blue: "THE TITAN", blueC: "SANEKALA" }
+        );
 
-            filteredFights.forEach((fight, index) => {
-                const delay = index * 50;
+        const container = document.getElementById('fightContainer');
+
+        function render() {
+            DATA.forEach(match => {
                 const card = document.createElement('div');
-                card.className = `fight-card rounded-xl animate-fade-in-up`;
-                card.style.animationDelay = `${delay}ms`;
-                
-                const typeLabel = fight.type === 'street' ? 'STREET BOXING' : 'FREESTYLE';
-                const typeColor = fight.type === 'street' ? 'text-red-500 border-red-900' : 'text-blue-500 border-blue-900';
-
+                card.className = "match-card rounded-lg p-6 relative overflow-hidden";
                 card.innerHTML = `
-                    <div class="p-3 bg-black/50 border-b border-gray-800 flex justify-between items-center">
-                        <span class="text-[10px] font-bold text-yellow-600">BOUT #${index + 1}</span>
-                        <span class="text-xs font-bold text-gray-400 uppercase">${fight.category}</span>
-                        <span class="text-[10px] border px-2 py-0.5 rounded ${typeColor}">${typeLabel}</span>
-                    </div>
-                    <div class="p-4 flex items-center justify-between relative">
-                        <div class="flex-1 text-center">
-                            <div class="w-14 h-14 md:w-16 md:h-16 mx-auto rounded-full border-2 border-red-600 mb-2 overflow-hidden bg-gray-900">
-                                <img src="https://api.dicebear.com/7.x/notionists/svg?seed=${fight.red.name}" class="w-full h-full object-cover">
-                            </div>
-                            <h3 class="text-xs md:text-sm font-bold leading-tight neon-text-red">${fight.red.name}</h3>
-                            <p class="text-[9px] text-gray-500 uppercase">${fight.red.camp}</p>
+                    <div class="bg-number">${match.no}</div>
+                    
+                    <div class="relative z-10">
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="tag bg-red-600/10 text-red-500">Partai #${match.no}</span>
+                            <span class="tag bg-zinc-800 text-zinc-400">${match.rules}</span>
+                            <span class="tag bg-zinc-800 text-zinc-400 font-oswald text-xs">${match.kg} • ${match.jk}</span>
                         </div>
 
-                        <div class="vs-badge w-8 h-8 rounded-full flex items-center justify-center z-10 mx-2">
-                            <span class="font-oswald text-xs font-bold text-yellow-500">VS</span>
-                        </div>
-
-                        <div class="flex-1 text-center">
-                            <div class="w-14 h-14 md:w-16 md:h-16 mx-auto rounded-full border-2 border-blue-600 mb-2 overflow-hidden bg-gray-900">
-                                <img src="https://api.dicebear.com/7.x/notionists/svg?seed=${fight.blue.name}" class="w-full h-full object-cover">
+                        <div class="fight-grid gap-4">
+                            <!-- RED CORNER -->
+                            <div class="text-right">
+                                <div class="text-zinc-500 text-[9px] font-bold uppercase tracking-widest mb-1">Red Corner</div>
+                                <h3 class="font-oswald text-lg md:text-2xl font-bold uppercase italic leading-none truncate">${match.red}</h3>
+                                <p class="text-red-500/80 text-[10px] font-bold uppercase mt-1 truncate">${match.redC}</p>
                             </div>
-                            <h3 class="text-xs md:text-sm font-bold leading-tight neon-text-blue">${fight.blue.name}</h3>
-                            <p class="text-[9px] text-gray-500 uppercase">${fight.blue.camp}</p>
+
+                            <!-- VS ICON -->
+                            <div class="flex justify-center">
+                                <div class="w-10 h-10 border border-zinc-800 flex items-center justify-center rounded-full bg-black">
+                                    <span class="text-[10px] font-black italic text-zinc-600">VS</span>
+                                </div>
+                            </div>
+
+                            <!-- BLUE CORNER -->
+                            <div class="text-left">
+                                <div class="text-zinc-500 text-[9px] font-bold uppercase tracking-widest mb-1 text-left">Blue Corner</div>
+                                <h3 class="font-oswald text-lg md:text-2xl font-bold uppercase italic leading-none truncate">${match.blue}</h3>
+                                <p class="text-blue-500/80 text-[10px] font-bold uppercase mt-1 truncate">${match.blueC}</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="flex h-1">
-                        <div class="w-1/2 bg-red-600"></div>
-                        <div class="w-1/2 bg-blue-600"></div>
                     </div>
                 `;
                 container.appendChild(card);
             });
         }
 
-        function filterFights(type) {
-            document.querySelectorAll('.filter-btn').forEach(btn => {
-                btn.classList.remove('bg-gray-700', 'ring-2', 'ring-yellow-500');
-                btn.classList.add('bg-black');
-            });
-            event.currentTarget.classList.add('bg-gray-700', 'ring-2', 'ring-yellow-500');
-            renderFights(type);
-        }
-
-        // Initialize
-        document.addEventListener('DOMContentLoaded', () => renderFights('all'));
+        render();
     </script>
 </body>
 </html>
