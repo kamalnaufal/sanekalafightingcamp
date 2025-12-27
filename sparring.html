@@ -321,401 +321,66 @@
         </div>
     </footer>
 
-    <script>
-        // DATA PETARUNG LENGKAP (24+ FIGHTS)
-        const fights = [
-    {
-        id: 1,
-        type: 'freestyle',
-        category: 'AMATEUR - 45 KG',
-        red: { name: 'RAFKA SAPARINSYAH', camp: 'SANEKALA FIGHTING CAMP', record: 'Debut', image: 'placeholder.jpg' },
-        blue: { name: 'HASBIE AGNINO AL MALIK', camp: 'BFA', record: 'Debut', image: 'placeholder.jpg' }
-    },
-    {
-        id: 2,
-        type: 'street',
-        category: 'JUNIOR - 34 KG',
-        red: { name: 'MIKHAYLA', camp: 'SANEKALA FIGHTING CAMP', record: 'Debut', image: 'placeholder.jpg' },
-        blue: { name: 'KEYLA RIZKIA PUTRI', camp: 'WUSHU ALIMIN IBUN', record: 'Debut', image: 'placeholder.jpg' }
-    },
-    {
-        id: 3,
-        type: 'freestyle',
-        category: 'AMATEUR - 60 KG',
-        red: { name: 'ALDI FITRA', camp: 'COBRA MUAYTHAI', record: 'Debut', image: 'placeholder.jpg' },
-        blue: { name: 'FIRDAUS YUAN', camp: 'SANEKALA FIGHTING CAMP', record: 'Debut', image: 'placeholder.jpg' }
-    },
-    {
-        id: 4,
-        type: 'street',
-        category: 'AMATEUR - 45 KG',
-        red: { name: 'RIZKI NUR KHOLIK', camp: 'SANEKALA FIGHTING CAMP', record: 'Debut', image: 'placeholder.jpg' },
-        blue: { name: 'GILAR MUHAMAD AKSAN', camp: 'SANEKALA FIGHTING CAMP', record: 'Debut', image: 'placeholder.jpg' }
-    },
-    {
-        id: 5,
-        type: 'freestyle',
-        category: 'AMATEUR - 54 KG',
-        red: { name: 'ROHENDI', camp: 'SANEKALA FIGHTING CAMP', record: 'Debut', image: 'placeholder.jpg' },
-        blue: { name: 'MUMAHAD WIKI', camp: 'BFA', record: 'Debut', image: 'placeholder.jpg' }
-    },
-    {
-        id: 6,
-        type: 'street',
-        category: 'JUNIOR - 45 KG',
-        red: { name: 'RENGGANIS SAFARINI', camp: 'SAGA TRAINING CAMP', record: 'Debut', image: 'placeholder.jpg' },
-        blue: { name: 'TALITA JABILILLAH', camp: 'WUSHU ALIMIN IBUN', record: 'Debut', image: 'placeholder.jpg' }
-    },
-    {
-        id: 7,
-        type: 'freestyle',
-        category: 'JUNIOR - 27 KG',
-        red: { name: 'HAIKAL JIBRAN ZAELANY', camp: 'NON CAMP', record: 'Debut', image: 'placeholder.jpg' },
-        blue: { name: 'PAISAL PERMANA', camp: 'MAJALAYA FIGHTER CLUB', record: 'Debut', image: 'placeholder.jpg' }
-    },
-    {
-        id: 8,
-        type: 'street',
-        category: 'AMATEUR - 45 KG',
-        red: { name: 'RAFAEL PASHA RAMADHAN', camp: 'SOLJER SOUL CREW', record: 'Debut', image: 'placeholder.jpg' },
-        blue: { name: 'HAPIS AKMAL', camp: 'NON CAMP', record: 'Debut', image: 'placeholder.jpg' }
-    },
-    {
-        id: 9,
-        type: 'freestyle',
-        category: 'JUNIOR - 29 KG',
-        red: { name: 'RAMADHAN ASOKA', camp: 'MAJALAYA FIGHTER CLUB', record: 'Debut', image: 'placeholder.jpg' },
-        blue: { name: 'SURYA MUHAMAD SEAN', camp: 'WUSHU ALIMIN IBUN', record: 'Debut', image: 'placeholder.jpg' }
-    },
-    {
-        id: 10,
-        type: 'street',
-        category: 'AMATEUR - 43 KG',
-        red: { name: 'REZA ARDIANSYAH', camp: 'CATAMOUNT COMBAT CLUB', record: 'Debut', image: 'placeholder.jpg' },
-        blue: { name: 'ALFI AULIA AZHAR', camp: 'MAJALAYA FIGHTER CLUB', record: 'Debut', image: 'placeholder.jpg' }
-    },
-    {
-        id: 11,
-        type: 'freestyle',
-        category: 'JUNIOR - 30 KG',
-        red: { name: 'DAFFA DIENUL-HAQ', camp: 'WUSHU ALIMIN IBUN', record: 'Debut', image: 'placeholder.jpg' },
-        blue: { name: 'FAREL MAULID', camp: 'MAJALAYA IGHTER CLUB', record: 'Debut', image: 'placeholder.jpg' }
-    },
-    {
-        id: 12,
-        type: 'street',
-        category: 'AMATEUR - 47 KG',
-        red: { name: 'ZERI', camp: 'SANEKALA FIGHTING CAMP', record: 'Debut', image: 'placeholder.jpg' },
-        blue: { name: 'MEDI HUDAYA', camp: 'NON CAMP', record: 'Debut', image: 'placeholder.jpg' }
-    },
-    {
-        id: 13,
-        type: 'freestyle',
-        category: 'JUNIOR - 31 KG',
-        red: { name: 'NAZWA CAHAYA RAMADAN', camp: 'WUSHU ALIMIN IBUN', record: 'Debut', image: 'placeholder.jpg' },
-        blue: { name: 'TBA', camp: '-', record: 'Debut', image: 'placeholder.jpg' }
-    },
-    {
-        id: 14,
-        type: 'street',
-        category: 'AMATEUR - 48 KG',
-        red: { name: 'KIKI MAMIH', camp: 'MAJALAYA FIGHTER CLUB', record: 'Debut', image: 'placeholder.jpg' },
-        blue: { name: 'ADITYA PRATAMA', camp: 'SANEKALA FIGHTING CAMP', record: 'Debut', image: 'placeholder.jpg' }
-    },
-    {
-        id: 15,
-        type: 'freestyle',
-        category: 'JUNIOR - 36 KG',
-        red: { name: 'SYAHRUL IHSAN RAFANI', camp: 'SANEKALA FIGHTING CAMP', record: 'Debut', image: 'placeholder.jpg' },
-        blue: { name: 'ABIDZAR AL GHIFARI', camp: 'WUSHU ALIMIN IBUN', record: 'Debut', image: 'placeholder.jpg' }
-    },
-    {
-        id: 16,
-        type: 'street',
-        category: 'AMATEUR - 48 KG',
-        red: { name: 'ALDO EKATRIAN', camp: 'MAJALAYA SOUL CREW', record: 'Debut', image: 'placeholder.jpg' },
-        blue: { name: 'MUHAMAD NAZRIL', camp: 'SANEKALA FIGHTING CAMP', record: 'Debut', image: 'placeholder.jpg' }
-    },
-    {
-        id: 17,
-        type: 'freestyle',
-        category: 'AMATEUR - 43 KG',
-        red: { name: 'IRFAN HARDIANSYAH FACHRA', camp: 'FAMILY FIGHT', record: 'Debut', image: 'placeholder.jpg' },
-        blue: { name: 'TBA', camp: '-', record: 'Debut', image: 'placeholder.jpg' }
-    },
-    {
-        id: 18,
-        type: 'street',
-        category: 'AMATEUR - 48 KG',
-        red: { name: 'MUHAMAD RIZQY', camp: 'SOLJER SUL CREW', record: 'Debut', image: 'placeholder.jpg' },
-        blue: { name: 'RHEVANY HADI PRATAMA', camp: 'NON CAMP', record: 'Debut', image: 'placeholder.jpg' }
-    },
-    {
-        id: 19,
-        type: 'freestyle',
-        category: 'AMATEUR - 43 KG',
-        red: { name: 'DICKY CANDRA', camp: 'SAGA TRAINING CAMP', record: 'Debut', image: 'placeholder.jpg' },
-        blue: { name: 'TBA', camp: '-', record: 'Debut', image: 'placeholder.jpg' }
-    },
-    {
-        id: 20,
-        type: 'street',
-        category: 'AMATEUR - 51 KG',
-        red: { name: 'JEHAN ACENG', camp: 'SANEKALA FIGHTING CAMP', record: 'Debut', image: 'placeholder.jpg' },
-        blue: { name: 'ELSA SAPUTRA', camp: 'SANEKALA FIGHTING CAMP', record: 'Debut', image: 'placeholder.jpg' }
-    },
-    {
-        id: 21,
-        type: 'freestyle',
-        category: 'AMATEUR - 45 KG',
-        red: { name: 'FADHIL MUZZAKI ILHAM', camp: 'MAJALAYA FINEST', record: 'Debut', image: 'placeholder.jpg' },
-        blue: { name: 'GALANG MARDIANSYAH', camp: 'ND FIGHTING CAMP', record: 'Debut', image: 'placeholder.jpg' }
-    },
-    {
-        id: 22,
-        type: 'street',
-        category: 'AMATEUR - 52 KG',
-        red: { name: 'ILYAS KHAIRUL SYAPUTRA', camp: 'SANEKALA FIGHTING CAMP', record: 'Debut', image: 'placeholder.jpg' },
-        blue: { name: 'M RIZKY FIRDAUS', camp: 'CATAMOUNT COMBAT CLUB', record: 'Debut', image: 'placeholder.jpg' }
-    },
-    {
-        id: 23,
-        type: 'freestyle',
-        category: 'JUNIOR - 45 KG',
-        red: { name: 'YESI FEBRIANI', camp: 'BFA', record: 'Debut', image: 'placeholder.jpg' },
-        blue: { name: 'TBA', camp: '-', record: 'Debut', image: 'placeholder.jpg' }
-    },
-    {
-        id: 24,
-        type: 'street',
-        category: 'AMATEUR - 54 KG',
-        red: { name: 'WAJENDRA', camp: 'TIM WARS', record: 'Debut', image: 'placeholder.jpg' },
-        blue: { name: 'RAFIF PRAMUDITA', camp: 'HH CAMP', record: 'Debut', image: 'placeholder.jpg' }
-    },
-    {
-        id: 25,
-        type: 'freestyle',
-        category: 'JUNIOR - 48 KG',
-        red: { name: 'RENI INDRIANTI', camp: 'MAJALAYA SOUL CREW', record: 'Debut', image: 'placeholder.jpg' },
-        blue: { name: 'TBA', camp: '-', record: 'Debut', image: 'placeholder.jpg' }
-    },
-    {
-        id: 26,
-        type: 'street',
-        category: 'AMATEUR - 54 KG',
-        red: { name: 'M IQBAL FAUZI', camp: 'CATAMOUNT COMBAT CLUB', record: 'Debut', image: 'placeholder.jpg' },
-        blue: { name: 'AHMAD REQI CAILLA', camp: 'FAMILY FIGHT', record: 'Debut', image: 'placeholder.jpg' }
-    },
-    {
-        id: 27,
-        type: 'freestyle',
-        category: 'JUNIOR - 48 KG',
-        red: { name: 'MYANA', camp: 'WUSHU ALIMIN IBUN', record: 'Debut', image: 'placeholder.jpg' },
-        blue: { name: 'NINE NURUL AQIDAH', camp: 'BFA', record: 'Debut', image: 'placeholder.jpg' }
-    },
-    {
-        id: 28,
-        type: 'street',
-        category: 'AMATEUR - 54 KG',
-        red: { name: 'MUHAMMAD SIDIQ', camp: 'NON CAMP', record: 'Debut', image: 'placeholder.jpg' },
-        blue: { name: 'NALENDRA ARDIANSYAH', camp: 'SOLJER SOUL CREW', record: 'Debut', image: 'placeholder.jpg' }
-    },
-    {
-        id: 29,
-        type: 'freestyle',
-        category: 'JUNIOR - 48 KG',
-        red: { name: 'NUR HALIMAHTUSADIAH', camp: 'WUSHU ALIMIN IBUN', record: 'Debut', image: 'placeholder.jpg' },
-        blue: { name: 'DINDA PUTRI A', camp: 'MAJALAYA FIGHTER CLUB', record: 'Debut', image: 'placeholder.jpg' }
-    },
-    {
-        id: 30,
-        type: 'street',
-        category: 'AMATEUR - 56 KG',
-        red: { name: 'AJI ARIF', camp: 'SANEKALA FIGHTING CAMP', record: 'Debut', image: 'placeholder.jpg' },
-        blue: { name: 'ZACKY MUHAMAD', camp: 'ZACKSTEAM', record: 'Debut', image: 'placeholder.jpg' }
-    },
-    {
-        id: 31,
-        type: 'freestyle',
-        category: 'JUNIOR - 51 KG',
-        red: { name: 'NENG NURUL FATMAH', camp: 'SANEKALA FIGHTING CAMP', record: 'Debut', image: 'placeholder.jpg' },
-        blue: { name: 'PIKRI PITIYANI', camp: 'MAJALAYA FIGHTER CLUB', record: 'Debut', image: 'placeholder.jpg' }
-    },
-    {
-        id: 32,
-        type: 'street',
-        category: 'AMATEUR - 57 KG',
-        red: { name: 'YOENAS FEBRIYANTINO', camp: 'SANEKALA FIGHTING CAMP', record: 'Debut', image: 'placeholder.jpg' },
-        blue: { name: 'FAHRI BAMBANG', camp: 'CATAMOUNT COMBAT CLUB', record: 'Debut', image: 'placeholder.jpg' }
-    },
-    {
-        id: 33,
-        type: 'freestyle',
-        category: 'AMATEUR - 51 KG',
-        red: { name: 'RIZAL ABDUR ROHMAN', camp: 'NON CAMP', record: 'Debut', image: 'placeholder.jpg' },
-        blue: { name: 'TEDI EL', camp: 'MAJALAYA SOUL CREW', record: 'Debut', image: 'placeholder.jpg' }
-    },
-    {
-        id: 34,
-        type: 'street',
-        category: 'AMATEUR - 57 KG',
-        red: { name: 'ALI MAULANA RIZQI', camp: 'SANEKALA FIGHTING CAMP', record: 'Debut', image: 'placeholder.jpg' },
-        blue: { name: 'KIKI RIZGI NAWAN', camp: 'SANEKALA FIGHTING CAMP', record: 'Debut', image: 'placeholder.jpg' }
-    },
-    {
-        id: 35,
-        type: 'freestyle',
-        category: 'AMATEUR - 51 KG',
-        red: { name: 'FAIZAL IZ', camp: 'MAJALAYA SOUL CREW', record: 'Debut', image: 'placeholder.jpg' },
-        blue: { name: 'RAKA ADITIA PRATAMA', camp: 'SANEKALA FIGHTING CAMP', record: 'Debut', image: 'placeholder.jpg' }
-    },
-    {
-        id: 36,
-        type: 'street',
-        category: 'AMATEUR - 57 KG',
-        red: { name: 'DEDE RAHMAT ADITIA', camp: 'NON CAMP', record: 'Debut', image: 'placeholder.jpg' },
-        blue: { name: 'EGIN SAEPUL ACHMAD', camp: 'SANEKALA FIGHTING CAMP', record: 'Debut', image: 'placeholder.jpg' }
-    },
-    {
-        id: 37,
-        type: 'freestyle',
-        category: 'AMATEUR - 54 KG',
-        red: { name: 'IRSYAD IRFANA RAHARJA', camp: 'SANEKALA FIGHTING CAMP', record: 'Debut', image: 'placeholder.jpg' },
-        blue: { name: 'DAFFA ZAHIDAN', camp: 'SANEKALA FIGHTING CAMP', record: 'Debut', image: 'placeholder.jpg' }
-    },
-    {
-        id: 38,
-        type: 'street',
-        category: 'AMATEUR - 57 KG',
-        red: { name: 'YUSUF MAULANA', camp: 'SAGA TRAINING CAMP', record: 'Debut', image: 'placeholder.jpg' },
-        blue: { name: 'GHOZY SATRIA MADANI', camp: 'WARS TEAM', record: 'Debut', image: 'placeholder.jpg' }
-    },
-    {
-        id: 39,
-        type: 'freestyle',
-        category: 'AMATEUR - 54 KG',
-        red: { name: 'AZIS ALFATAH', camp: 'SANEKALA FIGHTING CAMP', record: 'Debut', image: 'placeholder.jpg' },
-        blue: { name: 'TEDI MUHAMAD IHSAN', camp: 'ND FIGHTING CAMP', record: 'Debut', image: 'placeholder.jpg' }
-    },
-    {
-        id: 40,
-        type: 'street',
-        category: 'AMATEUR - 60 KG',
-        red: { name: 'IRZI KHAIRUL FADLAN', camp: 'SOLJER SOUL CREW', record: 'Debut', image: 'placeholder.jpg' },
-        blue: { name: 'M FAZRIL ILHAM', camp: 'BSB', record: 'Debut', image: 'placeholder.jpg' }
-    },
-    {
-        id: 41,
-        type: 'freestyle',
-        category: 'AMATEUR - 54 KG',
-        red: { name: 'M MAHESA', camp: 'MUAYTHAIMAJALAYA', record: 'Debut', image: 'placeholder.jpg' },
-        blue: { name: 'SANDI HUDA PRATAMA', camp: 'BFA', record: 'Debut', image: 'placeholder.jpg' }
-    },
-    {
-        id: 42,
-        type: 'street',
-        category: 'AMATEUR - 60 KG',
-        red: { name: 'WISNU RAMADHAN NIPTAH', camp: 'SANEKALA FIGHTING CAMP', record: 'Debut', image: 'placeholder.jpg' },
-        blue: { name: 'ARIS RESDIANA', camp: 'BFA', record: 'Debut', image: 'placeholder.jpg' }
-    },
-    {
-        id: 43,
-        type: 'freestyle',
-        category: 'AMATEUR - 54 KG',
-        red: { name: 'MOCHAMAD NOER H', camp: 'CATAMOUNT COMBAT CLUB', record: 'Debut', image: 'placeholder.jpg' },
-        blue: { name: 'FERDIAN WILDIANSYAH', camp: 'SOLJER SOUL CREW', record: 'Debut', image: 'placeholder.jpg' }
-    },
-    {
-        id: 44,
-        type: 'street',
-        category: 'AMATEUR - 60 KG ',
-        red: { name: 'RIZAL RIDWANULLAH', camp: 'SANEKALA FIGHTING CAMP', record: 'Debut', image: 'placeholder.jpg' },
-        blue: { name: 'CECEP HENDRA', camp: 'SANEKALA FIGHTING CAMP', record: 'Debut', image: 'placeholder.jpg' }
-    },
-    {
-        id: 45,
-        type: 'freestyle',
-        category: 'JUNIOR - 57 KG',
-        red: { name: 'ADINDA SYAUQIA AZZAHRA', camp: 'BFA', record: 'Debut', image: 'placeholder.jpg' },
-        blue: { name: 'SABILA RIZKI RAMADHANI', camp: 'WUSHU ALIMIN IBUN', record: 'Debut', image: 'placeholder.jpg' }
-    },
-    {
-        id: 46,
-        type: 'street',
-        category: 'AMATEUR - 60 KG',
-        red: { name: 'VIKING', camp: 'SANEKALA FIGHTING CAMP', record: 'Debut', image: 'placeholder.jpg' },
-        blue: { name: 'SIDNAY VICKY', camp: 'BFA', record: 'Debut', image: 'placeholder.jpg' }
-    },
-    {
-        id: 47,
-        type: 'freestyle',
-        category: 'AMATEUR - 65 KG',
-        red: { name: 'DOYANG', camp: 'SANEKALA FIGHTING CAMP', record: 'Debut', image: 'placeholder.jpg' },
-        blue: { name: 'TAMIKA ROHMAT D', camp: 'MAJALAYA FIGHTER CLUB', record: 'Debut', image: 'placeholder.jpg' }
-    },
-    {
-        id: 48,
-        type: 'street',
-        category: 'AMATEUR - 65 KG',
-        red: { name: 'ZAHRAN', camp: 'SANEKALA FIGHTING CAMP', record: 'Debut', image: 'placeholder.jpg' },
-        blue: { name: 'TAMIKA ROHMAT D', camp: 'MAJALAYA FIGHTER CLUB', record: 'Debut', image: 'placeholder.jpg' }
-    },
-    {
-        id: 49,
-        type: 'freestyle',
-        category: 'AMATEUR - 70 KG',
-        red: { name: 'SANTANA ZAINI', camp: 'BFA', record: 'Debut', image: 'placeholder.jpg' },
-        blue: { name: 'TBA', camp: '-', record: 'Debut', image: 'placeholder.jpg' }
-    },
-    {
-        id: 50,
-        type: 'street',
-        category: 'AMATEUR - 66 KG',
-        red: { name: 'CHRISTIAN GOKLAS BUTAR2', camp: 'SAGA TRAINING CAMP', record: 'Debut', image: 'placeholder.jpg' },
-        blue: { name: 'MUHAMAD JENY ZAELANI', camp: 'SOLJER SOUL CREW', record: 'Debut', image: 'placeholder.jpg' }
-    },
-    {
-        id: 51,
-        type: 'street',
-        category: 'AMATEUR - 66 KG',
-        red: { name: 'AKBAR GUNAWAN', camp: 'BFA', record: 'Debut', image: 'placeholder.jpg' },
-        blue: { name: 'TBA', camp: '-', record: 'Debut', image: 'placeholder.jpg' }
-    },
-    {
-        id: 52,
-        type: 'street',
-        category: 'AMATEUR - 70 KG',
-        red: { name: 'ARIPIN', camp: 'BFA', record: 'Debut', image: 'placeholder.jpg' },
-        blue: { name: 'WISNU LESMANA', camp: 'NON CAMP', record: 'Debut', image: 'placeholder.jpg' }
-    },
-    {
-        id: 53,
-        type: 'street',
-        category: 'AMATEUR - 75 KG',
-        red: { name: 'M RIDWAN', camp: 'SOLJER SOUL CREW', record: 'Debut', image: 'placeholder.jpg' },
-        blue: { name: 'WILLY ZAKARIA', camp: 'SANEKALA FIGHTING CAMP', record: 'Debut', image: 'placeholder.jpg' }
-    },
-    {
-        id: 54,
-        type: 'street',
-        category: 'AMATEUR - 75 KG',
-        red: { name: 'ASEP ASMARA', camp: 'BFA', record: 'Debut', image: 'placeholder.jpg' },
-        blue: { name: 'JHIAL', camp: 'SANEKALA FIGHTING CAMP', record: 'Debut', image: 'placeholder.jpg' }
-    },
-    {
-        id: 55,
-        type: 'street',
-        category: 'AMATEUR - 75 KG',
-        red: { name: 'RIFKI SAHRUL HADI', camp: 'SANEKALA FIGHTING CAMP', record: 'Debut', image: 'placeholder.jpg' },
-        blue: { name: 'DEKA RAFASYA', camp: 'MAJALAYA SOUL CREW', record: 'Debut', image: 'placeholder.jpg' }
-    },
-    {
-        id: 56,
-        type: 'street',
-        category: 'AMATEUR - 80 KG',
-        red: { name: 'ADZIQRI PRATAMA', camp: 'SANEKALA FIGHTING CAMP', record: 'Debut', image: 'placeholder.jpg' },
-        blue: { name: 'DIAN RODIANSYAH', camp: 'BFA', record: 'Debut', image: 'placeholder.jpg' }
-    }
+    const fights = [
+    // === JUNIOR CATEGORY ===
+    { id: 7, type: 'freestyle', category: 'JUNIOR - 27 KG', red: { name: 'HAIKAL JIBRAN ZAELANY', camp: 'NON CAMP', record: 'Debut', image: 'placeholder.jpg' }, blue: { name: 'PAISAL PERMANA', camp: 'MAJALAYA FIGHTER CLUB', record: 'Debut', image: 'placeholder.jpg' } },
+    { id: 9, type: 'freestyle', category: 'JUNIOR - 29 KG', red: { name: 'RAMADHAN ASOKA', camp: 'MAJALAYA FIGHTER CLUB', record: 'Debut', image: 'placeholder.jpg' }, blue: { name: 'SURYA MUHAMAD SEAN', camp: 'WUSHU ALIMIN IBUN', record: 'Debut', image: 'placeholder.jpg' } },
+    { id: 11, type: 'freestyle', category: 'JUNIOR - 30 KG', red: { name: 'DAFFA DIENUL-HAQ', camp: 'WUSHU ALIMIN IBUN', record: 'Debut', image: 'placeholder.jpg' }, blue: { name: 'FAREL MAULID', camp: 'MAJALAYA IGHTER CLUB', record: 'Debut', image: 'placeholder.jpg' } },
+    { id: 13, type: 'freestyle', category: 'JUNIOR - 31 KG', red: { name: 'NAZWA CAHAYA RAMADAN', camp: 'WUSHU ALIMIN IBUN', record: 'Debut', image: 'placeholder.jpg' }, blue: { name: 'TBA', camp: '-', record: 'Debut', image: 'placeholder.jpg' } },
+    { id: 2, type: 'street', category: 'JUNIOR - 34 KG', red: { name: 'MIKHAYLA', camp: 'SANEKALA FIGHTING CAMP', record: 'Debut', image: 'placeholder.jpg' }, blue: { name: 'KEYLA RIZKIA PUTRI', camp: 'WUSHU ALIMIN IBUN', record: 'Debut', image: 'placeholder.jpg' } },
+    { id: 15, type: 'freestyle', category: 'JUNIOR - 36 KG', red: { name: 'SYAHRUL IHSAN RAFANI', camp: 'SANEKALA FIGHTING CAMP', record: 'Debut', image: 'placeholder.jpg' }, blue: { name: 'ABIDZAR AL GHIFARI', camp: 'WUSHU ALIMIN IBUN', record: 'Debut', image: 'placeholder.jpg' } },
+    { id: 6, type: 'street', category: 'JUNIOR - 45 KG', red: { name: 'RENGGANIS SAFARINI', camp: 'SAGA TRAINING CAMP', record: 'Debut', image: 'placeholder.jpg' }, blue: { name: 'TALITA JABILILLAH', camp: 'WUSHU ALIMIN IBUN', record: 'Debut', image: 'placeholder.jpg' } },
+    { id: 23, type: 'freestyle', category: 'JUNIOR - 45 KG', red: { name: 'YESI FEBRIANI', camp: 'BFA', record: 'Debut', image: 'placeholder.jpg' }, blue: { name: 'TBA', camp: '-', record: 'Debut', image: 'placeholder.jpg' } },
+    { id: 25, type: 'freestyle', category: 'JUNIOR - 48 KG', red: { name: 'RENI INDRIANTI', camp: 'MAJALAYA SOUL CREW', record: 'Debut', image: 'placeholder.jpg' }, blue: { name: 'TBA', camp: '-', record: 'Debut', image: 'placeholder.jpg' } },
+    { id: 27, type: 'freestyle', category: 'JUNIOR - 48 KG', red: { name: 'MYANA', camp: 'WUSHU ALIMIN IBUN', record: 'Debut', image: 'placeholder.jpg' }, blue: { name: 'NINE NURUL AQIDAH', camp: 'BFA', record: 'Debut', image: 'placeholder.jpg' } },
+    { id: 29, type: 'freestyle', category: 'JUNIOR - 48 KG', red: { name: 'NUR HALIMAHTUSADIAH', camp: 'WUSHU ALIMIN IBUN', record: 'Debut', image: 'placeholder.jpg' }, blue: { name: 'DINDA PUTRI A', camp: 'MAJALAYA FIGHTER CLUB', record: 'Debut', image: 'placeholder.jpg' } },
+    { id: 31, type: 'freestyle', category: 'JUNIOR - 51 KG', red: { name: 'NENG NURUL FATMAH', camp: 'SANEKALA FIGHTING CAMP', record: 'Debut', image: 'placeholder.jpg' }, blue: { name: 'PIKRI PITIYANI', camp: 'MAJALAYA FIGHTER CLUB', record: 'Debut', image: 'placeholder.jpg' } },
+    { id: 45, type: 'freestyle', category: 'JUNIOR - 57 KG', red: { name: 'ADINDA SYAUQIA AZZAHRA', camp: 'BFA', record: 'Debut', image: 'placeholder.jpg' }, blue: { name: 'SABILA RIZKI RAMADHANI', camp: 'WUSHU ALIMIN IBUN', record: 'Debut', image: 'placeholder.jpg' } },
+
+    // === AMATEUR CATEGORY ===
+    { id: 10, type: 'street', category: 'AMATEUR - 43 KG', red: { name: 'REZA ARDIANSYAH', camp: 'CATAMOUNT COMBAT CLUB', record: 'Debut', image: 'placeholder.jpg' }, blue: { name: 'ALFI AULIA AZHAR', camp: 'MAJALAYA FIGHTER CLUB', record: 'Debut', image: 'placeholder.jpg' } },
+    { id: 17, type: 'freestyle', category: 'AMATEUR - 43 KG', red: { name: 'IRFAN HARDIANSYAH FACHRA', camp: 'FAMILY FIGHT', record: 'Debut', image: 'placeholder.jpg' }, blue: { name: 'TBA', camp: '-', record: 'Debut', image: 'placeholder.jpg' } },
+    { id: 19, type: 'freestyle', category: 'AMATEUR - 43 KG', red: { name: 'DICKY CANDRA', camp: 'SAGA TRAINING CAMP', record: 'Debut', image: 'placeholder.jpg' }, blue: { name: 'TBA', camp: '-', record: 'Debut', image: 'placeholder.jpg' } },
+    { id: 1, type: 'freestyle', category: 'AMATEUR - 45 KG', red: { name: 'RAFKA SAPARINSYAH', camp: 'SANEKALA FIGHTING CAMP', record: 'Debut', image: 'placeholder.jpg' }, blue: { name: 'HASBIE AGNINO AL MALIK', camp: 'BFA', record: 'Debut', image: 'placeholder.jpg' } },
+    { id: 4, type: 'street', category: 'AMATEUR - 45 KG', red: { name: 'RIZKI NUR KHOLIK', camp: 'SANEKALA FIGHTING CAMP', record: 'Debut', image: 'placeholder.jpg' }, blue: { name: 'GILAR MUHAMAD AKSAN', camp: 'SANEKALA FIGHTING CAMP', record: 'Debut', image: 'placeholder.jpg' } },
+    { id: 8, type: 'street', category: 'AMATEUR - 45 KG', red: { name: 'RAFAEL PASHA RAMADHAN', camp: 'SOLJER SOUL CREW', record: 'Debut', image: 'placeholder.jpg' }, blue: { name: 'HAPIS AKMAL', camp: 'NON CAMP', record: 'Debut', image: 'placeholder.jpg' } },
+    { id: 21, type: 'freestyle', category: 'AMATEUR - 45 KG', red: { name: 'FADHIL MUZZAKI ILHAM', camp: 'MAJALAYA FINEST', record: 'Debut', image: 'placeholder.jpg' }, blue: { name: 'GALANG MARDIANSYAH', camp: 'ND FIGHTING CAMP', record: 'Debut', image: 'placeholder.jpg' } },
+    { id: 12, type: 'street', category: 'AMATEUR - 47 KG', red: { name: 'ZERI', camp: 'SANEKALA FIGHTING CAMP', record: 'Debut', image: 'placeholder.jpg' }, blue: { name: 'MEDI HUDAYA', camp: 'NON CAMP', record: 'Debut', image: 'placeholder.jpg' } },
+    { id: 14, type: 'street', category: 'AMATEUR - 48 KG', red: { name: 'KIKI MAMIH', camp: 'MAJALAYA FIGHTER CLUB', record: 'Debut', image: 'placeholder.jpg' }, blue: { name: 'ADITYA PRATAMA', camp: 'SANEKALA FIGHTING CAMP', record: 'Debut', image: 'placeholder.jpg' } },
+    { id: 16, type: 'street', category: 'AMATEUR - 48 KG', red: { name: 'ALDO EKATRIAN', camp: 'MAJALAYA SOUL CREW', record: 'Debut', image: 'placeholder.jpg' }, blue: { name: 'MUHAMAD NAZRIL', camp: 'SANEKALA FIGHTING CAMP', record: 'Debut', image: 'placeholder.jpg' } },
+    { id: 18, type: 'street', category: 'AMATEUR - 48 KG', red: { name: 'MUHAMAD RIZQY', camp: 'SOLJER SUL CREW', record: 'Debut', image: 'placeholder.jpg' }, blue: { name: 'RHEVANY HADI PRATAMA', camp: 'NON CAMP', record: 'Debut', image: 'placeholder.jpg' } },
+    { id: 20, type: 'street', category: 'AMATEUR - 51 KG', red: { name: 'JEHAN ACENG', camp: 'SANEKALA FIGHTING CAMP', record: 'Debut', image: 'placeholder.jpg' }, blue: { name: 'ELSA SAPUTRA', camp: 'SANEKALA FIGHTING CAMP', record: 'Debut', image: 'placeholder.jpg' } },
+    { id: 33, type: 'freestyle', category: 'AMATEUR - 51 KG', red: { name: 'RIZAL ABDUR ROHMAN', camp: 'NON CAMP', record: 'Debut', image: 'placeholder.jpg' }, blue: { name: 'TEDI EL', camp: 'MAJALAYA SOUL CREW', record: 'Debut', image: 'placeholder.jpg' } },
+    { id: 35, type: 'freestyle', category: 'AMATEUR - 51 KG', red: { name: 'FAIZAL IZ', camp: 'MAJALAYA SOUL CREW', record: 'Debut', image: 'placeholder.jpg' }, blue: { name: 'RAKA ADITIA PRATAMA', camp: 'SANEKALA FIGHTING CAMP', record: 'Debut', image: 'placeholder.jpg' } },
+    { id: 22, type: 'street', category: 'AMATEUR - 52 KG', red: { name: 'ILYAS KHAIRUL SYAPUTRA', camp: 'SANEKALA FIGHTING CAMP', record: 'Debut', image: 'placeholder.jpg' }, blue: { name: 'M RIZKY FIRDAUS', camp: 'CATAMOUNT COMBAT CLUB', record: 'Debut', image: 'placeholder.jpg' } },
+    { id: 5, type: 'freestyle', category: 'AMATEUR - 54 KG', red: { name: 'ROHENDI', camp: 'SANEKALA FIGHTING CAMP', record: 'Debut', image: 'placeholder.jpg' }, blue: { name: 'MUMAHAD WIKI', camp: 'BFA', record: 'Debut', image: 'placeholder.jpg' } },
+    { id: 24, type: 'street', category: 'AMATEUR - 54 KG', red: { name: 'WAJENDRA', camp: 'TIM WARS', record: 'Debut', image: 'placeholder.jpg' }, blue: { name: 'RAFIF PRAMUDITA', camp: 'HH CAMP', record: 'Debut', image: 'placeholder.jpg' } },
+    { id: 26, type: 'street', category: 'AMATEUR - 54 KG', red: { name: 'M IQBAL FAUZI', camp: 'CATAMOUNT COMBAT CLUB', record: 'Debut', image: 'placeholder.jpg' }, blue: { name: 'AHMAD REQI CAILLA', camp: 'FAMILY FIGHT', record: 'Debut', image: 'placeholder.jpg' } },
+    { id: 28, type: 'street', category: 'AMATEUR - 54 KG', red: { name: 'MUHAMMAD SIDIQ', camp: 'NON CAMP', record: 'Debut', image: 'placeholder.jpg' }, blue: { name: 'NALENDRA ARDIANSYAH', camp: 'SOLJER SOUL CREW', record: 'Debut', image: 'placeholder.jpg' } },
+    { id: 37, type: 'freestyle', category: 'AMATEUR - 54 KG', red: { name: 'IRSYAD IRFANA RAHARJA', camp: 'SANEKALA FIGHTING CAMP', record: 'Debut', image: 'placeholder.jpg' }, blue: { name: 'DAFFA ZAHIDAN', camp: 'SANEKALA FIGHTING CAMP', record: 'Debut', image: 'placeholder.jpg' } },
+    { id: 39, type: 'freestyle', category: 'AMATEUR - 54 KG', red: { name: 'AZIS ALFATAH', camp: 'SANEKALA FIGHTING CAMP', record: 'Debut', image: 'placeholder.jpg' }, blue: { name: 'TEDI MUHAMAD IHSAN', camp: 'ND FIGHTING CAMP', record: 'Debut', image: 'placeholder.jpg' } },
+    { id: 41, type: 'freestyle', category: 'AMATEUR - 54 KG', red: { name: 'M MAHESA', camp: 'MUAYTHAIMAJALAYA', record: 'Debut', image: 'placeholder.jpg' }, blue: { name: 'SANDI HUDA PRATAMA', camp: 'BFA', record: 'Debut', image: 'placeholder.jpg' } },
+    { id: 43, type: 'freestyle', category: 'AMATEUR - 54 KG', red: { name: 'MOCHAMAD NOER H', camp: 'CATAMOUNT COMBAT CLUB', record: 'Debut', image: 'placeholder.jpg' }, blue: { name: 'FERDIAN WILDIANSYAH', camp: 'SOLJER SOUL CREW', record: 'Debut', image: 'placeholder.jpg' } },
+    { id: 30, type: 'street', category: 'AMATEUR - 56 KG', red: { name: 'AJI ARIF', camp: 'SANEKALA FIGHTING CAMP', record: 'Debut', image: 'placeholder.jpg' }, blue: { name: 'ZACKY MUHAMAD', camp: 'ZACKSTEAM', record: 'Debut', image: 'placeholder.jpg' } },
+    { id: 32, type: 'street', category: 'AMATEUR - 57 KG', red: { name: 'YOENAS FEBRIYANTINO', camp: 'SANEKALA FIGHTING CAMP', record: 'Debut', image: 'placeholder.jpg' }, blue: { name: 'FAHRI BAMBANG', camp: 'CATAMOUNT COMBAT CLUB', record: 'Debut', image: 'placeholder.jpg' } },
+    { id: 34, type: 'street', category: 'AMATEUR - 57 KG', red: { name: 'ALI MAULANA RIZQI', camp: 'SANEKALA FIGHTING CAMP', record: 'Debut', image: 'placeholder.jpg' }, blue: { name: 'KIKI RIZGI NAWAN', camp: 'SANEKALA FIGHTING CAMP', record: 'Debut', image: 'placeholder.jpg' } },
+    { id: 36, type: 'street', category: 'AMATEUR - 57 KG', red: { name: 'DEDE RAHMAT ADITIA', camp: 'NON CAMP', record: 'Debut', image: 'placeholder.jpg' }, blue: { name: 'EGIN SAEPUL ACHMAD', camp: 'SANEKALA FIGHTING CAMP', record: 'Debut', image: 'placeholder.jpg' } },
+    { id: 38, type: 'street', category: 'AMATEUR - 57 KG', red: { name: 'YUSUF MAULANA', camp: 'SAGA TRAINING CAMP', record: 'Debut', image: 'placeholder.jpg' }, blue: { name: 'GHOZY SATRIA MADANI', camp: 'WARS TEAM', record: 'Debut', image: 'placeholder.jpg' } },
+    { id: 3, type: 'freestyle', category: 'AMATEUR - 60 KG', red: { name: 'ALDI FITRA', camp: 'COBRA MUAYTHAI', record: 'Debut', image: 'placeholder.jpg' }, blue: { name: 'FIRDAUS YUAN', camp: 'SANEKALA FIGHTING CAMP', record: 'Debut', image: 'placeholder.jpg' } },
+    { id: 40, type: 'street', category: 'AMATEUR - 60 KG', red: { name: 'IRZI KHAIRUL FADLAN', camp: 'SOLJER SOUL CREW', record: 'Debut', image: 'placeholder.jpg' }, blue: { name: 'M FAZRIL ILHAM', camp: 'BSB', record: 'Debut', image: 'placeholder.jpg' } },
+    { id: 42, type: 'street', category: 'AMATEUR - 60 KG', red: { name: 'WISNU RAMADHAN NIPTAH', camp: 'SANEKALA FIGHTING CAMP', record: 'Debut', image: 'placeholder.jpg' }, blue: { name: 'ARIS RESDIANA', camp: 'BFA', record: 'Debut', image: 'placeholder.jpg' } },
+    { id: 44, type: 'street', category: 'AMATEUR - 60 KG ', red: { name: 'RIZAL RIDWANULLAH', camp: 'SANEKALA FIGHTING CAMP', record: 'Debut', image: 'placeholder.jpg' }, blue: { name: 'CECEP HENDRA', camp: 'SANEKALA FIGHTING CAMP', record: 'Debut', image: 'placeholder.jpg' } },
+    { id: 46, type: 'street', category: 'AMATEUR - 60 KG', red: { name: 'VIKING', camp: 'SANEKALA FIGHTING CAMP', record: 'Debut', image: 'placeholder.jpg' }, blue: { name: 'SIDNAY VICKY', camp: 'BFA', record: 'Debut', image: 'placeholder.jpg' } },
+    { id: 47, type: 'freestyle', category: 'AMATEUR - 65 KG', red: { name: 'DOYANG', camp: 'SANEKALA FIGHTING CAMP', record: 'Debut', image: 'placeholder.jpg' }, blue: { name: 'TAMIKA ROHMAT D', camp: 'MAJALAYA FIGHTER CLUB', record: 'Debut', image: 'placeholder.jpg' } },
+    { id: 48, type: 'street', category: 'AMATEUR - 65 KG', red: { name: 'ZAHRAN', camp: 'SANEKALA FIGHTING CAMP', record: 'Debut', image: 'placeholder.jpg' }, blue: { name: 'TAMIKA ROHMAT D', camp: 'MAJALAYA FIGHTER CLUB', record: 'Debut', image: 'placeholder.jpg' } },
+    { id: 50, type: 'street', category: 'AMATEUR - 66 KG', red: { name: 'CHRISTIAN GOKLAS BUTAR2', camp: 'SAGA TRAINING CAMP', record: 'Debut', image: 'placeholder.jpg' }, blue: { name: 'MUHAMAD JENY ZAELANI', camp: 'SOLJER SOUL CREW', record: 'Debut', image: 'placeholder.jpg' } },
+    { id: 51, type: 'street', category: 'AMATEUR - 66 KG', red: { name: 'AKBAR GUNAWAN', camp: 'BFA', record: 'Debut', image: 'placeholder.jpg' }, blue: { name: 'TBA', camp: '-', record: 'Debut', image: 'placeholder.jpg' } },
+    { id: 49, type: 'freestyle', category: 'AMATEUR - 70 KG', red: { name: 'SANTANA ZAINI', camp: 'BFA', record: 'Debut', image: 'placeholder.jpg' }, blue: { name: 'TBA', camp: '-', record: 'Debut', image: 'placeholder.jpg' } },
+    { id: 52, type: 'street', category: 'AMATEUR - 70 KG', red: { name: 'ARIPIN', camp: 'BFA', record: 'Debut', image: 'placeholder.jpg' }, blue: { name: 'WISNU LESMANA', camp: 'NON CAMP', record: 'Debut', image: 'placeholder.jpg' } },
+    { id: 53, type: 'street', category: 'AMATEUR - 75 KG', red: { name: 'M RIDWAN', camp: 'SOLJER SOUL CREW', record: 'Debut', image: 'placeholder.jpg' }, blue: { name: 'WILLY ZAKARIA', camp: 'SANEKALA FIGHTING CAMP', record: 'Debut', image: 'placeholder.jpg' } },
+    { id: 54, type: 'street', category: 'AMATEUR - 75 KG', red: { name: 'ASEP ASMARA', camp: 'BFA', record: 'Debut', image: 'placeholder.jpg' }, blue: { name: 'JHIAL', camp: 'SANEKALA FIGHTING CAMP', record: 'Debut', image: 'placeholder.jpg' } },
+    { id: 55, type: 'street', category: 'AMATEUR - 75 KG', red: { name: 'RIFKI SAHRUL HADI', camp: 'SANEKALA FIGHTING CAMP', record: 'Debut', image: 'placeholder.jpg' }, blue: { name: 'DEKA RAFASYA', camp: 'MAJALAYA SOUL CREW', record: 'Debut', image: 'placeholder.jpg' } },
+    { id: 56, type: 'street', category: 'AMATEUR - 80 KG', red: { name: 'ADZIQRI PRATAMA', camp: 'SANEKALA FIGHTING CAMP', record: 'Debut', image: 'placeholder.jpg' }, blue: { name: 'DIAN RODIANSYAH', camp: 'BFA', record: 'Debut', image: 'placeholder.jpg' } }
 ];
 
         const container = document.getElementById('fights-container');
@@ -804,6 +469,7 @@
     </script>
 </body>
 </html>
+
 
 
 
