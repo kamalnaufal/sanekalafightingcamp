@@ -5,17 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SANEKALA SPARRING VOL.2 - Fight Card</title>
     
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Google Fonts: Oswald (Bold) & Roboto (Text) -->
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     
-    <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        /* Custom Styles & Animations */
         :root {
             --red-corner: #ef4444;
             --blue-corner: #3b82f6;
@@ -35,21 +31,18 @@
             text-transform: uppercase;
         }
 
-        /* Background Handling */
         .hero-bg {
-            background-image: linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(15,15,15,1)), url('hero1.png'); 
+            background-image: linear-gradient(to bottom, rgba(0,0,0,0.8), rgba(15,15,15,1)), url('hero1.png'); 
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
         }
 
-        /* Main Event / Exhibition Card Styling */
         .exhibition-card {
             background: linear-gradient(145deg, #1a1a1a 0%, #000000 100%);
             border: 2px solid #b45309;
             position: relative;
             box-shadow: 0 0 30px rgba(180, 83, 9, 0.4);
-            overflow: hidden;
         }
 
         .gold-shimmer {
@@ -61,19 +54,11 @@
             animation: shimmer 3s linear infinite;
         }
 
-        @keyframes shimmer {
-            to { background-position: 200% center; }
-        }
+        @keyframes shimmer { to { background-position: 200% center; } }
 
-        /* Neon Glow Effects */
-        .neon-text-red {
-            text-shadow: 0 0 10px rgba(239, 68, 68, 0.7);
-        }
-        .neon-text-blue {
-            text-shadow: 0 0 10px rgba(59, 130, 246, 0.7);
-        }
+        .neon-text-red { text-shadow: 0 0 10px rgba(239, 68, 68, 0.7); }
+        .neon-text-blue { text-shadow: 0 0 10px rgba(59, 130, 246, 0.7); }
 
-        /* Card Styling */
         .fight-card {
             background: rgba(25, 25, 25, 0.9);
             border: 1px solid #333;
@@ -88,7 +73,6 @@
             box-shadow: 0 0 20px rgba(251, 191, 36, 0.2);
         }
 
-        /* VS Badge Animation */
         .vs-badge {
             background: linear-gradient(135deg, #1a1a1a 0%, #333 100%);
             border: 2px solid var(--neon-gold);
@@ -101,394 +85,152 @@
             100% { box-shadow: 0 0 0 0 rgba(251, 191, 36, 0); }
         }
 
-        /* Glitch Effect for Title */
-        .glitch-wrapper {
-            position: relative;
-        }
-        .glitch::before, .glitch::after {
-            content: attr(data-text);
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
-        .glitch::before {
-            left: 2px;
-            text-shadow: -1px 0 #ff00c1;
-            clip: rect(44px, 450px, 56px, 0);
-            animation: glitch-anim-1 5s infinite linear alternate-reverse;
-        }
-        .glitch::after {
-            left: -2px;
-            text-shadow: -1px 0 #00fff9;
-            clip: rect(44px, 450px, 56px, 0);
-            animation: glitch-anim-2 5s infinite linear alternate-reverse;
-        }
-
-        @keyframes glitch-anim-1 {
-            0% { clip: rect(20px, 9999px, 10px, 0); }
-            100% { clip: rect(50px, 9999px, 80px, 0); }
-        }
-        @keyframes glitch-anim-2 {
-            0% { clip: rect(80px, 9999px, 90px, 0); }
-            100% { clip: rect(10px, 9999px, 40px, 0); }
-        }
-
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #111; }
-        ::-webkit-scrollbar-thumb { background: #444; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: var(--neon-gold); }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
         .animate-fade-in-up {
             animation: fadeInUp 0.5s ease-out forwards;
             opacity: 0;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
 <body class="antialiased min-h-screen flex flex-col">
 
-    <!-- Navbar -->
     <nav class="fixed w-full z-50 bg-black/80 backdrop-blur-md border-b border-gray-800">
         <div class="container mx-auto px-4 py-3 flex justify-between items-center">
             <div class="text-2xl font-bold tracking-tighter text-yellow-500 font-oswald">
                 SANEKALA <span class="text-white">VOL.2</span>
             </div>
-            <a href="#" class="bg-red-600 hover:bg-red-700 text-white px-4 py-1 rounded text-sm font-bold uppercase transition">
-                Free Ticket
+            <a href="https://wa.me/628123456789" class="bg-red-600 hover:bg-red-700 text-white px-4 py-1 rounded text-sm font-bold uppercase transition">
+                Daftar Sparring
             </a>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <header class="hero-bg min-h-[80vh] flex items-center justify-center relative pt-16">
-        <div class="absolute inset-0 bg-gradient-to-t from-[#0f0f0f] via-transparent to-black/50"></div>
-        
+    <header class="hero-bg min-h-[70vh] flex items-center justify-center relative pt-16">
         <div class="container mx-auto px-4 text-center z-10 relative">
-            <p class="text-yellow-500 tracking-[0.5em] text-sm md:text-lg mb-2 uppercase animate-pulse">Underground Fighting Event</p>
+            <p class="text-yellow-500 tracking-[0.5em] text-sm md:text-lg mb-2 uppercase">Underground Fighting Event</p>
+            <h1 class="text-6xl md:text-8xl font-bold text-white leading-none oswald">SANEKALA</h1>
+            <h2 class="text-4xl md:text-6xl font-bold text-gray-400 mt-2 oswald">SPARRING <span class="text-red-600">VOL.2</span></h2>
             
-            <div class="glitch-wrapper mb-6">
-                <h1 class="glitch text-6xl md:text-8xl font-bold text-white leading-none" data-text="SANEKALA">
-                    SANEKALA
-                </h1>
-                <h2 class="text-4xl md:text-6xl font-bold text-gray-400 mt-2">
-                    SPARRING <span class="text-red-600">VOL.2</span>
-                </h2>
-            </div>
-
             <div class="flex flex-col md:flex-row justify-center items-center gap-6 mt-8 text-gray-300">
-                <div class="flex items-center gap-2">
-                    <i class="fas fa-calendar-alt text-yellow-500"></i>
-                    <span class="font-mono text-lg">SELASA, 30 DESEMBER 2025</span>
-                </div>
-                <div class="flex items-center gap-2">
-                    <i class="fas fa-map-marker-alt text-red-500"></i>
-                    <span class="font-mono text-lg">GOR KONI MAJALAYA</span>
-                </div>
-            </div>
-
-            <div class="mt-10">
-                <a href="#fight-card" class="inline-block border border-yellow-500 text-yellow-500 hover:bg-yellow-500 hover:text-black px-8 py-3 rounded-full text-lg font-bold transition duration-300 uppercase tracking-wider">
-                    Lihat Fight Card
-                </a>
+                <div class="flex items-center gap-2"><i class="fas fa-calendar-alt text-yellow-500"></i><span class="font-mono">30 DES 2025</span></div>
+                <div class="flex items-center gap-2"><i class="fas fa-map-marker-alt text-red-500"></i><span class="font-mono">GOR KONI MAJALAYA</span></div>
             </div>
         </div>
     </header>
 
-   <section class="py-16 bg-[#0a0a0a] border-b border-yellow-900/20">
-    <div class="container mx-auto px-4">
+    <main class="flex-grow py-16 container mx-auto px-4">
         
         <div class="text-center mb-12">
-            <h2 class="text-4xl md:text-6xl font-bold gold-shimmer oswald">SANEKALA MAIN EVENT</h2>
-            <p class="text-gray-500 tracking-[0.2em] text-xs md:text-sm uppercase mt-2 italic">Pertandingan Hiburan</p>
-        </div>
-
-        <div class="flex flex-col gap-10 md:gap-16">
-            
-            <div class="relative max-w-4xl mx-auto exhibition-card rounded-2xl p-6 md:p-10 w-full">
-                <div class="absolute top-0 left-1/2 -translate-x-1/2 bg-yellow-700 text-white px-6 py-1 text-[10px] md:text-xs font-bold oswald tracking-widest rounded-b-lg z-10">
-                    MAIN EVENT
-                </div>
-
-                <div class="flex flex-col md:flex-row items-center justify-between gap-8 md:gap-4 mt-4">
-                    <div class="flex-1 flex flex-col items-center text-center">
-                        <div class="w-32 h-32 md:w-44 md:h-44 rounded-full border-4 border-yellow-600 overflow-hidden mb-4 bg-zinc-900 shadow-[0_0_25px_rgba(180,83,9,0.4)] aspect-square">
-                            <img src="ocol1.jpg" class="w-full h-full object-cover" alt="Ocol">
-                        </div>
-                        <h3 class="text-2xl md:text-4xl font-bold text-white mb-1 oswald">OCOL'S</h3>
-                        <p class="text-yellow-600 text-xs md:text-sm oswald tracking-widest font-bold">ASLAP MBG</p>
-                    </div>
-
-                    <div class="flex flex-col items-center">
-                        <div class="text-5xl md:text-7xl font-black italic oswald text-zinc-800 opacity-60">VS</div>
-                        <div class="hidden md:block w-px h-16 bg-gradient-to-b from-transparent via-yellow-700 to-transparent mt-2"></div>
-                    </div>
-
-                    <div class="flex-1 flex flex-col items-center text-center">
-                        <div class="w-32 h-32 md:w-44 md:h-44 rounded-full border-4 border-zinc-700 overflow-hidden mb-4 bg-zinc-900 aspect-square">
-                            <img src="aibon.jpg" class="w-full h-full object-cover" alt="Ade">
-                        </div>
-                        <h3 class="text-2xl md:text-4xl font-bold text-white mb-1 oswald">ADE PUNK ROCK</h3>
-                        <p class="text-yellow-600 text-xs md:text-sm oswald tracking-widest font-bold">PUNK ROCK ALAM SEMESTA</p>
-                    </div>
-                </div>
-
-                <div class="mt-8 pt-6 border-t border-white/5 text-center">
-                    <p class="text-zinc-500 oswald text-[10px] md:text-xs tracking-widest italic">"HANYA UNTUK TUJUAN HIBURAN & SPORTIVITAS"</p>
-                </div>
-            </div>
-
-            <div class="relative max-w-4xl mx-auto exhibition-card rounded-2xl p-6 md:p-10 w-full">
-                <div class="absolute top-0 left-1/2 -translate-x-1/2 bg-yellow-700 text-white px-6 py-1 text-[10px] md:text-xs font-bold oswald tracking-widest rounded-b-lg z-10">
-                    MAIN EVENT
-                </div>
-
-                <div class="flex flex-col md:flex-row items-center justify-between gap-8 md:gap-4 mt-4">
-                    <div class="flex-1 flex flex-col items-center text-center">
-                        <div class="w-32 h-32 md:w-44 md:h-44 rounded-full border-4 border-yellow-600 overflow-hidden mb-4 bg-zinc-900 shadow-[0_0_25px_rgba(180,83,9,0.4)] aspect-square">
-                            <img src="koko.jpg" class="w-full h-full object-cover" alt="Koko">
-                        </div>
-                        <h3 class="text-2xl md:text-4xl font-bold text-white mb-1 oswald">KOKO ROBET</h3>
-                        <p class="text-yellow-600 text-xs md:text-sm oswald tracking-widest font-bold">SANEKALA SAPARAKO</p>
-                    </div>
-
-                    <div class="flex flex-col items-center">
-                        <div class="text-5xl md:text-7xl font-black italic oswald text-zinc-800 opacity-60">VS</div>
-                        <div class="hidden md:block w-px h-16 bg-gradient-to-b from-transparent via-yellow-700 to-transparent mt-2"></div>
-                    </div>
-
-                    <div class="flex-1 flex flex-col items-center text-center">
-                        <div class="w-32 h-32 md:w-44 md:h-44 rounded-full border-4 border-zinc-700 overflow-hidden mb-4 bg-zinc-900 aspect-square">
-                            <img src="ojak.jpg" class="w-full h-full object-cover" alt="Ojak">
-                        </div>
-                        <h3 class="text-2xl md:text-4xl font-bold text-white mb-1 oswald">BANG OJAK</h3>
-                        <p class="text-yellow-600 text-xs md:text-sm oswald tracking-widest font-bold">CHICKEN FIGHTER</p>
-                    </div>
-                </div>
-
-                <div class="mt-8 pt-6 border-t border-white/5 text-center">
-                    <p class="text-zinc-500 oswald text-[10px] md:text-xs tracking-widest italic">"HANYA UNTUK TUJUAN HIBURAN & SPORTIVITAS"</p>
-                </div>
-            </div>
-
-        </div> </div>
-</section>
-    <!-- Main Content: Official Fight Card (Amateur) -->
-    <main id="fight-card" class="flex-grow py-16 container mx-auto px-4">
-        
-        <div class="text-center mb-12">
-            <h2 class="text-4xl md:text-5xl font-bold mb-4"><span class="text-red-600">OFFICIAL</span> FIGHT CARD</h2>
+            <h2 class="text-4xl md:text-5xl font-bold mb-4 oswald"><span class="text-red-600">OFFICIAL</span> FIGHT CARD</h2>
             <div class="w-24 h-1 bg-yellow-500 mx-auto"></div>
         </div>
 
-        <!-- Filter Buttons -->
         <div class="flex justify-center gap-4 mb-10 flex-wrap">
-            <button onclick="filterFights('all')" class="filter-btn active bg-gray-700 ring-2 ring-yellow-500 text-white px-6 py-2 rounded-full border border-gray-600 transition">
-                ALL FIGHTS
-            </button>
-            <button onclick="filterFights('street')" class="filter-btn bg-black hover:bg-gray-900 text-red-500 px-6 py-2 rounded-full border border-red-900 transition">
-                STREET BOXING
-            </button>
-            <button onclick="filterFights('freestyle')" class="filter-btn bg-black hover:bg-gray-900 text-blue-500 px-6 py-2 rounded-full border border-blue-900 transition">
-                FREESTYLE STRIKING
-            </button>
+            <button onclick="filterFights('all')" id="btn-all" class="filter-btn bg-gray-700 ring-2 ring-yellow-500 text-white px-6 py-2 rounded-full border border-gray-600 transition">ALL FIGHTS</button>
+            <button onclick="filterFights('street')" id="btn-street" class="filter-btn bg-black hover:bg-gray-900 text-red-500 px-6 py-2 rounded-full border border-red-900 transition">STREET BOXING</button>
+            <button onclick="filterFights('freestyle')" id="btn-freestyle" class="filter-btn bg-black hover:bg-gray-900 text-blue-500 px-6 py-2 rounded-full border border-blue-900 transition">FREESTYLE</button>
         </div>
 
-        <!-- Fights Grid -->
-        <div id="fights-container" class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-            <!-- Fight cards will be injected here -->
-        </div>
-
+        <div id="fights-container" class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-6xl mx-auto">
+            </div>
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-black border-t border-gray-800 py-8">
-        <div class="container mx-auto px-4 text-center">
-            <div class="text-2xl font-bold text-yellow-500 font-oswald mb-4">SANEKALA</div>
-            <p class="text-gray-500 mb-6">Respect All, Fear None. The Best Underground Fighting in Town.</p>
-            <div class="flex justify-center gap-6 mb-6">
-                <a href="#" class="text-gray-400 hover:text-white text-2xl transition"><i class="fab fa-instagram"></i></a>
-                <a href="#" class="text-gray-400 hover:text-white text-2xl transition"><i class="fab fa-youtube"></i></a>
-                <a href="#" class="text-gray-400 hover:text-white text-2xl transition"><i class="fab fa-tiktok"></i></a>
-            </div>
-            <p class="text-gray-600 text-sm">&copy; 2025 Sanekala Sparring. All rights reserved.</p>
-        </div>
+    <footer class="bg-black border-t border-gray-800 py-8 text-center">
+        <div class="text-2xl font-bold text-yellow-500 font-oswald mb-4">SANEKALA</div>
+        <p class="text-gray-600 text-sm">&copy; 2025 PT Sanekala Grup Dinamika.</p>
     </footer>
 
-    const fights = [
-    // === JUNIOR CATEGORY ===
-    { id: 7, type: 'freestyle', category: 'JUNIOR - 27 KG', red: { name: 'HAIKAL JIBRAN ZAELANY', camp: 'NON CAMP', record: 'Debut', image: 'placeholder.jpg' }, blue: { name: 'PAISAL PERMANA', camp: 'MAJALAYA FIGHTER CLUB', record: 'Debut', image: 'placeholder.jpg' } },
-    { id: 9, type: 'freestyle', category: 'JUNIOR - 29 KG', red: { name: 'RAMADHAN ASOKA', camp: 'MAJALAYA FIGHTER CLUB', record: 'Debut', image: 'placeholder.jpg' }, blue: { name: 'SURYA MUHAMAD SEAN', camp: 'WUSHU ALIMIN IBUN', record: 'Debut', image: 'placeholder.jpg' } },
-    { id: 11, type: 'freestyle', category: 'JUNIOR - 30 KG', red: { name: 'DAFFA DIENUL-HAQ', camp: 'WUSHU ALIMIN IBUN', record: 'Debut', image: 'placeholder.jpg' }, blue: { name: 'FAREL MAULID', camp: 'MAJALAYA IGHTER CLUB', record: 'Debut', image: 'placeholder.jpg' } },
-    { id: 13, type: 'freestyle', category: 'JUNIOR - 31 KG', red: { name: 'NAZWA CAHAYA RAMADAN', camp: 'WUSHU ALIMIN IBUN', record: 'Debut', image: 'placeholder.jpg' }, blue: { name: 'TBA', camp: '-', record: 'Debut', image: 'placeholder.jpg' } },
-    { id: 2, type: 'street', category: 'JUNIOR - 34 KG', red: { name: 'MIKHAYLA', camp: 'SANEKALA FIGHTING CAMP', record: 'Debut', image: 'placeholder.jpg' }, blue: { name: 'KEYLA RIZKIA PUTRI', camp: 'WUSHU ALIMIN IBUN', record: 'Debut', image: 'placeholder.jpg' } },
-    { id: 15, type: 'freestyle', category: 'JUNIOR - 36 KG', red: { name: 'SYAHRUL IHSAN RAFANI', camp: 'SANEKALA FIGHTING CAMP', record: 'Debut', image: 'placeholder.jpg' }, blue: { name: 'ABIDZAR AL GHIFARI', camp: 'WUSHU ALIMIN IBUN', record: 'Debut', image: 'placeholder.jpg' } },
-    { id: 6, type: 'street', category: 'JUNIOR - 45 KG', red: { name: 'RENGGANIS SAFARINI', camp: 'SAGA TRAINING CAMP', record: 'Debut', image: 'placeholder.jpg' }, blue: { name: 'TALITA JABILILLAH', camp: 'WUSHU ALIMIN IBUN', record: 'Debut', image: 'placeholder.jpg' } },
-    { id: 23, type: 'freestyle', category: 'JUNIOR - 45 KG', red: { name: 'YESI FEBRIANI', camp: 'BFA', record: 'Debut', image: 'placeholder.jpg' }, blue: { name: 'TBA', camp: '-', record: 'Debut', image: 'placeholder.jpg' } },
-    { id: 25, type: 'freestyle', category: 'JUNIOR - 48 KG', red: { name: 'RENI INDRIANTI', camp: 'MAJALAYA SOUL CREW', record: 'Debut', image: 'placeholder.jpg' }, blue: { name: 'TBA', camp: '-', record: 'Debut', image: 'placeholder.jpg' } },
-    { id: 27, type: 'freestyle', category: 'JUNIOR - 48 KG', red: { name: 'MYANA', camp: 'WUSHU ALIMIN IBUN', record: 'Debut', image: 'placeholder.jpg' }, blue: { name: 'NINE NURUL AQIDAH', camp: 'BFA', record: 'Debut', image: 'placeholder.jpg' } },
-    { id: 29, type: 'freestyle', category: 'JUNIOR - 48 KG', red: { name: 'NUR HALIMAHTUSADIAH', camp: 'WUSHU ALIMIN IBUN', record: 'Debut', image: 'placeholder.jpg' }, blue: { name: 'DINDA PUTRI A', camp: 'MAJALAYA FIGHTER CLUB', record: 'Debut', image: 'placeholder.jpg' } },
-    { id: 31, type: 'freestyle', category: 'JUNIOR - 51 KG', red: { name: 'NENG NURUL FATMAH', camp: 'SANEKALA FIGHTING CAMP', record: 'Debut', image: 'placeholder.jpg' }, blue: { name: 'PIKRI PITIYANI', camp: 'MAJALAYA FIGHTER CLUB', record: 'Debut', image: 'placeholder.jpg' } },
-    { id: 45, type: 'freestyle', category: 'JUNIOR - 57 KG', red: { name: 'ADINDA SYAUQIA AZZAHRA', camp: 'BFA', record: 'Debut', image: 'placeholder.jpg' }, blue: { name: 'SABILA RIZKI RAMADHANI', camp: 'WUSHU ALIMIN IBUN', record: 'Debut', image: 'placeholder.jpg' } },
-
-    // === AMATEUR CATEGORY ===
-    { id: 10, type: 'street', category: 'AMATEUR - 43 KG', red: { name: 'REZA ARDIANSYAH', camp: 'CATAMOUNT COMBAT CLUB', record: 'Debut', image: 'placeholder.jpg' }, blue: { name: 'ALFI AULIA AZHAR', camp: 'MAJALAYA FIGHTER CLUB', record: 'Debut', image: 'placeholder.jpg' } },
-    { id: 17, type: 'freestyle', category: 'AMATEUR - 43 KG', red: { name: 'IRFAN HARDIANSYAH FACHRA', camp: 'FAMILY FIGHT', record: 'Debut', image: 'placeholder.jpg' }, blue: { name: 'TBA', camp: '-', record: 'Debut', image: 'placeholder.jpg' } },
-    { id: 19, type: 'freestyle', category: 'AMATEUR - 43 KG', red: { name: 'DICKY CANDRA', camp: 'SAGA TRAINING CAMP', record: 'Debut', image: 'placeholder.jpg' }, blue: { name: 'TBA', camp: '-', record: 'Debut', image: 'placeholder.jpg' } },
-    { id: 1, type: 'freestyle', category: 'AMATEUR - 45 KG', red: { name: 'RAFKA SAPARINSYAH', camp: 'SANEKALA FIGHTING CAMP', record: 'Debut', image: 'placeholder.jpg' }, blue: { name: 'HASBIE AGNINO AL MALIK', camp: 'BFA', record: 'Debut', image: 'placeholder.jpg' } },
-    { id: 4, type: 'street', category: 'AMATEUR - 45 KG', red: { name: 'RIZKI NUR KHOLIK', camp: 'SANEKALA FIGHTING CAMP', record: 'Debut', image: 'placeholder.jpg' }, blue: { name: 'GILAR MUHAMAD AKSAN', camp: 'SANEKALA FIGHTING CAMP', record: 'Debut', image: 'placeholder.jpg' } },
-    { id: 8, type: 'street', category: 'AMATEUR - 45 KG', red: { name: 'RAFAEL PASHA RAMADHAN', camp: 'SOLJER SOUL CREW', record: 'Debut', image: 'placeholder.jpg' }, blue: { name: 'HAPIS AKMAL', camp: 'NON CAMP', record: 'Debut', image: 'placeholder.jpg' } },
-    { id: 21, type: 'freestyle', category: 'AMATEUR - 45 KG', red: { name: 'FADHIL MUZZAKI ILHAM', camp: 'MAJALAYA FINEST', record: 'Debut', image: 'placeholder.jpg' }, blue: { name: 'GALANG MARDIANSYAH', camp: 'ND FIGHTING CAMP', record: 'Debut', image: 'placeholder.jpg' } },
-    { id: 12, type: 'street', category: 'AMATEUR - 47 KG', red: { name: 'ZERI', camp: 'SANEKALA FIGHTING CAMP', record: 'Debut', image: 'placeholder.jpg' }, blue: { name: 'MEDI HUDAYA', camp: 'NON CAMP', record: 'Debut', image: 'placeholder.jpg' } },
-    { id: 14, type: 'street', category: 'AMATEUR - 48 KG', red: { name: 'KIKI MAMIH', camp: 'MAJALAYA FIGHTER CLUB', record: 'Debut', image: 'placeholder.jpg' }, blue: { name: 'ADITYA PRATAMA', camp: 'SANEKALA FIGHTING CAMP', record: 'Debut', image: 'placeholder.jpg' } },
-    { id: 16, type: 'street', category: 'AMATEUR - 48 KG', red: { name: 'ALDO EKATRIAN', camp: 'MAJALAYA SOUL CREW', record: 'Debut', image: 'placeholder.jpg' }, blue: { name: 'MUHAMAD NAZRIL', camp: 'SANEKALA FIGHTING CAMP', record: 'Debut', image: 'placeholder.jpg' } },
-    { id: 18, type: 'street', category: 'AMATEUR - 48 KG', red: { name: 'MUHAMAD RIZQY', camp: 'SOLJER SUL CREW', record: 'Debut', image: 'placeholder.jpg' }, blue: { name: 'RHEVANY HADI PRATAMA', camp: 'NON CAMP', record: 'Debut', image: 'placeholder.jpg' } },
-    { id: 20, type: 'street', category: 'AMATEUR - 51 KG', red: { name: 'JEHAN ACENG', camp: 'SANEKALA FIGHTING CAMP', record: 'Debut', image: 'placeholder.jpg' }, blue: { name: 'ELSA SAPUTRA', camp: 'SANEKALA FIGHTING CAMP', record: 'Debut', image: 'placeholder.jpg' } },
-    { id: 33, type: 'freestyle', category: 'AMATEUR - 51 KG', red: { name: 'RIZAL ABDUR ROHMAN', camp: 'NON CAMP', record: 'Debut', image: 'placeholder.jpg' }, blue: { name: 'TEDI EL', camp: 'MAJALAYA SOUL CREW', record: 'Debut', image: 'placeholder.jpg' } },
-    { id: 35, type: 'freestyle', category: 'AMATEUR - 51 KG', red: { name: 'FAIZAL IZ', camp: 'MAJALAYA SOUL CREW', record: 'Debut', image: 'placeholder.jpg' }, blue: { name: 'RAKA ADITIA PRATAMA', camp: 'SANEKALA FIGHTING CAMP', record: 'Debut', image: 'placeholder.jpg' } },
-    { id: 22, type: 'street', category: 'AMATEUR - 52 KG', red: { name: 'ILYAS KHAIRUL SYAPUTRA', camp: 'SANEKALA FIGHTING CAMP', record: 'Debut', image: 'placeholder.jpg' }, blue: { name: 'M RIZKY FIRDAUS', camp: 'CATAMOUNT COMBAT CLUB', record: 'Debut', image: 'placeholder.jpg' } },
-    { id: 5, type: 'freestyle', category: 'AMATEUR - 54 KG', red: { name: 'ROHENDI', camp: 'SANEKALA FIGHTING CAMP', record: 'Debut', image: 'placeholder.jpg' }, blue: { name: 'MUMAHAD WIKI', camp: 'BFA', record: 'Debut', image: 'placeholder.jpg' } },
-    { id: 24, type: 'street', category: 'AMATEUR - 54 KG', red: { name: 'WAJENDRA', camp: 'TIM WARS', record: 'Debut', image: 'placeholder.jpg' }, blue: { name: 'RAFIF PRAMUDITA', camp: 'HH CAMP', record: 'Debut', image: 'placeholder.jpg' } },
-    { id: 26, type: 'street', category: 'AMATEUR - 54 KG', red: { name: 'M IQBAL FAUZI', camp: 'CATAMOUNT COMBAT CLUB', record: 'Debut', image: 'placeholder.jpg' }, blue: { name: 'AHMAD REQI CAILLA', camp: 'FAMILY FIGHT', record: 'Debut', image: 'placeholder.jpg' } },
-    { id: 28, type: 'street', category: 'AMATEUR - 54 KG', red: { name: 'MUHAMMAD SIDIQ', camp: 'NON CAMP', record: 'Debut', image: 'placeholder.jpg' }, blue: { name: 'NALENDRA ARDIANSYAH', camp: 'SOLJER SOUL CREW', record: 'Debut', image: 'placeholder.jpg' } },
-    { id: 37, type: 'freestyle', category: 'AMATEUR - 54 KG', red: { name: 'IRSYAD IRFANA RAHARJA', camp: 'SANEKALA FIGHTING CAMP', record: 'Debut', image: 'placeholder.jpg' }, blue: { name: 'DAFFA ZAHIDAN', camp: 'SANEKALA FIGHTING CAMP', record: 'Debut', image: 'placeholder.jpg' } },
-    { id: 39, type: 'freestyle', category: 'AMATEUR - 54 KG', red: { name: 'AZIS ALFATAH', camp: 'SANEKALA FIGHTING CAMP', record: 'Debut', image: 'placeholder.jpg' }, blue: { name: 'TEDI MUHAMAD IHSAN', camp: 'ND FIGHTING CAMP', record: 'Debut', image: 'placeholder.jpg' } },
-    { id: 41, type: 'freestyle', category: 'AMATEUR - 54 KG', red: { name: 'M MAHESA', camp: 'MUAYTHAIMAJALAYA', record: 'Debut', image: 'placeholder.jpg' }, blue: { name: 'SANDI HUDA PRATAMA', camp: 'BFA', record: 'Debut', image: 'placeholder.jpg' } },
-    { id: 43, type: 'freestyle', category: 'AMATEUR - 54 KG', red: { name: 'MOCHAMAD NOER H', camp: 'CATAMOUNT COMBAT CLUB', record: 'Debut', image: 'placeholder.jpg' }, blue: { name: 'FERDIAN WILDIANSYAH', camp: 'SOLJER SOUL CREW', record: 'Debut', image: 'placeholder.jpg' } },
-    { id: 30, type: 'street', category: 'AMATEUR - 56 KG', red: { name: 'AJI ARIF', camp: 'SANEKALA FIGHTING CAMP', record: 'Debut', image: 'placeholder.jpg' }, blue: { name: 'ZACKY MUHAMAD', camp: 'ZACKSTEAM', record: 'Debut', image: 'placeholder.jpg' } },
-    { id: 32, type: 'street', category: 'AMATEUR - 57 KG', red: { name: 'YOENAS FEBRIYANTINO', camp: 'SANEKALA FIGHTING CAMP', record: 'Debut', image: 'placeholder.jpg' }, blue: { name: 'FAHRI BAMBANG', camp: 'CATAMOUNT COMBAT CLUB', record: 'Debut', image: 'placeholder.jpg' } },
-    { id: 34, type: 'street', category: 'AMATEUR - 57 KG', red: { name: 'ALI MAULANA RIZQI', camp: 'SANEKALA FIGHTING CAMP', record: 'Debut', image: 'placeholder.jpg' }, blue: { name: 'KIKI RIZGI NAWAN', camp: 'SANEKALA FIGHTING CAMP', record: 'Debut', image: 'placeholder.jpg' } },
-    { id: 36, type: 'street', category: 'AMATEUR - 57 KG', red: { name: 'DEDE RAHMAT ADITIA', camp: 'NON CAMP', record: 'Debut', image: 'placeholder.jpg' }, blue: { name: 'EGIN SAEPUL ACHMAD', camp: 'SANEKALA FIGHTING CAMP', record: 'Debut', image: 'placeholder.jpg' } },
-    { id: 38, type: 'street', category: 'AMATEUR - 57 KG', red: { name: 'YUSUF MAULANA', camp: 'SAGA TRAINING CAMP', record: 'Debut', image: 'placeholder.jpg' }, blue: { name: 'GHOZY SATRIA MADANI', camp: 'WARS TEAM', record: 'Debut', image: 'placeholder.jpg' } },
-    { id: 3, type: 'freestyle', category: 'AMATEUR - 60 KG', red: { name: 'ALDI FITRA', camp: 'COBRA MUAYTHAI', record: 'Debut', image: 'placeholder.jpg' }, blue: { name: 'FIRDAUS YUAN', camp: 'SANEKALA FIGHTING CAMP', record: 'Debut', image: 'placeholder.jpg' } },
-    { id: 40, type: 'street', category: 'AMATEUR - 60 KG', red: { name: 'IRZI KHAIRUL FADLAN', camp: 'SOLJER SOUL CREW', record: 'Debut', image: 'placeholder.jpg' }, blue: { name: 'M FAZRIL ILHAM', camp: 'BSB', record: 'Debut', image: 'placeholder.jpg' } },
-    { id: 42, type: 'street', category: 'AMATEUR - 60 KG', red: { name: 'WISNU RAMADHAN NIPTAH', camp: 'SANEKALA FIGHTING CAMP', record: 'Debut', image: 'placeholder.jpg' }, blue: { name: 'ARIS RESDIANA', camp: 'BFA', record: 'Debut', image: 'placeholder.jpg' } },
-    { id: 44, type: 'street', category: 'AMATEUR - 60 KG ', red: { name: 'RIZAL RIDWANULLAH', camp: 'SANEKALA FIGHTING CAMP', record: 'Debut', image: 'placeholder.jpg' }, blue: { name: 'CECEP HENDRA', camp: 'SANEKALA FIGHTING CAMP', record: 'Debut', image: 'placeholder.jpg' } },
-    { id: 46, type: 'street', category: 'AMATEUR - 60 KG', red: { name: 'VIKING', camp: 'SANEKALA FIGHTING CAMP', record: 'Debut', image: 'placeholder.jpg' }, blue: { name: 'SIDNAY VICKY', camp: 'BFA', record: 'Debut', image: 'placeholder.jpg' } },
-    { id: 47, type: 'freestyle', category: 'AMATEUR - 65 KG', red: { name: 'DOYANG', camp: 'SANEKALA FIGHTING CAMP', record: 'Debut', image: 'placeholder.jpg' }, blue: { name: 'TAMIKA ROHMAT D', camp: 'MAJALAYA FIGHTER CLUB', record: 'Debut', image: 'placeholder.jpg' } },
-    { id: 48, type: 'street', category: 'AMATEUR - 65 KG', red: { name: 'ZAHRAN', camp: 'SANEKALA FIGHTING CAMP', record: 'Debut', image: 'placeholder.jpg' }, blue: { name: 'TAMIKA ROHMAT D', camp: 'MAJALAYA FIGHTER CLUB', record: 'Debut', image: 'placeholder.jpg' } },
-    { id: 50, type: 'street', category: 'AMATEUR - 66 KG', red: { name: 'CHRISTIAN GOKLAS BUTAR2', camp: 'SAGA TRAINING CAMP', record: 'Debut', image: 'placeholder.jpg' }, blue: { name: 'MUHAMAD JENY ZAELANI', camp: 'SOLJER SOUL CREW', record: 'Debut', image: 'placeholder.jpg' } },
-    { id: 51, type: 'street', category: 'AMATEUR - 66 KG', red: { name: 'AKBAR GUNAWAN', camp: 'BFA', record: 'Debut', image: 'placeholder.jpg' }, blue: { name: 'TBA', camp: '-', record: 'Debut', image: 'placeholder.jpg' } },
-    { id: 49, type: 'freestyle', category: 'AMATEUR - 70 KG', red: { name: 'SANTANA ZAINI', camp: 'BFA', record: 'Debut', image: 'placeholder.jpg' }, blue: { name: 'TBA', camp: '-', record: 'Debut', image: 'placeholder.jpg' } },
-    { id: 52, type: 'street', category: 'AMATEUR - 70 KG', red: { name: 'ARIPIN', camp: 'BFA', record: 'Debut', image: 'placeholder.jpg' }, blue: { name: 'WISNU LESMANA', camp: 'NON CAMP', record: 'Debut', image: 'placeholder.jpg' } },
-    { id: 53, type: 'street', category: 'AMATEUR - 75 KG', red: { name: 'M RIDWAN', camp: 'SOLJER SOUL CREW', record: 'Debut', image: 'placeholder.jpg' }, blue: { name: 'WILLY ZAKARIA', camp: 'SANEKALA FIGHTING CAMP', record: 'Debut', image: 'placeholder.jpg' } },
-    { id: 54, type: 'street', category: 'AMATEUR - 75 KG', red: { name: 'ASEP ASMARA', camp: 'BFA', record: 'Debut', image: 'placeholder.jpg' }, blue: { name: 'JHIAL', camp: 'SANEKALA FIGHTING CAMP', record: 'Debut', image: 'placeholder.jpg' } },
-    { id: 55, type: 'street', category: 'AMATEUR - 75 KG', red: { name: 'RIFKI SAHRUL HADI', camp: 'SANEKALA FIGHTING CAMP', record: 'Debut', image: 'placeholder.jpg' }, blue: { name: 'DEKA RAFASYA', camp: 'MAJALAYA SOUL CREW', record: 'Debut', image: 'placeholder.jpg' } },
-    { id: 56, type: 'street', category: 'AMATEUR - 80 KG', red: { name: 'ADZIQRI PRATAMA', camp: 'SANEKALA FIGHTING CAMP', record: 'Debut', image: 'placeholder.jpg' }, blue: { name: 'DIAN RODIANSYAH', camp: 'BFA', record: 'Debut', image: 'placeholder.jpg' } }
-];
+    <script>
+        const fights = [
+            // === JUNIOR CATEGORY ===
+            { id: 7, type: 'freestyle', category: 'JUNIOR - 27 KG', red: { name: 'HAIKAL JIBRAN ZAELANY', camp: 'NON CAMP' }, blue: { name: 'PAISAL PERMANA', camp: 'MAJALAYA FIGHTER CLUB' } },
+            { id: 9, type: 'freestyle', category: 'JUNIOR - 29 KG', red: { name: 'RAMADHAN ASOKA', camp: 'MAJALAYA FIGHTER CLUB' }, blue: { name: 'SURYA MUHAMAD SEAN', camp: 'WUSHU ALIMIN IBUN' } },
+            { id: 11, type: 'freestyle', category: 'JUNIOR - 30 KG', red: { name: 'DAFFA DIENUL-HAQ', camp: 'WUSHU ALIMIN IBUN' }, blue: { name: 'FAREL MAULID', camp: 'MAJALAYA FIGHTER CLUB' } },
+            { id: 13, type: 'freestyle', category: 'JUNIOR - 31 KG', red: { name: 'NAZWA CAHAYA RAMADAN', camp: 'WUSHU ALIMIN IBUN' }, blue: { name: 'TBA', camp: '-' } },
+            { id: 2, type: 'street', category: 'JUNIOR - 34 KG', red: { name: 'MIKHAYLA', camp: 'SANEKALA' }, blue: { name: 'KEYLA RIZKIA PUTRI', camp: 'WUSHU ALIMIN IBUN' } },
+            { id: 15, type: 'freestyle', category: 'JUNIOR - 36 KG', red: { name: 'SYAHRUL IHSAN RAFANI', camp: 'SANEKALA' }, blue: { name: 'ABIDZAR AL GHIFARI', camp: 'WUSHU ALIMIN IBUN' } },
+            { id: 6, type: 'street', category: 'JUNIOR - 45 KG', red: { name: 'RENGGANIS SAFARINI', camp: 'SAGA TC' }, blue: { name: 'TALITA JABILILLAH', camp: 'WUSHU ALIMIN IBUN' } },
+            { id: 23, type: 'freestyle', category: 'JUNIOR - 45 KG', red: { name: 'YESI FEBRIANI', camp: 'BFA' }, blue: { name: 'TBA', camp: '-' } },
+            { id: 27, type: 'freestyle', category: 'JUNIOR - 48 KG', red: { name: 'MYANA', camp: 'WUSHU ALIMIN' }, blue: { name: 'NINE NURUL AQIDAH', camp: 'BFA' } },
+            
+            // === AMATEUR CATEGORY ===
+            { id: 10, type: 'street', category: 'AMATEUR - 43 KG', red: { name: 'REZA ARDIANSYAH', camp: 'CATAMOUNT' }, blue: { name: 'ALFI AULIA AZHAR', camp: 'MAJALAYA FIGHTER' } },
+            { id: 1, type: 'freestyle', category: 'AMATEUR - 45 KG', red: { name: 'RAFKA SAPARINSYAH', camp: 'SANEKALA' }, blue: { name: 'HASBIE AGNINO', camp: 'BFA' } },
+            { id: 4, type: 'street', category: 'AMATEUR - 45 KG', red: { name: 'RIZKI NUR KHOLIK', camp: 'SANEKALA' }, blue: { name: 'GILAR MUHAMAD', camp: 'SANEKALA' } },
+            { id: 20, type: 'street', category: 'AMATEUR - 51 KG', red: { name: 'JEHAN ACENG', camp: 'SANEKALA' }, blue: { name: 'ELSA SAPUTRA', camp: 'SANEKALA' } },
+            { id: 5, type: 'freestyle', category: 'AMATEUR - 54 KG', red: { name: 'ROHENDI', camp: 'SANEKALA' }, blue: { name: 'MUMAHAD WIKI', camp: 'BFA' } },
+            { id: 30, type: 'street', category: 'AMATEUR - 56 KG', red: { name: 'AJI ARIF', camp: 'SANEKALA' }, blue: { name: 'ZACKY MUHAMAD', camp: 'ZACKSTEAM' } },
+            { id: 32, type: 'street', category: 'AMATEUR - 57 KG', red: { name: 'YOENAS FEBRIYANTINO', camp: 'SANEKALA' }, blue: { name: 'FAHRI BAMBANG', camp: 'CATAMOUNT' } },
+            { id: 44, type: 'street', category: 'AMATEUR - 60 KG', red: { name: 'RIZAL RIDWANULLAH', camp: 'SANEKALA' }, blue: { name: 'CECEP HENDRA', camp: 'SANEKALA' } },
+            { id: 56, type: 'street', category: 'AMATEUR - 80 KG', red: { name: 'ADZIQRI PRATAMA', camp: 'SANEKALA' }, blue: { name: 'DIAN RODIANSYAH', camp: 'BFA' } }
+        ];
 
         const container = document.getElementById('fights-container');
-        const filterBtns = document.querySelectorAll('.filter-btn');
 
         function renderFights(filterType) {
             container.innerHTML = ''; 
-            let delay = 0;
+            const filteredFights = filterType === 'all' ? fights : fights.filter(f => f.type === filterType);
 
-            const filteredFights = filterType === 'all' 
-                ? fights 
-                : fights.filter(f => f.type === filterType);
-
-            if (filteredFights.length === 0) {
-                container.innerHTML = '<div class="col-span-1 md:col-span-2 text-center text-gray-500 py-10">Belum ada pertandingan di kategori ini.</div>';
-                return;
-            }
-
-            filteredFights.forEach(fight => {
+            filteredFights.forEach((fight, index) => {
+                const delay = index * 50;
                 const card = document.createElement('div');
-                card.className = `fight-card rounded-xl w-full mx-auto animate-fade-in-up`;
+                card.className = `fight-card rounded-xl animate-fade-in-up`;
                 card.style.animationDelay = `${delay}ms`;
                 
-                const typeBadgeColor = fight.type === 'street' ? 'bg-red-900/50 text-red-400 border-red-800' : 'bg-blue-900/50 text-blue-400 border-blue-800';
-                const typeLabel = fight.type === 'street' ? 'STREET BOXING' : 'FREESTYLE STRIKING';
+                const typeLabel = fight.type === 'street' ? 'STREET BOXING' : 'FREESTYLE';
+                const typeColor = fight.type === 'street' ? 'text-red-500 border-red-900' : 'text-blue-500 border-blue-900';
 
                 card.innerHTML = `
-                    <div class="flex flex-col h-full">
-                        <div class="flex justify-between items-center p-3 bg-black/50 border-b border-gray-800">
-                            <span class="text-xs font-bold text-gray-400 tracking-wider">${fight.category}</span>
-                            <span class="text-xs font-bold px-2 py-1 rounded border ${typeBadgeColor}">${typeLabel}</span>
+                    <div class="p-3 bg-black/50 border-b border-gray-800 flex justify-between items-center">
+                        <span class="text-[10px] font-bold text-yellow-600">BOUT #${index + 1}</span>
+                        <span class="text-xs font-bold text-gray-400 uppercase">${fight.category}</span>
+                        <span class="text-[10px] border px-2 py-0.5 rounded ${typeColor}">${typeLabel}</span>
+                    </div>
+                    <div class="p-4 flex items-center justify-between relative">
+                        <div class="flex-1 text-center">
+                            <div class="w-14 h-14 md:w-16 md:h-16 mx-auto rounded-full border-2 border-red-600 mb-2 overflow-hidden bg-gray-900">
+                                <img src="https://api.dicebear.com/7.x/notionists/svg?seed=${fight.red.name}" class="w-full h-full object-cover">
+                            </div>
+                            <h3 class="text-xs md:text-sm font-bold leading-tight neon-text-red">${fight.red.name}</h3>
+                            <p class="text-[9px] text-gray-500 uppercase">${fight.red.camp}</p>
                         </div>
-                        <div class="flex flex-row items-center justify-between p-4 md:p-6 relative bg-gradient-to-b from-transparent to-black/80 flex-grow">
-                            <div class="flex-1 flex flex-col items-center text-center z-10">
-                                <div class="w-16 h-16 md:w-20 md:h-20 rounded-full border-2 border-red-600 overflow-hidden mb-3 bg-gray-800">
-                                    <img src="${fight.red.image}" onerror="this.src='https://api.dicebear.com/7.x/avataaars/svg?seed=red_${fight.id}'" class="w-full h-full object-cover">
-                                </div>
-                                <h3 class="text-sm md:text-lg font-bold text-white leading-tight neon-text-red">${fight.red.name}</h3>
-                                <p class="text-[10px] text-gray-400 uppercase leading-none">${fight.red.camp}</p>
-                            </div>
-                            <div class="relative z-20 mx-2">
-                                <div class="vs-badge w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center transform rotate-45">
-                                    <span class="transform -rotate-45 font-oswald text-lg font-bold text-yellow-500">VS</span>
-                                </div>
-                            </div>
-                            <div class="flex-1 flex flex-col items-center text-center z-10">
-                                <div class="w-16 h-16 md:w-20 md:h-20 rounded-full border-2 border-blue-600 overflow-hidden mb-3 bg-gray-800">
-                                    <img src="${fight.blue.image}" onerror="this.src='https://api.dicebear.com/7.x/avataaars/svg?seed=blue_${fight.id}'" class="w-full h-full object-cover">
-                                </div>
-                                <h3 class="text-sm md:text-lg font-bold text-white leading-tight neon-text-blue">${fight.blue.name}</h3>
-                                <p class="text-[10px] text-gray-400 uppercase leading-none">${fight.blue.camp}</p>
-                            </div>
+
+                        <div class="vs-badge w-8 h-8 rounded-full flex items-center justify-center z-10 mx-2">
+                            <span class="font-oswald text-xs font-bold text-yellow-500">VS</span>
                         </div>
-                        <div class="absolute bottom-0 left-0 w-1/2 h-1 bg-red-600"></div>
-                        <div class="absolute bottom-0 right-0 w-1/2 h-1 bg-blue-600"></div>
+
+                        <div class="flex-1 text-center">
+                            <div class="w-14 h-14 md:w-16 md:h-16 mx-auto rounded-full border-2 border-blue-600 mb-2 overflow-hidden bg-gray-900">
+                                <img src="https://api.dicebear.com/7.x/notionists/svg?seed=${fight.blue.name}" class="w-full h-full object-cover">
+                            </div>
+                            <h3 class="text-xs md:text-sm font-bold leading-tight neon-text-blue">${fight.blue.name}</h3>
+                            <p class="text-[9px] text-gray-500 uppercase">${fight.blue.camp}</p>
+                        </div>
+                    </div>
+                    <div class="flex h-1">
+                        <div class="w-1/2 bg-red-600"></div>
+                        <div class="w-1/2 bg-blue-600"></div>
                     </div>
                 `;
                 container.appendChild(card);
-                delay += 50;
             });
         }
 
         function filterFights(type) {
-            filterBtns.forEach(btn => {
+            document.querySelectorAll('.filter-btn').forEach(btn => {
                 btn.classList.remove('bg-gray-700', 'ring-2', 'ring-yellow-500');
                 btn.classList.add('bg-black');
             });
-            
-            const activeBtn = Array.from(filterBtns).find(btn => 
-                (type === 'all' && btn.innerText.includes('ALL')) ||
-                (type === 'street' && btn.innerText.includes('STREET')) ||
-                (type === 'freestyle' && btn.innerText.includes('FREESTYLE'))
-            );
-            
-            if (activeBtn) {
-                activeBtn.classList.remove('bg-black');
-                activeBtn.classList.add('bg-gray-700', 'ring-2', 'ring-yellow-500');
-            }
-
+            event.currentTarget.classList.add('bg-gray-700', 'ring-2', 'ring-yellow-500');
             renderFights(type);
         }
 
-        document.addEventListener('DOMContentLoaded', () => {
-            renderFights('all');
-        });
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => renderFights('all'));
     </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
