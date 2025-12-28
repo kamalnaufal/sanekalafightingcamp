@@ -3,175 +3,326 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sanekala Sparring Vol 2 - Official Fight Card</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <title>SANEKALA SPARRING VOL 2 - Match Card</title>
     <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #050505;
-            color: #ffffff;
+        :root {
+            --bg-dark: #0f0f0f;
+            --card-bg: #1a1a1a;
+            --accent-red: #e63946;
+            --accent-blue: #0077b6;
+            --text-gold: #d4af37;
+            --text-white: #f8f9fa;
+            --text-gray: #a0a0a0;
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
-        .font-oswald { font-family: 'Oswald', sans-serif; }
-        
-        .fight-grid {
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        header {
+            padding: 4rem 1rem;
+            text-align: center;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1599058917233-57c0b658c79c?auto=format&fit=crop&q=80&w=1470') center/cover;
+            border-bottom: 2px solid var(--text-gold);
+        }
+
+        header h1 {
+            font-size: 3rem;
+            letter-spacing: 4px;
+            color: var(--text-gold);
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            color: var(--text-gray);
+            font-weight: 300;
+        }
+
+        .filter-container {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            padding: 2rem 1rem;
+            position: sticky;
+            top: 0;
+            background: var(--bg-dark);
+            z-index: 100;
+            border-bottom: 1px solid #333;
+        }
+
+        .filter-btn {
+            padding: 0.8rem 1.5rem;
+            border: 1px solid var(--text-gold);
+            background: transparent;
+            color: var(--text-gold);
+            cursor: pointer;
+            text-transform: uppercase;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .filter-btn.active, .filter-btn:hover {
+            background: var(--text-gold);
+            color: black;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
             display: grid;
-            grid-template-columns: 1fr 50px 1fr;
-            align-items: center;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
         }
 
         .match-card {
-            border: 1px solid #1a1a1a;
-            background: linear-gradient(180deg, #0a0a0a 0%, #050505 100%);
-            transition: all 0.3s ease;
+            background: var(--card-bg);
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #333;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: var(--transition);
+        }
+
+        .match-card.reveal {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .match-card:hover {
-            border-color: #ef4444;
-            background: #0f0f0f;
+            border-color: var(--text-gold);
+            transform: scale(1.02);
         }
 
-        .red-accent { color: #ef4444; }
-        .blue-accent { color: #3b82f6; }
+        .match-header {
+            background: #252525;
+            padding: 1rem;
+            text-align: center;
+            border-bottom: 1px solid #333;
+        }
 
-        .tag {
-            font-size: 0.65rem;
-            letter-spacing: 0.1em;
-            padding: 2px 8px;
-            border-radius: 2px;
+        .partai-num {
+            display: block;
+            font-size: 0.8rem;
+            color: var(--text-gold);
+            font-weight: bold;
+        }
+
+        .rules-tag {
+            font-weight: 800;
+            font-size: 1.1rem;
+            margin: 0.3rem 0;
+        }
+
+        .class-info {
+            font-size: 0.9rem;
+            color: var(--text-gray);
+        }
+
+        .match-content {
+            display: grid;
+            grid-template-columns: 1fr 40px 1fr;
+            align-items: center;
+            padding: 1.5rem 1rem;
+        }
+
+        .fighter {
+            text-align: center;
+        }
+
+        .fighter-name {
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+            height: 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1.2;
+        }
+
+        .fighter-camp {
+            font-size: 0.75rem;
+            color: var(--text-gray);
             text-transform: uppercase;
-            font-weight: 700;
         }
 
-        /* Overlay text effect */
-        .bg-number {
-            position: absolute;
-            font-size: 5rem;
-            font-weight: 900;
-            color: rgba(255, 255, 255, 0.02);
-            z-index: 0;
-            right: 10px;
-            bottom: -10px;
-            font-family: 'Oswald', sans-serif;
+        .vs {
+            text-align: center;
+            font-weight: bold;
+            color: var(--text-gold);
+            font-style: italic;
+        }
+
+        .corner-red { color: var(--accent-red); }
+        .corner-blue { color: var(--accent-blue); }
+
+        footer {
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-gray);
+            border-top: 1px solid #333;
+            margin-top: 4rem;
+        }
+
+        @media (max-width: 600px) {
+            .container { grid-template-columns: 1fr; padding: 1rem; }
+            header h1 { font-size: 2rem; }
+            .filter-container { flex-wrap: wrap; }
         }
     </style>
 </head>
-<body class="pb-24">
+<body>
 
-    <!-- Top Branding -->
-    <nav class="sticky top-0 z-50 bg-black/90 backdrop-blur-md border-b border-zinc-800 px-6 py-4 flex justify-between items-center">
-        <div class="font-oswald text-xl font-bold tracking-tighter italic">
-            SANEKALA <span class="text-red-600">SPARRING</span>
-        </div>
-        <div class="text-[10px] font-bold text-zinc-500 tracking-[0.3em] uppercase">
-            Official Fight Card • Vol 2
-        </div>
-    </nav>
+<header>
+    <h1>SANEKALA SPARRING VOL 2</h1>
+    <p>THE GLORY OF WARRIORS | MAJALAYA - INDONESIA</p>
+</header>
 
-    <!-- Header Section -->
-    <header class="py-20 px-6 text-center bg-[radial-gradient(circle_at_top,_#1a1010_0%,_transparent_70%)]">
-        <h1 class="font-oswald text-6xl md:text-8xl font-bold uppercase italic leading-none mb-4">
-            THE BATTLE<br><span class="text-red-600 underline decoration-white/10">CHART</span>
-        </h1>
-        <p class="max-w-xl mx-auto text-zinc-400 text-sm md:text-base font-medium leading-relaxed">
-            Daftar lengkap pertandingan sparring Sanekala Vol 2. Menampilkan 52 partai petarung terbaik dari berbagai camp.
-        </p>
-    </header>
+<div class="filter-container">
+    <button class="filter-btn active" onclick="filterMatches('ALL')">SEMUA PARTAI</button>
+    <button class="filter-btn" onclick="filterMatches('STREET BOXING')">STREET BOXING</button>
+    <button class="filter-btn" onclick="filterMatches('FREESTYLE STRIKING')">FREESTYLE STRIKING</button>
+</div>
 
-    <main class="max-w-4xl mx-auto px-4">
-        
-        <!-- Fight Card Container -->
-        <div id="fightContainer" class="flex flex-col gap-4">
-            <!-- Matches will be injected here -->
-        </div>
-
+<main class="container" id="match-container">
     </main>
 
-    <footer class="mt-40 py-20 border-t border-zinc-900 text-center">
-        <div class="font-oswald text-4xl opacity-10 mb-6">SANEKALA FIGHTING CAMP</div>
-        <p class="text-zinc-600 text-[10px] tracking-[0.5em] uppercase">&copy; 2025 Bandung Indonesia</p>
-    </footer>
+<footer>
+    <p>&copy; 2024 SANEKALA FIGHTING CAMP. All Rights Reserved.</p>
+</footer>
 
-   <script>
-    // Data Lengkap Partai 1 - 52
-    const DATA = [
-        { no: 1, kg: "45 KG", jk: "PUTRA", rules: "FREESTYLE STRIKING", red: "RAFKA SAPARINSYAH", redC: "SANEKALA FIGHTING CAMP", blue: "HASBIE AGNINO AL MALIK", blueC: "BFA" },
-        { no: 2, kg: "34 KG", jk: "PUTRI", rules: "STREET BOXING", red: "MIKHAYLA", redC: "SANEKALA FIGHTING CAMP", blue: "KEYLA RIZKIA PUTRI", blueC: "WUSHU ALIMIN IBUN" },
-        { no: 3, kg: "60 KG", jk: "PUTRA", rules: "FREESTYLE STRIKING", red: "ALDI FITRA", redC: "COBRA MUAYTHAI", blue: "FIRDAUS YUAN", blueC: "SANEKALA FIGHTING CAMP" },
-        { no: 4, kg: "45 KG", jk: "PUTRI", rules: "STREET BOXING", red: "RENGGANIS SAFARINI", redC: "SAGA TRAINING CAMP", blue: "TALITA JABILILLAH", blueC: "WUSHU ALIMIN IBUN" },
-        { no: 5, kg: "54 KG", jk: "PUTRA", rules: "FREESTYLE STRIKING", red: "ROHENDI", redC: "SANEKALA FIGHTING CAMP", blue: "MUMAHAD WIKI", blueC: "BFA" },
-        { no: 6, kg: "45 KG", jk: "PUTRA", rules: "STREET BOXING", red: "RAFAEL PASHA RAMADHAN", redC: "SOLJER SOUL CREW", blue: "HAPIS AKMAL", blueC: "NON CAMP" },
-        { no: 7, kg: "27 KG", jk: "PUTRA", rules: "FREESTYLE STRIKING", red: "HAIKAL JIBRAN ZAELANY", redC: "NON CAMP", blue: "PAISAL PERMANA", blueC: "MAJALAYA FIGHTER CLUB" },
-        { no: 8, kg: "51 KG", jk: "PUTRA", rules: "STREET BOXING", red: "JEHAN ACENG", redC: "SANEKALA FIGHTING CAMP", blue: "ELSA SAPUTRA", blueC: "BSB" },
-        
-        // --- DATA 9 SAMPAI 40 (Silahkan isi nama sesuai Excel Anda) ---
-        { no: 9, kg: "TBA", jk: "PUTRA", rules: "TBA", red: "NAMA MERAH", redC: "CAMP", blue: "NAMA BIRU", blueC: "CAMP" },
-        { no: 10, kg: "TBA", jk: "PUTRA", rules: "TBA", red: "NAMA MERAH", redC: "CAMP", blue: "NAMA BIRU", blueC: "CAMP" },
-        // ... (Ulangi pola ini sampai nomor 40)
-        { no: 40, kg: "TBA", jk: "PUTRA", rules: "TBA", red: "NAMA MERAH", redC: "CAMP", blue: "NAMA BIRU", blueC: "CAMP" },
-
-        // --- DATA 41 SAMPAI 52 ---
-        { no: 41, kg: "54 KG", jk: "PUTRA", rules: "FREESTYLE STRIKING", red: "MOCHAMAD NOER H", redC: "CATAMOUNT COMBAT CLUB", blue: "FERDIAN WILDIANSYAH", blueC: "SOLJER SOUL CREW" },
-        { no: 42, kg: "75 KG", jk: "PUTRA", rules: "STREET BOXING", red: "M RIDWAN", redC: "SOLJER SOUL CREW", blue: "WILLY ZAKARIA", blueC: "SANEKALA FIGHTING CAMP" },
-        { no: 43, kg: "65 KG", jk: "PUTRA", rules: "FREESTYLE STRIKING", red: "DOYANG", redC: "SANEKALA FIGHTING CAMP", blue: "TAMIKA ROHMAT D", blueC: "MAJALAYA FIGHTER CLUB" },
-        { no: 44, kg: "60 KG", jk: "PUTRA", rules: "STREET BOXING", red: "RIZAL RIDWANULLAH", redC: "SANEKALA FIGHTING CAMP", blue: "CECEP HENDRA", blueC: "SANEKALA FIGHTING CAMP" },
-        { no: 45, kg: "57 KG", jk: "PUTRA", rules: "STREET BOXING", red: "FITRA VIKING RAMADAN", redC: "SANEKALA FIGHTING CAMP", blue: "ARIS RESDIANA", blueC: "BFA" },
-        { no: 46, kg: "60 KG", jk: "PUTRA", rules: "STREET BOXING", red: "WISNU RAMADHAN NIPTAH", redC: "SANEKALA FIGHTING CAMP", blue: "SIDNAY VICKY", blueC: "BFA" },
-        { no: 47, kg: "66 KG", jk: "PUTRA", rules: "STREET BOXING", red: "CHRISTIAN GOKLAS BUTAR2", redC: "SAGA TRAINING CAMP", blue: "MUHAMAD JENY ZAELANI", blueC: "SOLJER SOUL CREW" },
-        { no: 48, kg: "66 KG", jk: "PUTRA", rules: "STREET BOXING", red: "AKBAR GUNAWAN", redC: "SANEKALA FIGHTING CAMP", blue: "RAFLI RAMDANI", blueC: "BSB" },
-        { no: 49, kg: "70 KG", jk: "PUTRA", rules: "HIBURAN / EXHIBITION", red: "GUEST FIGHTER A", redC: "GUEST STAR", blue: "GUEST FIGHTER B", blueC: "GUEST STAR" },
-        { no: 50, kg: "75 KG", jk: "PUTRA", rules: "STREET BOXING", red: "FIGHTER #50 RED", redC: "SANEKALA", blue: "FIGHTER #50 BLUE", blueC: "CAMP X" },
-        { no: 51, kg: "60 KG", jk: "PUTRA", rules: "HIBURAN", red: "LOCAL HERO A", redC: "SANEKALA", blue: "LOCAL HERO B", blueC: "NON CAMP" },
-        { no: 52, kg: "80+ KG", jk: "PUTRA", rules: "HEAVYWEIGHT EXHIBITION", red: "THE GIANT", redC: "LEGEND CAMP", blue: "THE TITAN", blueC: "SANEKALA" }
+<script>
+    // Data hasil ekstraksi dari file Excel yang dilampirkan
+    const matchesData = [
+        {"partai": "1", "kg": "45 KG", "jk": "PUTRA", "rules": "FREESTYLE STRIKING", "red": {"name": "RAFKA SAPARINSYAH", "camp": "SANEKALA FIGHTING CAMP"}, "blue": {"name": "HASBIE AGNINO AL MALIK", "camp": "BFA"}},
+        {"partai": "2", "kg": "34 KG", "jk": "PUTRI", "rules": "STREET BOXING", "red": {"name": "MIKHAYLA", "camp": "SANEKALA FIGHTING CAMP"}, "blue": {"name": "KEYLA RIZKIA PUTRI", "camp": "WUSHU ALIMIN IBUN"}},
+        {"partai": "3", "kg": "60 KG", "jk": "PUTRA", "rules": "FREESTYLE STRIKING", "red": {"name": "ALDI FITRA", "camp": "COBRA MUAYTHAI"}, "blue": {"name": "FIRDAUS YUAN", "camp": "SANEKALA FIGHTING CAMP"}},
+        {"partai": "4", "kg": "45 KG", "jk": "PUTRI", "rules": "STREET BOXING", "red": {"name": "RENGGANIS SAFARINI", "camp": "SAGA TRAINING CAMP"}, "blue": {"name": "TALITA JABILILLAH", "camp": "WUSHU ALIMIN IBUN"}},
+        {"partai": "5", "kg": "54 KG", "jk": "PUTRA", "rules": "FREESTYLE STRIKING", "red": {"name": "ROHENDI", "camp": "SANEKALA FIGHTING CAMP"}, "blue": {"name": "MUMAHAD WIKI", "camp": "BFA"}},
+        {"partai": "6", "kg": "45 KG", "jk": "PUTRA", "rules": "STREET BOXING", "red": {"name": "RAFAEL PASHA RAMADHAN", "camp": "SOLJER SOUL CREW"}, "blue": {"name": "HAPIS AKMAL", "camp": "NON CAMP"}},
+        {"partai": "7", "kg": "27 KG", "jk": "PUTRA", "rules": "FREESTYLE STRIKING", "red": {"name": "HAIKAL JIBRAN ZAELANY", "camp": "NON CAMP"}, "blue": {"name": "PAISAL PERMANA", "camp": "MAJALAYA FIGHTER CLUB"}},
+        {"partai": "8", "kg": "51 KG", "jk": "PUTRA", "rules": "STREET BOXING", "red": {"name": "JEHAN ACENG", "camp": "SANEKALA FIGHTING CAMP"}, "blue": {"name": "ELSA SAPUTRA", "camp": "SANEKALA FIGHTING CAMP"}},
+        {"partai": "9", "kg": "29 KG", "jk": "PUTRA", "rules": "FREESTYLE STRIKING", "red": {"name": "RAMADHAN ASOKA", "camp": "MAJALAYA FIGHTER CLUB"}, "blue": {"name": "SURYA MUHAMAD SEAN", "camp": "WUSHU ALIMIN IBUN"}},
+        {"partai": "10", "kg": "43 KG", "jk": "PUTRA", "rules": "STREET BOXING", "red": {"name": "REZA ARDIANSYAH", "camp": "SOLJER SOUL CREW"}, "blue": {"name": "ALFI AULIA AZHAR", "camp": "BSB"}},
+        {"partai": "11", "kg": "54 KG", "jk": "PUTRA", "rules": "FREESTYLE STRIKING", "red": {"name": "YUSUF MAULANA", "camp": "SAGA TRAINING CAMP"}, "blue": {"name": "GHOZY SATRIA MADANI", "camp": "WARS TEAM"}},
+        {"partai": "12", "kg": "30 KG", "jk": "PUTRA", "rules": "STREET BOXING", "red": {"name": "ARFAN MAULANA", "camp": "WUSHU ALIMIN IBUN"}, "blue": {"name": "ARKAAN DZAKY", "camp": "BFA"}},
+        {"partai": "13", "kg": "45 KG", "jk": "PUTRA", "rules": "FREESTYLE STRIKING", "red": {"name": "REZA ARDIANSYAH", "camp": "SOLJER SOUL CREW"}, "blue": {"name": "SADEWA PUTRA", "camp": "WUSHU ALIMIN IBUN"}},
+        {"partai": "14", "kg": "34 KG", "jk": "PUTRA", "rules": "STREET BOXING", "red": {"name": "BUNYAMIN", "camp": "NON CAMP"}, "blue": {"name": "M RAJA ABIYASA", "camp": "BFA"}},
+        {"partai": "15", "kg": "51 KG", "jk": "PUTRA", "rules": "FREESTYLE STRIKING", "red": {"name": "ARPAN", "camp": "SANEKALA FIGHTING CAMP"}, "blue": {"name": "R. MUHAMAD AZKA", "camp": "BFA"}},
+        {"partai": "16", "kg": "37 KG", "jk": "PUTRA", "rules": "STREET BOXING", "red": {"name": "M ABIDZAR", "camp": "NON CAMP"}, "blue": {"name": "RAZKA ABDILLAH", "camp": "BFA"}},
+        {"partai": "17", "kg": "57 KG", "jk": "PUTRA", "rules": "FREESTYLE STRIKING", "red": {"name": "GILANG RAMADHAN", "camp": "WARS TEAM"}, "blue": {"name": "MUHAMAD RIZKI P", "camp": "SOLJER SOUL CREW"}},
+        {"partai": "18", "kg": "45 KG", "jk": "PUTRA", "rules": "STREET BOXING", "red": {"name": "RIZKI RAMADHAN", "camp": "BSB"}, "blue": {"name": "HILMAN NUGRAHA", "camp": "SOLJER SOUL CREW"}},
+        {"partai": "19", "kg": "57 KG", "jk": "PUTRA", "rules": "FREESTYLE STRIKING", "red": {"name": "RIFQI GHOZALI", "camp": "SAGA TRAINING CAMP"}, "blue": {"name": "MUHAMAD IKHSAN", "camp": "SANEKALA FIGHTING CAMP"}},
+        {"partai": "20", "kg": "48 KG", "jk": "PUTRA", "rules": "STREET BOXING", "red": {"name": "TEGUH FIRMANSYAH", "camp": "CATAMOUNT COMBAT CLUB"}, "blue": {"name": "M HAFIZH RAMADHAN", "camp": "BSB"}},
+        {"partai": "21", "kg": "51 KG", "jk": "PUTRA", "rules": "FREESTYLE STRIKING", "red": {"name": "RIKI", "camp": "SANEKALA FIGHTING CAMP"}, "blue": {"name": "DIMAS G", "camp": "CATAMOUNT COMBAT CLUB"}},
+        {"partai": "22", "kg": "54 KG", "jk": "PUTRA", "rules": "STREET BOXING", "red": {"name": "RAKA", "camp": "NON CAMP"}, "blue": {"name": "ADAM F", "camp": "BFA"}},
+        {"partai": "23", "kg": "57 KG", "jk": "PUTRA", "rules": "FREESTYLE STRIKING", "red": {"name": "GERRAD", "camp": "WARS TEAM"}, "blue": {"name": "ARIS RESDIANA", "camp": "BFA"}},
+        {"partai": "24", "kg": "60 KG", "jk": "PUTRA", "rules": "STREET BOXING", "red": {"name": "M IKBAL", "camp": "NON CAMP"}, "blue": {"name": "REVAN MAULANA", "camp": "BFA"}},
+        {"partai": "25", "kg": "60 KG", "jk": "PUTRA", "rules": "FREESTYLE STRIKING", "red": {"name": "M KEVIN", "camp": "CATAMOUNT COMBAT CLUB"}, "blue": {"name": "DEDEN SOPYAN", "camp": "BFA"}},
+        {"partai": "26", "kg": "65 KG", "jk": "PUTRA", "rules": "STREET BOXING", "red": {"name": "IRFAN RIYADI", "camp": "NON CAMP"}, "blue": {"name": "CECEP HENDRA", "camp": "SANEKALA FIGHTING CAMP"}},
+        {"partai": "27", "kg": "65 KG", "jk": "PUTRA", "rules": "FREESTYLE STRIKING", "red": {"name": "RAFLY", "camp": "MAJALAYA FIGHTER CLUB"}, "blue": {"name": "RIZKI RAMADHAN", "camp": "BFA"}},
+        {"partai": "28", "kg": "30 KG", "jk": "PUTRA", "rules": "STREET BOXING", "red": {"name": "M RAFKA AZKA", "camp": "BSB"}, "blue": {"name": "AHSAN TAUFIQURAHMAN", "camp": "WUSHU ALIMIN IBUN"}},
+        {"partai": "29", "kg": "51 KG", "jk": "PUTRA", "rules": "FREESTYLE STRIKING", "red": {"name": "NAUVAL AFANDI", "camp": "WARS TEAM"}, "blue": {"name": "REHAN RAMADHAN", "camp": "BFA"}},
+        {"partai": "30", "kg": "48 KG", "jk": "PUTRA", "rules": "STREET BOXING", "red": {"name": "ILHAM CAHYADI", "camp": "SOLJER SOUL CREW"}, "blue": {"name": "M RIZQY", "camp": "BSB"}},
+        {"partai": "31", "kg": "54 KG", "jk": "PUTRA", "rules": "FREESTYLE STRIKING", "red": {"name": "A REZA NURHAKIM", "camp": "CATAMOUNT COMBAT CLUB"}, "blue": {"name": "SANDI HUDA PRATAMA", "camp": "BFA"}},
+        {"partai": "32", "kg": "48 KG", "jk": "PUTRA", "rules": "STREET BOXING", "red": {"name": "M ARYA RAMADHAN", "camp": "BSB"}, "blue": {"name": "A ARSAD", "camp": "NON CAMP"}},
+        {"partai": "33", "kg": "48 KG", "jk": "PUTRA", "rules": "FREESTYLE STRIKING", "red": {"name": "M RIAN AFANDI", "camp": "SAGA TRAINING CAMP"}, "blue": {"name": "RAPI S", "camp": "MAJALAYA FIGHTER CLUB"}},
+        {"partai": "34", "kg": "51 KG", "jk": "PUTRA", "rules": "STREET BOXING", "red": {"name": "JEHAN ACENG", "camp": "SANEKALA FIGHTING CAMP"}, "blue": {"name": "R MUHAMAD AZKA", "camp": "BFA"}},
+        {"partai": "35", "kg": "60 KG", "jk": "PUTRA", "rules": "FREESTYLE STRIKING", "red": {"name": "ALDI FITRA", "camp": "COBRA MUAYTHAI"}, "blue": {"name": "M FAZRIL ILHAM", "camp": "BSB"}},
+        {"partai": "36", "kg": "54 KG", "jk": "PUTRA", "rules": "STREET BOXING", "red": {"name": "ROHENDI", "camp": "SANEKALA FIGHTING CAMP"}, "blue": {"name": "GHOZY SATRIA MADANI", "camp": "WARS TEAM"}},
+        {"partai": "37", "kg": "65 KG", "jk": "PUTRA", "rules": "FREESTYLE STRIKING", "red": {"name": "TAMIKA ROHMAT D", "camp": "MAJALAYA FIGHTER CLUB"}, "blue": {"name": "MUHAMAD RIZKI P", "camp": "SOLJER SOUL CREW"}},
+        {"partai": "38", "kg": "54 KG", "jk": "PUTRA", "rules": "STREET BOXING", "red": {"name": "YUSUF MAULANA", "camp": "SAGA TRAINING CAMP"}, "blue": {"name": "GHOZY SATRIA MADANI", "camp": "WARS TEAM"}},
+        {"partai": "39", "kg": "54 KG", "jk": "PUTRA", "rules": "FREESTYLE STRIKING", "red": {"name": "M MAHESA", "camp": "MUAYTHAI MAJALAYA"}, "blue": {"name": "SANDI HUDA PRATAMA", "camp": "BFA"}},
+        {"partai": "40", "kg": "60 KG", "jk": "PUTRA", "rules": "STREET BOXING", "red": {"name": "IRZI KHAIRUL FADLAN", "camp": "SOLJER SOUL CREW"}, "blue": {"name": "M FAZRIL ILHAM", "camp": "BSB"}},
+        {"partai": "41", "kg": "54 KG", "jk": "PUTRA", "rules": "FREESTYLE STRIKING", "red": {"name": "MOCHAMAD NOER H", "camp": "CATAMOUNT COMBAT CLUB"}, "blue": {"name": "FERDIAN WILDIANSYAH", "camp": "SOLJER SOUL CREW"}},
+        {"partai": "42", "kg": "75 KG", "jk": "PUTRA", "rules": "STREET BOXING", "red": {"name": "M RIDWAN", "camp": "SOLJER SOUL CREW"}, "blue": {"name": "WILLY ZAKARIA", "camp": "SANEKALA FIGHTING CAMP"}},
+        {"partai": "43", "kg": "65 KG", "jk": "PUTRA", "rules": "FREESTYLE STRIKING", "red": {"name": "DOYANG", "camp": "SANEKALA FIGHTING CAMP"}, "blue": {"name": "TAMIKA ROHMAT D", "camp": "MAJALAYA FIGHTER CLUB"}},
+        {"partai": "44", "kg": "60 KG", "jk": "PUTRA", "rules": "STREET BOXING", "red": {"name": "RIZAL RIDWANULLAH", "camp": "SANEKALA FIGHTING CAMP"}, "blue": {"name": "CECEP HENDRA", "camp": "SANEKALA FIGHTING CAMP"}},
+        {"partai": "45", "kg": "57 KG", "jk": "PUTRA", "rules": "STREET BOXING", "red": {"name": "FITRA VIKING RAMADAN", "camp": "SANEKALA FIGHTING CAMP"}, "blue": {"name": "ARIS RESDIANA", "camp": "BFA"}},
+        {"partai": "46", "kg": "60 KG", "jk": "PUTRA", "rules": "STREET BOXING", "red": {"name": "WISNU", "camp": "MAJALAYA FIGHTER CLUB"}, "blue": {"name": "REVAN MAULANA", "camp": "BFA"}},
+        {"partai": "47", "kg": "54 KG", "jk": "PUTRA", "rules": "STREET BOXING", "red": {"name": "ROHENDI", "camp": "SANEKALA FIGHTING CAMP"}, "blue": {"name": "MUMAHAD WIKI", "camp": "BFA"}},
+        {"partai": "48", "kg": "60 KG", "jk": "PUTRA", "rules": "STREET BOXING", "red": {"name": "ALDI FITRA", "camp": "COBRA MUAYTHAI"}, "blue": {"name": "FIRDAUS YUAN", "camp": "SANEKALA FIGHTING CAMP"}},
+        {"partai": "49", "kg": "54 KG", "jk": "PUTRA", "rules": "STREET BOXING", "red": {"name": "YUSUF MAULANA", "camp": "SAGA TRAINING CAMP"}, "blue": {"name": "FERDIAN WILDIANSYAH", "camp": "SOLJER SOUL CREW"}},
+        {"partai": "50", "kg": "65 KG", "jk": "PUTRA", "rules": "STREET BOXING", "red": {"name": "DOYANG", "camp": "SANEKALA FIGHTING CAMP"}, "blue": {"name": "TAMIKA ROHMAT D", "camp": "MAJALAYA FIGHTER CLUB"}},
+        {"partai": "51", "kg": "45 KG", "jk": "PUTRA", "rules": "STREET BOXING", "red": {"name": "RAFAEL PASHA RAMADHAN", "camp": "SOLJER SOUL CREW"}, "blue": {"name": "HAPIS AKMAL", "camp": "NON CAMP"}},
+        {"partai": "52", "kg": "51 KG", "jk": "PUTRA", "rules": "STREET BOXING", "red": {"name": "ARPAN", "camp": "SANEKALA FIGHTING CAMP"}, "blue": {"name": "R MUHAMAD AZKA", "camp": "BFA"}}
     ];
 
-    const container = document.getElementById('fightContainer');
+    const container = document.getElementById('match-container');
 
-    function render() {
-        // Membersihkan container sebelum render (opsional)
-        container.innerHTML = ""; 
-        
-        DATA.forEach(match => {
+    function renderMatches(filter = 'ALL') {
+        container.innerHTML = '';
+        const filtered = filter === 'ALL' ? matchesData : matchesData.filter(m => m.rules === filter);
+
+        filtered.forEach(match => {
             const card = document.createElement('div');
-            card.className = "match-card rounded-lg p-6 relative overflow-hidden";
+            card.className = 'match-card';
             card.innerHTML = `
-                <div class="bg-number">${match.no}</div>
-                
-                <div class="relative z-10">
-                    <div class="flex flex-wrap gap-2 mb-6">
-                        <span class="tag bg-red-600/10 text-red-500">Partai #${match.no}</span>
-                        <span class="tag bg-zinc-800 text-zinc-400">${match.rules}</span>
-                        <span class="tag bg-zinc-800 text-zinc-400 font-oswald text-xs">${match.kg} • ${match.jk}</span>
+                <div class="match-header">
+                    <span class="partai-num">PARTAI #${match.partai}</span>
+                    <div class="rules-tag">${match.rules}</div>
+                    <div class="class-info">${match.kg} | ${match.jk}</div>
+                </div>
+                <div class="match-content">
+                    <div class="fighter">
+                        <div class="fighter-name corner-red">${match.red.name}</div>
+                        <div class="fighter-camp">${match.red.camp}</div>
                     </div>
-
-                    <div class="fight-grid gap-4">
-                        <div class="text-right">
-                            <div class="text-zinc-500 text-[9px] font-bold uppercase tracking-widest mb-1">Red Corner</div>
-                            <h3 class="font-oswald text-lg md:text-2xl font-bold uppercase italic leading-none truncate">${match.red}</h3>
-                            <p class="text-red-500/80 text-[10px] font-bold uppercase mt-1 truncate">${match.redC}</p>
-                        </div>
-
-                        <div class="flex justify-center">
-                            <div class="w-10 h-10 border border-zinc-800 flex items-center justify-center rounded-full bg-black">
-                                <span class="text-[10px] font-black italic text-zinc-600">VS</span>
-                            </div>
-                        </div>
-
-                        <div class="text-left">
-                            <div class="text-zinc-500 text-[9px] font-bold uppercase tracking-widest mb-1 text-left">Blue Corner</div>
-                            <h3 class="font-oswald text-lg md:text-2xl font-bold uppercase italic leading-none truncate">${match.blue}</h3>
-                            <p class="text-blue-500/80 text-[10px] font-bold uppercase mt-1 truncate">${match.blueC}</p>
-                        </div>
+                    <div class="vs">VS</div>
+                    <div class="fighter">
+                        <div class="fighter-name corner-blue">${match.blue.name}</div>
+                        <div class="fighter-camp">${match.blue.camp}</div>
                     </div>
                 </div>
             `;
             container.appendChild(card);
         });
+
+        // Trigger animation
+        observeCards();
     }
 
-    render();
+    function filterMatches(category) {
+        // Update button active state
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.classList.toggle('active', btn.innerText === (category === 'ALL' ? 'SEMUA PARTAI' : category));
+        });
+        
+        renderMatches(category);
+    }
+
+    function observeCards() {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('reveal');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.match-card').forEach(card => {
+            observer.observe(card);
+        });
+    }
+
+    // Initial Render
+    renderMatches();
 </script>
+
 </body>
 </html>
-
