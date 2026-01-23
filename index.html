@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SANEKALA FIGHTING CAMP | Majalaya</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Teko:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* =========================================
+           1. CORE VARIABLES & RESET
+           ========================================= */
+        :root {
+            --primary-bg: #FFFFFF;
+            --secondary-bg: #F8F9FA;
+            --text-main: #111111;
+            --text-light: #555555;
+            --accent: #888888;
+            --glass: rgba(255, 255, 255, 0.85);
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            
+            --font-head: 'Teko', sans-serif;
+            --font-body: 'Poppins', sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--font-body);
+            background-color: var(--primary-bg);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-head);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        a { text-decoration: none; color: inherit; transition: all 0.3s ease; }
+        ul { list-style: none; }
+        img { max-width: 100%; display: block; }
+
+        /* Utility Classes */
+        .container { width: 90%; max-width: 1200px; margin: 0 auto; padding: 0 15px; }
+        .section-padding { padding: 100px 0; }
+        .text-center { text-align: center; }
+        .section-title { font-size: 3.5rem; margin-bottom: 1rem; line-height: 1; }
+        .section-subtitle {
+            font-size: 1.2rem; color: var(--accent); letter-spacing: 2px;
+            text-transform: uppercase; margin-bottom: 3rem; display: block;
+        }
+
+        /* Animations */
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* Buttons */
+        .btn {
+            display: inline-block; padding: 12px 35px;
+            font-family: var(--font-head); font-size: 1.4rem;
+            text-transform: uppercase; letter-spacing: 1px;
+            cursor: pointer; transition: all 0.4s ease;
+            border: 2px solid transparent;
+        }
+        .btn-primary { background-color: var(--text-main); color: #fff; }
+        .btn-primary:hover { background-color: var(--accent); transform: translateY(-3px); }
+        .btn-outline { border-color: var(--text-main); color: var(--text-main); background: transparent; }
+        .btn-outline:hover { background-color: var(--text-main); color: #fff; }
+
+        /* Navbar */
+        .navbar {
+            position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
+            padding: 20px 0; transition: all 0.4s ease;
+        }
+        .navbar.scrolled {
+            background: var(--glass); backdrop-filter: blur(12px);
+            padding: 10px 0; box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+        }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; color: rgb(107, 107, 107); }
+        .logo { font-family: var(--font-head); font-size: 2rem; font-weight: 700; letter-spacing: 2px; }
+        .nav-links { display: flex; gap: 40px; }
+        .nav-links a { font-size: 0.9rem; font-weight: 500; text-transform: uppercase; }
+        .menu-toggle { display: none; font-size: 1.5rem; cursor: pointer; }
+
+        /* Hero */
+        .hero {
+            height: 100vh; display: flex; align-items: center; justify-content: center;
+            text-align: center; color: white;
+            background: url('hero.jpeg') no-repeat center center/cover;
+            position: relative;
+        }
+        .hero::before { content: ''; position: absolute; inset: 0; background: rgba(0, 0, 0, 0.4); }
+        .hero-content { position: relative; z-index: 2; max-width: 800px; padding: 20px; }
+        .hero h1 { font-size: 8vw; line-height: 0.9; margin-bottom: 20px; letter-spacing: -2px; }
+
+        /* Sections Generic */
+        .usp-section { margin-top: -80px; position: relative; z-index: 10; }
+        .usp-grid, .coaches-grid, .merch-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;
+        }
+        .usp-card {
+            background: white; padding: 40px 30px; box-shadow: var(--shadow);
+            text-align: center; transition: transform 0.4s ease;
+        }
+        .usp-card:hover { transform: translateY(-10px); }
+        .usp-icon { font-size: 2.5rem; margin-bottom: 20px; color: var(--text-main); }
+
+        /* About */
+        .about-section { background-color: var(--secondary-bg); }
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+        .about-images { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; }
+        .about-img-wrap { height: 300px; overflow: hidden; }
+        .about-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s; }
+        .about-img-wrap:hover img { transform: scale(1.1); }
+        .about-img-wrap:nth-child(2) { margin-top: 40px; }
+        .about-img-wrap:nth-child(3) { margin-top: -40px; }
+
+        /* Coaches */
+        .coach-card { position: relative; overflow: hidden; }
+        .coach-img { width: 100%; height: 450px; object-fit: cover; filter: grayscale(100%); transition: 0.5s; }
+        .coach-card:hover .coach-img { filter: grayscale(0%); }
+        .coach-info {
+            position: absolute; bottom: 0; width: 100%; padding: 30px;
+            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+            color: white; transform: translateY(20px); opacity: 0; transition: 0.4s;
+        }
+        .coach-card:hover .coach-info { transform: translateY(0); opacity: 1; }
+
+        /* Services & Pricing */
+        .services-section { background-color: var(--secondary-bg); }
+        .tabs-header { display: flex; justify-content: center; margin-bottom: 50px; gap: 20px; }
+        .tab-btn {
+            background: none; border: none; font-family: var(--font-head); font-size: 1.5rem;
+            cursor: pointer; padding: 10px 30px; border-bottom: 2px solid transparent; color: var(--accent);
+        }
+        .tab-btn.active { color: var(--text-main); border-bottom: 2px solid var(--text-main); }
+        .tab-content { display: none; animation: fadeIn 0.5s ease; }
+        .tab-content.active { display: grid; }
+        
+        .programs-grid { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .program-card { background: white; border: 1px solid #eee; }
+        .program-img { height: 250px; width: 100%; object-fit: cover; }
+        .program-body { padding: 30px; }
+
+        /* REVISED PRICING STYLE */
+        .pricing-grid { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .pricing-category-card {
+            background: white; border: 1px solid #eee; padding: 0;
+            transition: transform 0.3s; position: relative; overflow: hidden;
+        }
+        .pricing-category-card:hover { transform: translateY(-5px); box-shadow: var(--shadow); }
+        
+        .cat-header {
+            background: var(--text-main); color: white; padding: 25px; text-align: center;
+        }
+        .cat-header h3 { font-size: 2rem; margin: 0; }
+        .cat-header span { font-size: 0.9rem; letter-spacing: 2px; text-transform: uppercase; opacity: 0.8; }
+        
+        .cat-options { padding: 30px; }
+        .price-option {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 15px 0; border-bottom: 1px solid #eee;
+        }
+        .price-option:last-child { border-bottom: none; }
+        .opt-name { font-weight: 600; color: var(--text-light); }
+        .opt-price { font-family: var(--font-head); font-size: 1.5rem; color: var(--text-main); }
+
+        /* Schedule */
+        .schedule-wrapper { overflow-x: auto; margin-top: 40px; }
+        .schedule-table { width: 100%; border-collapse: collapse; min-width: 1000px; }
+        .schedule-table th {
+            background-color: var(--text-main); color: white; padding: 15px;
+            font-family: var(--font-head); font-size: 1.2rem;
+        }
+        .schedule-table td {
+            border: 1px solid #eee; padding: 15px; text-align: center;
+            vertical-align: middle; transition: background 0.3s;
+        }
+        .schedule-table td:hover { background-color: #fff; }
+        .schedule-table tr:nth-child(even) { background-color: #f9f9f9; }
+        .class-box { font-weight: 600; display: block; font-size: 1rem; }
+        .class-sub { font-size: 0.8rem; color: var(--accent); }
+
+        /* Gallery */
+        .gallery-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-auto-rows: 250px; gap: 15px;
+        }
+        .gallery-item.large { grid-column: span 2; grid-row: span 2; }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s; }
+        .gallery-item:hover img { transform: scale(1.1); }
+
+        /* Footer & Contact Preview */
+        .contact-preview { text-align: center; background: var(--secondary-bg); }
+        .contact-links { display: flex; justify-content: center; gap: 30px; margin: 30px 0; flex-wrap: wrap; }
+        .contact-item i { margin-right: 10px; }
+
+        footer { background: #000; color: #fff; padding: 60px 0 20px; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; }
+        .footer-logo { font-family: var(--font-head); font-size: 2.5rem; margin-bottom: 20px; display: block; }
+        .footer-links a { display: block; margin-bottom: 10px; color: #aaa; }
+        .footer-links a:hover { color: #fff; }
+        .copyright { text-align: center; color: #555; padding-top: 20px; border-top: 1px solid #222; }
+        .map-container iframe { width: 100%; height: 200px; filter: grayscale(100%) invert(90%); }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 3.5rem; }
+            .nav-links { display: none; }
+            .menu-toggle { display: block; }
+            .about-grid { grid-template-columns: 1fr; }
+            .gallery-item.large { grid-column: span 1; grid-row: span 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-container">
+            <a href="#" class="logo">SANEKALA</a>
+            <div class="nav-links">
+                <a href="#about">Philosophy</a>
+                <a href="#services">Programs</a>
+                <a href="#coaches">Coaches</a>
+                <a href="#schedule">Schedule</a>
+                <a href="register.html" class="btn btn-primary" style="padding: 5px 20px; font-size: 1.1rem;">Join Now</a>
+            </div>
+            <div class="menu-toggle"><i class="fas fa-bars"></i></div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <header class="hero">
+        <div class="hero-content reveal">
+            <h1>FORGE YOUR SPIRIT</h1>
+            <p>The Premier Boxing & Muay Thai Camp in Majalaya</p>
+            <div class="hero-btns">
+                <a href="register.html" class="btn btn-primary">Join Now</a>
+                <a href="#schedule" class="btn btn-outline" style="color:white; border-color:white;">View Schedule</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- USP SECTION -->
+    <section class="usp-section container reveal">
+        <div class="usp-grid">
+            <div class="usp-card">
+                <i class="fas fa-certificate usp-icon"></i>
+                <h3>Certified Coaches</h3>
+                <p>Dapatkan ilmu langsung dari praktisi yang mendedikasikan karirnya untuk olahraga Combat Sport.</p>
+            </div>
+            <div class="usp-card">
+                <i class="fas fa-dumbbell usp-icon"></i>
+                <h3>Pro Facilities</h3>
+                <p>Fasilitas terbaik dengan ring, heavy bags, dan peralatan kekuatan di Majalaya.</p>
+            </div>
+            <div class="usp-card">
+                <i class="fas fa-brain usp-icon"></i>
+                <h3>Champion Mindset</h3>
+                <p>Kami tidak hanya melatih tubuh; kami membentuk pikiran yang disiplin dan tangguh.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="section-padding container reveal">
+        <div class="about-grid">
+            <div class="about-text">
+                <span class="section-subtitle">SIAPA KAMI</span>
+                <h2 class="section-title">BERLANDASKAN KEDISIPLINAN</h2>
+                <p>Sanekala Fighting Camp didirikan untuk menghadirkan pelatihan olahraga tarung (combat sports) yang otentik di jantung Majalaya. Kami percaya bahwa seni bela diri lebih dari sekadar pertarungan; ini adalah jalan menuju penemuan jati diri.</p>
+                <a href="register.html" class="btn btn-outline">Start Your Journey</a>
+            </div>
+            <div class="about-images">
+                <div class="about-img-wrap"><img src="a1.jpeg" alt="Training"></div>
+                <div class="about-img-wrap"><img src="WhatsApp Image 2026-01-23 at 14.55.52.jpeg" alt="Gym Equipment"></div>
+                <div class="about-img-wrap"><img src="WhatsApp Image 2026-01-23 at 14.55.53.jpeg" alt="Boxing Gloves"></div>
+                <div class="about-img-wrap"><img src="WhatsApp Image 2026-01-23 at 14.55.54 (1).jpeg" alt="Sparring"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COACHES -->
+    <section id="coaches" class="section-padding container reveal">
+        <div class="text-center">
+            <span class="section-subtitle">The Team</span>
+            <h2 class="section-title">MEET THE MASTERS</h2>
+        </div>
+        <div class="coaches-grid" style="margin-top: 50px;">
+            <div class="coach-card">
+                <img src="bayu.png" alt="Coach 1" class="coach-img">
+                <div class="coach-info">
+                    <h3>Coach Bayu</h3> <span>Head Coach</span>
+                </div>
+            </div>
+            <div class="coach-card">
+                <img src="zenal.png" alt="Coach 2" class="coach-img">
+                <div class="coach-info">
+                    <h3>Coach Zaenal</h3> <span>Coach</span>
+                </div>
+            </div>
+            <div class="coach-card">
+                <img src="daus.png" alt="Coach 3" class="coach-img">
+                <div class="coach-info">
+                    <h3>Firdaus Yuan</h3> <span>Kru Coach</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES & PRICING -->
+    <section id="services" class="services-section section-padding reveal">
+        <div class="container">
+            <div class="text-center">
+                <span class="section-subtitle">Train With Us</span>
+                <h2 class="section-title">PROGRAMS & MEMBERSHIP</h2>
+            </div>
+            
+            <div class="tabs-header">
+                <button class="tab-btn active" onclick="openTab('programs')">Programs</button>
+                <button class="tab-btn" onclick="openTab('pricing')">Membership</button>
+            </div>
+
+            <!-- Tab 1: Programs -->
+            <div id="programs" class="tab-content active programs-grid">
+                <div class="program-card">
+                    <img src="https://images.unsplash.com/photo-1509563268479-0f004cf3f58b?auto=format&fit=crop&q=80&w=800" class="program-img" alt="Boxing">
+                    <div class="program-body">
+                        <h3>Boxing</h3>
+                        <p>High-intensity cardio mixed with real boxing technique.</p>
+                    </div>
+                </div>
+                <div class="program-card">
+                    <img src="https://images.unsplash.com/photo-1555597673-b21d5c935865?auto=format&fit=crop&q=80&w=800" class="program-img" alt="Muay Thai">
+                    <div class="program-body">
+                        <h3>Muay Thai</h3>
+                        <p>The art of 8 limbs. Kicks, knees, elbows, and punches.</p>
+                    </div>
+                </div>
+                <div class="program-card">
+                    <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&q=80&w=800" class="program-img" alt="Private">
+                    <div class="program-body">
+                        <h3>Private 1-on-1</h3>
+                        <p>Accelerate your learning with dedicated attention.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab 2: Pricing (REVISED) -->
+            <div id="pricing" class="tab-content pricing-grid">
+                
+                <!-- Category 1: KIDS -->
+                <div class="pricing-category-card">
+                    <div class="cat-header">
+                        <h3>KIDS</h3>
+                        <span>Under 10 Years</span>
+                    </div>
+                    <div class="cat-options">
+                        <div class="price-option">
+                            <span class="opt-name">1 Visit</span>
+                            <span class="opt-price">13k</span>
+                        </div>
+                        <div class="price-option">
+                            <span class="opt-name">4 Visits</span>
+                            <span class="opt-price">50k</span>
+                        </div>
+                        <div class="price-option">
+                            <span class="opt-name">8 Visits</span>
+                            <span class="opt-price">100k</span>
+                        </div>
+                        <div class="price-option">
+                            <span class="opt-name">Unlimited</span>
+                            <span class="opt-price">250k</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Category 2: STUDENT -->
+                <div class="pricing-category-card" style="border: 2px solid var(--text-main); transform: scale(1.05);">
+                    <div class="cat-header">
+                        <h3>STUDENT</h3>
+                        <span>11-18 Years</span>
+                    </div>
+                    <div class="cat-options">
+                        <div class="price-option">
+                            <span class="opt-name">1 Visit</span>
+                            <span class="opt-price">18k</span>
+                        </div>
+                        <div class="price-option">
+                            <span class="opt-name">4 Visits</span>
+                            <span class="opt-price">70k</span>
+                        </div>
+                        <div class="price-option">
+                            <span class="opt-name">8 Visits</span>
+                            <span class="opt-price">142k</span>
+                        </div>
+                        <div class="price-option">
+                            <span class="opt-name">Unlimited</span>
+                            <span class="opt-price">300k</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Category 3: REGULAR -->
+                <div class="pricing-category-card">
+                    <div class="cat-header">
+                        <h3>REGULAR</h3>
+                        <span>19++ Years</span>
+                    </div>
+                    <div class="cat-options">
+                        <div class="price-option">
+                            <span class="opt-name">1 Visit</span>
+                            <span class="opt-price">27k</span>
+                        </div>
+                        <div class="price-option">
+                            <span class="opt-name">4 Visits</span>
+                            <span class="opt-price">105k</span>
+                        </div>
+                        <div class="price-option">
+                            <span class="opt-name">8 Visits</span>
+                            <span class="opt-price">215k</span>
+                        </div>
+                        <div class="price-option">
+                            <span class="opt-name">Unlimited</span>
+                            <span class="opt-price">400k</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="text-center" style="margin-top: 40px; display: none;" id="pricing-cta">
+                <a href="register.html" class="btn btn-primary">Choose Plan</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SCHEDULE (REVISED) -->
+    <section id="schedule" class="section-padding container reveal">
+        <div class="text-center">
+            <h2 class="section-title">WEEKLY SCHEDULE</h2>
+        </div>
+        <div class="schedule-wrapper">
+            <table class="schedule-table">
+                <thead>
+                    <tr>
+                        <th>TIME</th>
+                        <th>SEN</th>
+                        <th>SEL</th>
+                        <th>RAB</th>
+                        <th>KAM</th>
+                        <th>JUM</th>
+                        <th>SAB</th>
+                        <th>MIN</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>14:00</strong></td>
+                        <td><span class="class-box">FIRDAUS YUAN</span><span class="class-sub">Interval</span></td>
+                        <td><span class="class-box">FIRDAUS YUAN</span><span class="class-sub">Teknik</span></td>
+                        <td><span class="class-box">FIRDAUS YUAN</span><span class="class-sub">Sparring Teknik</span></td>
+                        <td><span class="class-box">FIRDAUS YUAN</span><span class="class-sub">Weight Training</span></td>
+                        <td><span class="class-box">FIRDAUS YUAN</span><span class="class-sub">Interval</span></td>
+                        <td><span class="class-box">FIRDAUS YUAN</span ><span class="class-sub">Teknik</span></td>
+                        <td><span class="class-box">FIRDAUS YUAN</span><span class="class-sub">Fisik</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>16:00</strong></td>
+                        <td><span class="class-box">COACH BAYU</span><span class="class-sub">Interval</span></td>
+                        <td><span class="class-box">COACH BAYU</span><span class="class-sub">Teknik</span></td>
+                        <td><span class="class-box">COACH BAYU</span><span class="class-sub">Sparring Teknik</span></td>
+                        <td><span class="class-box">COACH BAYU</span><span class="class-sub">Weight Training</span></td>
+                        <td><span class="class-box">COACH BAYU</span><span class="class-sub">Interval</span></td>
+                        <td><span class="class-box">COACH BAYU</span ><span class="class-sub">Teknik</span></td>
+                        <td><span class="class-box">COACH BAYU</span><span class="class-sub">Fisik</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>19:00</strong></td>
+                        <td><span class="class-box">COACH ZAENAL</span><span class="class-sub">Interval</span></td>
+                        <td><span class="class-box">FIRDAUS YUAN</span><span class="class-sub">Teknik</span></td>
+                        <td><span class="class-box">COACH ZAENAL</span><span class="class-sub">Sparring Teknik</span></td>
+                        <td><span class="class-box">COACH ZAENAL</span><span class="class-sub">Weight Training</span></td>
+                        <td><span class="class-box">COACH ZAENAL</span><span class="class-sub">Interval</span></td>
+                        <td><span class="class-box">FIRDAUS YUAN</span ><span class="class-sub">Teknik</span></td>
+                        <td><span class="class-box">FIRDAUS YUAN</span><span class="class-sub">Fisik</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section class="container section-padding reveal">
+        <h2 class="section-title text-center" style="margin-bottom: 40px;">THE FACILITY</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item large"><img src="hero.jpeg" alt="Ring"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&q=80&w=800" alt="Bags"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&q=80&w=800" alt="Weights"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1587938745570-681161dcfe17?auto=format&fit=crop&q=80&w=800" alt="Training"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1584735935682-2f2b69dff9d2?auto=format&fit=crop&q=80&w=800" alt="Gloves"></div>
+        </div>
+    </section>
+
+    <!-- CONTACT PREVIEW (Form removed) -->
+    <section id="contact" class="section-padding container reveal contact-preview">
+        <span class="section-subtitle">Ready to fight?</span>
+        <h2 class="section-title">JOIN THE CAMP</h2>
+        <p style="margin-bottom: 30px; font-size: 1.2rem;">Visit us in Majalaya or register online to start your trial.</p>
+        
+        <div class="contact-links">
+            <div class="contact-item"><i class="fab fa-whatsapp"></i> +62 851 6716 1320</div>
+            <div class="contact-item"><i class="fas fa-map-marker-alt"></i> Jl. Belakang Kaum No.5 Majalaya, Bandung</div>
+        </div>
+
+        <a href="register.html" class="btn btn-primary" style="font-size: 1.5rem; padding: 15px 50px;">REGISTER NOW</a>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <a href="#" class="footer-logo">SANEKALA</a>
+                    <p style="color: #888;">Forging spirits in Majalaya since 2024.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <a href="#about">Philosophy</a>
+                    <a href="#services">Programs</a>
+                    <a href="#schedule">Schedule</a>
+                    <a href="register.html">Register</a>
+                </div>
+                <div class="footer-links">
+                    <h4>Follow Us</h4>
+                    <a href="#"><i class="fab fa-instagram"></i> Instagram</a>
+                    <a href="#"><i class="fab fa-tiktok"></i> Tiktok</a>
+                </div>
+                <div class="map-container">
+                    <iframe src="https://maps.google.com/maps?width=600&height=400&hl=en&q=sanekala%20fighting%20camp&t=&z=17&ie=UTF8&iwloc=B&output=embed" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2026 Sanekala Fighting Camp. All rights reserved | code by opay.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar Scroll
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            navbar.classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        // Scroll Reveal
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) entry.target.classList.add('active');
+            });
+        }, { threshold: 0.15 });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Tabs
+        function openTab(tabName) {
+            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            document.getElementById(tabName).classList.add('active');
+            event.currentTarget.classList.add('active');
+            
+            // Show Register button when pricing tab is active
+            const cta = document.getElementById('pricing-cta');
+            if(tabName === 'pricing' && cta) cta.style.display = 'block';
+            else if(cta) cta.style.display = 'none';
+        }
+
+        // Mobile Menu
+        document.querySelector('.menu-toggle').addEventListener('click', () => {
+            const nav = document.querySelector('.nav-links');
+            if(nav.style.display === 'flex') {
+                nav.style.display = 'none';
+            } else {
+                nav.style.display = 'flex';
+                nav.style.flexDirection = 'column';
+                nav.style.position = 'absolute';
+                nav.style.top = '70px';
+                nav.style.left = '0';
+                nav.style.width = '100%';
+                nav.style.background = 'white';
+                nav.style.padding = '20px';
+                nav.style.boxShadow = '0 10px 20px rgba(0,0,0,0.1)';
+            }
+        });
+    </script>
+</body>
+</html>

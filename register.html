@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Sanekala Fighting Camp</title>
+    
+    <!-- Google Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Teko:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary-bg: #FFFFFF;
+            --secondary-bg: #F8F9FA;
+            --text-main: #111111;
+            --text-light: #555555;
+            --accent: #888888;
+            --font-head: 'Teko', sans-serif;
+            --font-body: 'Poppins', sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--secondary-bg);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+            background-image: url('https://images.unsplash.com/photo-1599058945522-28d584b6f0ff?q=80&w=2069&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            position: relative;
+        }
+
+        /* Overlay */
+        body::before {
+            content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.8); z-index: 0;
+        }
+
+        .register-card {
+            background: white;
+            width: 100%;
+            max-width: 700px; /* Lebar ditambah untuk mengakomodasi form panjang */
+            padding: 50px 40px;
+            border-radius: 4px;
+            position: relative;
+            z-index: 10;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            animation: slideUp 0.6s ease-out;
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .header { text-align: center; margin-bottom: 40px; border-bottom: 2px solid #eee; padding-bottom: 20px; }
+        .logo { 
+            font-family: var(--font-head); font-size: 3rem; font-weight: 700; letter-spacing: 2px;
+            display: block; margin-bottom: 5px; color: var(--text-main); line-height: 1;
+        }
+        .address { font-size: 0.9rem; color: var(--text-light); margin-bottom: 5px; }
+        .pt-name { font-size: 0.8rem; font-weight: 600; color: var(--accent); text-transform: uppercase; letter-spacing: 1px; }
+
+        .section-title {
+            background: var(--text-main);
+            color: white;
+            padding: 8px 15px;
+            font-family: var(--font-head);
+            font-size: 1.2rem;
+            letter-spacing: 1px;
+            margin: 30px 0 20px 0;
+            text-transform: uppercase;
+        }
+
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; margin-bottom: 8px; font-weight: 600; font-size: 0.9rem; }
+        
+        input[type="text"],
+        input[type="tel"],
+        input[type="email"],
+        input[type="date"],
+        textarea,
+        select,
+        input[type="file"] {
+            width: 100%; padding: 12px; border: 1px solid #ddd;
+            font-family: var(--font-body); outline: none; transition: 0.3s;
+            background: #f9f9f9;
+            font-size: 0.95rem;
+        }
+        
+        textarea { resize: vertical; min-height: 80px; }
+        input:focus, select:focus, textarea:focus { border-color: var(--text-main); background: #fff; }
+
+        /* Custom Checkbox/Radio Styling */
+        .radio-group, .checkbox-group { display: flex; gap: 20px; flex-wrap: wrap; }
+        .radio-item, .checkbox-item { display: flex; align-items: center; gap: 8px; font-size: 0.95rem; cursor: pointer; }
+        input[type="radio"], input[type="checkbox"] { width: auto; cursor: pointer; accent-color: var(--text-main); transform: scale(1.1); }
+
+        .info-box {
+            background: #f0f4f8;
+            border-left: 4px solid var(--text-main);
+            padding: 15px;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .waiver-box {
+            border: 1px solid #ddd;
+            padding: 15px;
+            background: #f9f9f9;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+        .waiver-box ul { padding-left: 20px; margin-top: 10px; }
+        .waiver-box li { margin-bottom: 5px; }
+
+        .btn-submit {
+            width: 100%; padding: 15px; background: var(--text-main); color: white;
+            border: none; font-family: var(--font-head); font-size: 1.5rem; letter-spacing: 1px;
+            cursor: pointer; transition: 0.3s; margin-top: 10px;
+        }
+        .btn-submit:hover { background: var(--accent); }
+
+        .back-link {
+            display: block; text-align: center; margin-top: 20px;
+            color: #ccc; font-size: 0.9rem;
+        }
+        .back-link:hover { color: var(--text-main); text-decoration: underline; }
+
+        /* Responsive Grid for Form */
+        .row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        @media (max-width: 600px) { .row { grid-template-columns: 1fr; gap: 0; } }
+
+    </style>
+</head>
+<body>
+
+    <div class="register-card">
+        <div class="header">
+            <h1 class="logo">FORMULIR PENDAFTARAN MEMBER ONLINE</h1>
+            <div style="font-family: var(--font-head); font-size: 1.5rem; margin-bottom: 10px;">SANEKALA FIGHTING CAMP</div>
+            <div class="address">Jl. Belakang Kaum (Lantai 2, Diatas Oca Salon), Majalaya</div>
+            <div class="pt-name">Di bawah naungan PT Sanekala Grup Dinamika</div>
+        </div>
+
+        <form id="registerForm" enctype="multipart/form-data">
+            
+            <!-- SECTION A -->
+            <div class="section-title">A. Data Pribadi (Personal Information)</div>
+            
+            <div class="form-group">
+                <label>Nama Lengkap</label>
+                <input type="text" name="nama_lengkap" placeholder="Sesuai KTP/Identitas" required>
+            </div>
+
+            <div class="row">
+                <div class="form-group">
+                    <label>Tempat Lahir</label>
+                    <input type="text" name="tempat_lahir" required>
+                </div>
+                <div class="form-group">
+                    <label>Tanggal Lahir</label>
+                    <input type="date" name="tanggal_lahir" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Jenis Kelamin</label>
+                <div class="radio-group">
+                    <label class="radio-item"><input type="radio" name="gender" value="Laki-laki" required> Laki-laki</label>
+                    <label class="radio-item"><input type="radio" name="gender" value="Perempuan"> Perempuan</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Alamat Lengkap</label>
+                <textarea name="alamat" placeholder="Nama Jalan, RT/RW, Kecamatan, Kota..."></textarea>
+            </div>
+
+            <div class="form-group">
+                <label>Nomor WhatsApp</label>
+                <input type="tel" name="whatsapp" placeholder="0812xxxx" required>
+            </div>
+
+            <div class="form-group">
+                <label>Pekerjaan</label>
+                <select name="pekerjaan" required>
+                    <option value="" disabled selected>Pilih Pekerjaan</option>
+                    <option value="Pelajar/Mahasiswa">Pelajar / Mahasiswa</option>
+                    <option value="Karyawan">Karyawan</option>
+                    <option value="Wiraswasta">Wiraswasta</option>
+                    <option value="Lainnya">Lainnya</option>
+                </select>
+            </div>
+
+            <!-- SECTION B -->
+            <div class="section-title">B. Pilihan Program</div>
+
+            <div class="form-group">
+                <label>Jenis Beladiri (Boleh pilih lebih dari satu)</label>
+                <div class="checkbox-group">
+                    <label class="checkbox-item"><input type="checkbox" name="beladiri" value="Boxing"> Boxing</label>
+                    <label class="checkbox-item"><input type="checkbox" name="beladiri" value="Muay Thai"> Muay Thai</label>
+                    <label class="checkbox-item"><input type="checkbox" name="beladiri" value="Kickboxing"> Kickboxing</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Jenis Membership</label>
+                <div class="radio-group">
+                    <label class="radio-item"><input type="radio" name="membership" value="Visit" required> Visit (Harian)</label>
+                    <label class="radio-item"><input type="radio" name="membership" value="Bulanan"> Bulanan (Member)</label>
+                    <label class="radio-item"><input type="radio" name="membership" value="Private"> Private</label>
+                </div>
+            </div>
+
+            <!-- SECTION C -->
+            <div class="section-title">C. Foto Member (Untuk ID Card)</div>
+            <div class="info-box">
+                Foto ini akan digunakan untuk cetak Kartu Anggota Sanekala Fighting Camp.<br>
+                <strong>Instruksi:</strong> Pastikan wajah terlihat jelas, tanpa kacamata hitam atau topi.
+            </div>
+            <div class="form-group">
+                <label>Upload Foto Diri (JPG/PNG, Maks 5 MB)</label>
+                <input type="file" name="foto_diri" id="foto_diri" accept="image/png, image/jpeg" required>
+            </div>
+
+            <!-- SECTION D -->
+            <div class="section-title">D. Pembayaran (Payment)</div>
+            <div class="info-box">
+                <h4 style="margin-bottom:5px;">Biaya Pendaftaran: Rp 50.000</h4>
+                <p>Silakan transfer biaya pendaftaran ke rekening operasional kami:</p>
+                <ul style="margin-top:10px; margin-left: 20px;">
+                    <li><strong>Bank:</strong> BCA</li>
+                    <li><strong>No. Rekening:</strong> 1234-5678-90</li>
+                    <li><strong>Atas Nama:</strong> PT Sanekala Grup Dinamika</li>
+                </ul>
+            </div>
+            <div class="form-group">
+                <label>Upload Bukti Transfer (Screenshot/Struk)</label>
+                <input type="file" name="bukti_transfer" id="bukti_transfer" accept="image/*" required>
+            </div>
+
+            <!-- SECTION E -->
+            <div class="section-title">E. Pernyataan & Waiver</div>
+            <div class="waiver-box">
+                <strong>Dengan mengirimkan formulir ini, saya menyatakan bahwa:</strong>
+                <ul>
+                    <li>Saya dalam kondisi sehat secara fisik dan mental untuk mengikuti latihan fisik berat.</li>
+                    <li>Saya mengerti risiko cedera yang mungkin terjadi dalam olahraga bela diri (kontak fisik).</li>
+                    <li>Saya tidak akan menuntut Sanekala Fighting Camp ataupun pelatih atas cedera yang terjadi akibat latihan.</li>
+                </ul>
+            </div>
+
+            <div class="form-group">
+                <label class="checkbox-item" style="font-weight: 600;">
+                    <input type="checkbox" name="setuju_syarat" required> 
+                    Saya Setuju dengan Syarat & Ketentuan di atas.
+                </label>
+            </div>
+
+            <div class="form-group">
+                <label>Tanggal Hari Ini</label>
+                <input type="date" name="tanggal_submit" id="dateToday" required>
+            </div>
+
+            <button type="submit" class="btn-submit">KIRIM FORMULIR</button>
+            
+            <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> Kembali ke Website Utama</a>
+        </form>
+    </div>
+
+    <script>
+        // Set Default Date to Today
+        document.getElementById('dateToday').valueAsDate = new Date();
+
+        // GANTI URL INI DENGAN URL WEB APP GOOGLE SCRIPT ANDA
+        const scriptURL = 'YOUR_GOOGLE_SCRIPT_URL_HERE'; 
+
+        const form = document.getElementById('registerForm');
+
+        // Helper function to convert File to Base64
+        const fileToBase64 = (file) => {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload = () => resolve(reader.result);
+                reader.onerror = error => reject(error);
+            });
+        };
+
+        form.addEventListener('submit', async e => {
+            e.preventDefault();
+            
+            const btn = document.querySelector('.btn-submit');
+            const originalText = btn.innerText;
+            
+            // Validasi Sederhana
+            if (!scriptURL || scriptURL === 'https://script.google.com/macros/s/AKfycbxfRrueeJ2WhCRKF7QkIS5_jxeiDQ0Lx4JFUn9deKl9e8iWkWPvrDtd7-szaGLioCPVNA/exec') {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Konfigurasi Belum Selesai',
+                    text: 'URL Google Script belum diatur oleh developer.'
+                });
+                return;
+            }
+
+            btn.innerText = 'MENGUPLOAD DATA...';
+            btn.disabled = true;
+
+            try {
+                // 1. Ambil Data Form Biasa
+                const formData = new FormData(form);
+                const data = Object.fromEntries(formData.entries());
+
+                // 2. Handle Checkbox (Beladiri) secara manual karena FormData hanya ambil yang terakhir jika nama sama
+                const beladiriCheckboxes = document.querySelectorAll('input[name="beladiri"]:checked');
+                let beladiriList = [];
+                beladiriCheckboxes.forEach((checkbox) => {
+                    beladiriList.push(checkbox.value);
+                });
+                data.beladiri = beladiriList.join(", "); // Gabungkan jadi string
+
+                // 3. Handle File Uploads (Convert ke Base64)
+                const fileFoto = document.getElementById('foto_diri').files[0];
+                const fileBukti = document.getElementById('bukti_transfer').files[0];
+
+                if (fileFoto) {
+                    data.foto_diri_base64 = await fileToBase64(fileFoto);
+                    data.foto_diri_name = fileFoto.name;
+                    data.foto_diri_type = fileFoto.type;
+                }
+                
+                if (fileBukti) {
+                    data.bukti_transfer_base64 = await fileToBase64(fileBukti);
+                    data.bukti_transfer_name = fileBukti.name;
+                    data.bukti_transfer_type = fileBukti.type;
+                }
+
+                // Hapus objek file asli agar tidak dikirim mentah (kita kirim string base64 nya)
+                delete data.foto_diri;
+                delete data.bukti_transfer;
+
+                // 4. Kirim ke Google Apps Script
+                const response = await fetch(scriptURL, {
+                    method: 'POST',
+                    body: JSON.stringify(data),
+                    // mode: 'no-cors' // Hati-hati: no-cors membuat kita tidak bisa baca response status
+                    // Untuk debugging lebih baik tanpa no-cors jika script sudah handle CORS, 
+                    // tapi standardnya GAS butuh penanganan khusus.
+                    // Kita gunakan text/plain untuk menghindari preflight OPTIONS request yang sering gagal di GAS
+                    headers: {
+                        'Content-Type': 'text/plain;charset=utf-8',
+                    }
+                });
+
+                // Jika sukses
+                Swal.fire({
+                    title: 'Formulir Terkirim!',
+                    html: 'Terima kasih telah mendaftar.<br>Admin kami akan memverifikasi data dan menghubungi Anda via WhatsApp.',
+                    icon: 'success',
+                    confirmButtonColor: '#111',
+                    confirmButtonText: 'Siap Latihan!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = 'index.html'; 
+                    }
+                });
+                
+                form.reset();
+                document.getElementById('dateToday').valueAsDate = new Date();
+
+            } catch (error) {
+                console.error('Error!', error.message);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Gagal Mengirim',
+                    text: 'Terjadi kesalahan saat menghubungi server. Silakan coba lagi atau hubungi WhatsApp admin.'
+                });
+            } finally {
+                btn.innerText = originalText;
+                btn.disabled = false;
+            }
+        });
+    </script>
+</body>
+</html>
